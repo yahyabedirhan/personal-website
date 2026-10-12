@@ -17,11 +17,11 @@ export const projects = [
         caption: 'How shipyard works: four sources feed one refresh, which turns into a count in the menu bar and notifications.' },
     ],
     views: {
-      title: 'Two ways to see the same work',
+      title: 'Layouts',
       groups: [
-        { head: 'List', text: 'Every project in one column, open or folded.', shots: [
+        { head: 'List layout', text: 'All projects in one column; each project can be expanded or collapsed.', shots: [
           { name: 'list', width: 800, height: 1008, alt: "shipyard's list layout: the Shipyard and Skills projects open with their pull requests, issues and runs, and Swift Lab and Havooch folded" }] },
-        { head: 'Tabs', text: 'One tab per project, plus All.', shots: [
+        { head: 'Tabs layout', text: 'One tab per project, plus an All tab.', shots: [
           { name: 'tabs-project', width: 800, height: 1190, alt: "shipyard's tabs layout on the Shipyard tab: pull requests, issues and workflow runs in groups" },
           { name: 'tabs-all', width: 800, height: 1408, alt: "shipyard's tabs layout on the All tab: every project's pull requests in one list, open ones first" }] },
       ],
