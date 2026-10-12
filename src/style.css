@@ -4,7 +4,7 @@
   --glass-fill:rgba(255,255,255,.045);
   --glass-edge:inset 0 0 0 .5px rgba(255,255,255,.12),inset 0 1px 0 rgba(255,255,255,.08),0 6px 24px -12px rgba(0,0,0,.6);
   /* layout: one content column for every route */
-  --content-max:512px;--gutter:24px;--page-top:128px;--page-bottom:120px;
+  --content-max:576px;--gutter:24px;--page-top:128px;--page-bottom:120px;
   --name-col:112px;--row-pad-x:14px;--ease:cubic-bezier(.32,.72,0,1);
 }
 :root[data-theme=light]{--fg:#1b1b1a;--mut:#7c7a76;--line:rgba(0,0,0,.08);--paper:#f9f8f6;color-scheme:light;
