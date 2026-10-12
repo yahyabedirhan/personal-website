@@ -1,8 +1,14 @@
-# yahyapak.dev
+<p align="center"><img src="assets/images/logo/yahyapak-logo-512.png" width="128" alt="yahyapak.dev's logo: three white piano keys folded from paper, the middle one pressed, on a dark graphite tile"></p>
 
-My personal website: who I am, what I build and where I worked. Live at [yahyapak.dev](https://yahyapak.dev).
+<h1 align="center">yahyapak.dev</h1>
 
-A quiet single column over an animated topographic contour background. Hovering a project (or scrolling past it on a phone) changes the terrain to that project's own style.
+## What is yahyapak.dev
+
+It's my personal website. I'm Yahya Bedirhan Pak, a software engineer, and this is where I keep who I am, what I build and where I've worked. It lives at [yahyapak.dev](https://yahyapak.dev).
+
+Most of what I build these days helps me work with coding agents: [shipyard](https://github.com/yahyabedirhan/shipyard), a menu bar app for my agents' pull requests; [Havooch](https://github.com/yahyabedirhan/havooch), a video player for giving them feedback; my [skills](https://github.com/yahyabedirhan/skills); and Swift Lab, where I prototype Mac UI. And [topography](https://github.com/yahyabedirhan/topography), the contour background you see behind the site.
+
+The site is a quiet single column over that animated topographic background. Hovering a project (or scrolling past it on a phone) changes the terrain to that project's own style.
 
 ## Stack
 
@@ -15,7 +21,8 @@ A quiet single column over an animated topographic contour background. Hovering 
 ```text
 index.html   page shell; sets the theme before first paint
 src/         pages, content (data.js), background renderer, styles
-public/      app icons, diagrams, favicon
+public/      site logo, app icons, diagrams, favicon
+assets/      images for this README
 ```
 
 Design prototypes live on the `prototype/ui-variants` branch and never ship.
@@ -33,7 +40,7 @@ To open the dev server from another device, pass `--host`; Vite may also need th
 
 ## Deploy
 
-`dist/` is plain static files. The build also writes `404.html` as a copy of `index.html`, so hosts without rewrite rules still serve deep links like `/projects/havooch`.
+The site runs on Cloudflare Pages, which builds `main` with `npm run build` and serves `dist/` at [yahyapak.dev](https://yahyapak.dev). There is no top-level `404.html`, so Pages serves `index.html` for every path, and deep links like `/projects/havooch` work.
 
 ## Credits
 
