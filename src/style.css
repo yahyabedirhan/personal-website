@@ -106,3 +106,12 @@ section{margin-top:64px}
 .shot img{display:block;width:100%;height:auto}
 .shot .shot-light,:root[data-theme=light] .shot .shot-dark{display:none}
 :root[data-theme=light] .shot .shot-light{display:block}
+.zoom{display:block;width:100%;padding:0;border:0;background:none;color:inherit;cursor:zoom-in;border-radius:inherit}
+.zoom:focus-visible{outline:2px solid var(--fg);outline-offset:3px}
+.diagram .zoom{border-radius:14px}.diagram.is-raw .zoom{border-radius:0}
+.is-zoomed{overflow:hidden}
+.zoom-layer{position:fixed;inset:0;z-index:50;cursor:zoom-out;outline:none;touch-action:none}
+.zoom-layer::before{content:"";position:absolute;inset:0;background:rgba(8,8,8,.82);backdrop-filter:blur(8px);-webkit-backdrop-filter:blur(8px);opacity:0;transition:opacity .38s cubic-bezier(.32,.72,0,1)}
+.zoom-layer.is-open::before{opacity:var(--fade,1)}
+.zoom-img{position:absolute;max-width:none;transform-origin:0 0;will-change:transform;user-select:none;-webkit-user-drag:none}
+@media (prefers-reduced-motion:reduce){.zoom-img{transition:opacity .2s;opacity:0}.zoom-layer.is-open .zoom-img{opacity:1}.zoom-layer::before{transition-duration:.2s}}

@@ -2,9 +2,11 @@ import './style.css';
 import { createBackground } from './bg.js';
 import { me, projects, experience, press, links, kudos } from './data.js';
 import { icons, esc } from './icons.js';
+import { initZoom } from './zoom.js';
 
 const app = document.getElementById('app');
 const bg = createBackground(document.getElementById('bg'));
+initZoom();
 const root = document.documentElement;
 const isLight = () => root.dataset.theme === 'light';
 bg.setDark(!isLight(), true);
@@ -66,7 +68,7 @@ function project(id) {
     <header class="pj-head${p.iconSide ? ' is-side' : ''}">${p.icon ? `<img class="pj-icon" src="${p.icon}" alt="${esc(p.iconAlt || '')}" width="${p.iconSide ? 96 : 112}" height="${p.iconSide ? 96 : 112}">` : ''}<div class="pj-title"><h1>${esc(p.name)}</h1>
       <a class="pj-repo" href="${p.repo}" target="_blank" rel="noopener noreferrer">${icons.github}<span>${p.repo.replace('https://', '')}</span></a></div></header>
     ${p.about ? `<p class="pj-about">${esc(p.about).replace(/`([^`]+)`/g, '<code>$1</code>')}</p>` : `<p class="pj-about is-placeholder">Description coming soon. [Yahya to fill]</p>`}
-    ${p.diagrams ? p.diagrams.map(d => `<figure class="diagram${d.raw ? ' is-raw' : ''}"><img src="${d.src}" width="${d.width}" height="${d.height}" alt="${esc(d.alt)}" loading="lazy" decoding="async"><figcaption>${esc(d.caption)}</figcaption></figure>`).join('')
+    ${p.diagrams ? p.diagrams.map(d => `<figure class="diagram${d.raw ? ' is-raw' : ''}"><button class="zoom" type="button" aria-label="Enlarge image"><img src="${d.src}" width="${d.width}" height="${d.height}" alt="${esc(d.alt)}" loading="lazy" decoding="async"></button><figcaption>${esc(d.caption)}</figcaption></figure>`).join('')
       : `<figure class="slot" style="aspect-ratio:16/10"><span>Screenshot placeholder</span></figure>`}
     ${p.views ? views(p) : ''}
     <a class="next" href="/projects/${next.id}" data-nav><span>Next</span>${esc(next.name)} →</a>
@@ -89,7 +91,7 @@ function kudosPage() {
 // each screenshot exists in dark and light; CSS shows the one matching [data-theme]
 const shot = (s, id) => ['dark', 'light'].map(t => `<img class="shot-${t}" src="/${id}/${s.name}-${t}.png" width="${s.width}" height="${s.height}" alt="${esc(s.alt)}" loading="lazy" decoding="async">`).join('');
 const views = (p) => `<section class="views"><h2>${esc(p.views.title)}</h2>${p.views.groups.map(g =>
-  `<h3>${esc(g.head)}</h3><p>${esc(g.text)}</p><div class="shots n${g.shots.length}">${g.shots.map(s => `<figure class="shot">${shot(s, p.id)}</figure>`).join('')}</div>`).join('')}</section>`;
+  `<h3>${esc(g.head)}</h3><p>${esc(g.text)}</p><div class="shots n${g.shots.length}">${g.shots.map(s => `<figure class="shot"><button class="zoom" type="button" aria-label="Enlarge image">${shot(s, p.id)}</button></figure>`).join('')}</div>`).join('')}</section>`;
 
 function notFound() {
   app.innerHTML = `<main class="wrap"><a class="back" href="/" data-nav>← Index</a><h1 class="title">Not found</h1></main>`;
