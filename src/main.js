@@ -65,10 +65,11 @@ function project(id) {
   document.title = `${p.name} · ${me.name}`;
   app.innerHTML = `<main class="wrap">
     <a class="back" href="/" data-nav>← Index</a>
-    <header class="pj-head${p.iconSide ? ' is-side' : ''}">${p.icon ? `<img class="pj-icon" src="${p.icon}" alt="${esc(p.iconAlt || '')}" width="${p.iconSide ? 96 : 112}" height="${p.iconSide ? 96 : 112}">` : ''}<div class="pj-title"><h1>${esc(p.name)}</h1>
+    <header class="pj-head${p.iconSide ? ' is-side' : ''}">${p.icon ? `<img class="pj-icon${p.iconLarge ? ' is-lg' : ''}" src="${p.icon}"${p.icon2x ? ` srcset="${p.icon} 1x, ${p.icon2x} 2x"` : ''} alt="${esc(p.iconAlt || '')}" width="${p.iconSide ? 96 : p.iconLarge ? 128 : 112}" height="${p.iconSide ? 96 : p.iconLarge ? 128 : 112}">` : ''}<div class="pj-title"><h1>${esc(p.name)}</h1>
       <a class="pj-repo" href="${p.repo}" target="_blank" rel="noopener noreferrer">${icons.github}<span>${p.repo.replace('https://', '')}</span></a></div></header>
     ${p.about ? `<p class="pj-about">${esc(p.about).replace(/`([^`]+)`/g, '<code>$1</code>')}</p>` : `<p class="pj-about is-placeholder">Description coming soon. [Yahya to fill]</p>`}
-    ${p.diagrams ? p.diagrams.map(d => `<figure class="diagram${d.raw ? ' is-raw' : ''}"><button class="zoom" type="button" aria-label="Enlarge image"><img src="${d.src}" width="${d.width}" height="${d.height}" alt="${esc(d.alt)}" loading="lazy" decoding="async"></button><figcaption>${esc(d.caption)}</figcaption></figure>`).join('')
+    ${p.hero ? `<figure class="hero"><button class="zoom" type="button" aria-label="Enlarge image">${img(p.hero, 'eager')}</button></figure>` : ''}
+    ${p.diagrams ? p.diagrams.map(d => `${d.title ? `<h3 class="diagram-title">${esc(d.title)}</h3>` : ''}<figure class="diagram${d.raw ? ' is-raw' : ''}"><button class="zoom" type="button" aria-label="Enlarge image"><img src="${d.src}" width="${d.width}" height="${d.height}" alt="${esc(d.alt)}" loading="lazy" decoding="async"></button><figcaption>${esc(d.caption)}</figcaption></figure>`).join('')
       : `<figure class="slot" style="aspect-ratio:16/10"><span>Screenshot placeholder</span></figure>`}
     ${p.views ? views(p) : ''}
     <a class="next" href="/projects/${next.id}" data-nav><span>Next</span>${esc(next.name)} →</a>
@@ -89,9 +90,11 @@ function kudosPage() {
 }
 
 // each screenshot exists in dark and light; CSS shows the one matching [data-theme]
-const shot = (s, id) => ['dark', 'light'].map(t => `<img class="shot-${t}" src="/${id}/${s.name}-${t}.png" width="${s.width}" height="${s.height}" alt="${esc(s.alt)}" loading="lazy" decoding="async">`).join('');
+const img = (s, load = 'lazy') => `<img src="${s.src}" width="${s.width}" height="${s.height}" alt="${esc(s.alt)}" loading="${load}" decoding="async">`;
+// a shot is either one image (src) or a dark/light pair (name)
+const shot = (s, id) => s.src ? img(s) : ['dark', 'light'].map(t => `<img class="shot-${t}" src="/${id}/${s.name}-${t}.png" width="${s.width}" height="${s.height}" alt="${esc(s.alt)}" loading="lazy" decoding="async">`).join('');
 const views = (p) => `<section class="views"><h2>${esc(p.views.title)}</h2>${p.views.groups.map(g =>
-  `<h3>${esc(g.head)}</h3><p>${esc(g.text)}</p><div class="shots n${g.shots.length}">${g.shots.map(s => `<figure class="shot"><button class="zoom" type="button" aria-label="Enlarge image">${shot(s, p.id)}</button></figure>`).join('')}</div>`).join('')}</section>`;
+  `${g.head ? `<h3>${esc(g.head)}</h3>` : ''}${g.text ? `<p>${esc(g.text)}</p>` : ''}<div class="shots n${g.shots.length}${g.wide ? ' is-wide' : ''}">${g.shots.map(s => `<figure class="shot"><button class="zoom" type="button" aria-label="Enlarge image">${shot(s, p.id)}</button></figure>`).join('')}</div>`).join('')}</section>`;
 
 function notFound() {
   app.innerHTML = `<main class="wrap"><a class="back" href="/" data-nav>← Index</a><h1 class="title">Not found</h1></main>`;
