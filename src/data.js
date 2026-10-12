@@ -6,11 +6,11 @@ export const me = {
 // state: background slot (1 Havooch orange, 2 Shipyard green, 3 Skills violet, 4 Topography neutral)
 // about: the page description; null shows a placeholder for Yahya to fill
 export const projects = [
-  { id: 'shipyard', name: 'Shipyard', state: 2, repo: 'https://github.com/yahyabedirhan/shipyard', icon: '/shipyard/shipyard.png', iconSide: true,
-    iconAlt: "shipyard's logo: a white sailboat with folded sails on two waves, on a dark green graphite tile",
+  { id: 'shipyard', name: 'Shipyard', state: 2, repo: 'https://github.com/yahyabedirhan/shipyard', icon: '/shipyard/shipyard.png',
+    iconAlt: "shipyard's logo: a white sailboat with folded sails on two waves, on a dark graphite tile",
     line: 'Home for every project I ship',
     about: 'shipyard is my macOS menu bar app. It lists the pull requests, issues and workflow runs my coding agents open across my GitHub repositories, shows one count of what needs my attention, and lets agents ping me with a `shipyard ping` command.',
-    // assets from yahyabedirhan/shipyard at 1f6e3e3
+    // assets from yahyabedirhan/shipyard at 1fe2b4a
     diagrams: [
       { src: '/shipyard/architecture.png', width: 2000, height: 1080, raw: true,
         alt: 'Shipyard architecture: GitHub, agents on the Mac and on servers, and Notion notes feed the Shipyard menu bar app, whose refresh turns them into a menu bar panel and notifications.',
@@ -20,7 +20,7 @@ export const projects = [
       title: 'Layouts',
       groups: [
         { head: 'List layout', text: 'All projects in one column; each project can be expanded or collapsed.', shots: [
-          { name: 'list', width: 800, height: 1008, alt: "shipyard's list layout: the Shipyard and Skills projects open with their pull requests, issues and runs, and the others folded" }] },
+          { name: 'list', width: 800, height: 1008, alt: "shipyard's list layout: the Shipyard and Skills projects open with their pull requests, issues and runs, and Swift Lab and Havooch folded" }] },
         { head: 'Tabs layout', text: 'One tab per project, plus an All tab.', shots: [
           { name: 'tabs-project', width: 800, height: 1190, alt: "shipyard's tabs layout on the Shipyard tab: pull requests, issues and workflow runs in groups" },
           { name: 'tabs-all', width: 800, height: 1408, alt: "shipyard's tabs layout on the All tab: every project's pull requests in one list, open ones first" }] },
@@ -28,7 +28,7 @@ export const projects = [
     } },
   { id: 'havooch', name: 'Havooch', state: 1, repo: 'https://github.com/yahyabedirhan/havooch',
     // assets from yahyabedirhan/havooch at 0e606c3; havooch-mark.svg is there for small inline uses
-    icon: '/havooch/havooch-app-icon-256.png', icon2x: '/havooch/havooch-app-icon-512.png', iconLarge: true,
+    icon: '/havooch/havooch-app-icon-256.png', icon2x: '/havooch/havooch-app-icon-512.png',
     iconAlt: "Havooch's app icon: the head of Havuç, an orange and white cat folded from paper, on a dark graphite rounded tile",
     line: 'Video player that you can watch with your agents',
     about: "Havooch is a video player for your Mac that lets you give feedback to a coding agent the way you'd give it to a person. You pause the video, point at the spot, and say what you want changed. Your agent gets each comment with the moment and the frame it's about, does the work, and answers you right beside the video.",
