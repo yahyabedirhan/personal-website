@@ -3,6 +3,8 @@ import { createBackground } from './bg.js';
 import { me, projects, previously, press, links, kudos } from './data.js';
 import { icons, esc } from './icons.js';
 import { initZoom } from './zoom.js';
+import { topoDiagram } from './topo-diagram.js';
+const svgs = { topography: topoDiagram };
 
 const app = document.getElementById('app');
 const bg = createBackground(document.getElementById('bg'));
@@ -68,8 +70,9 @@ function project(id) {
     <header class="pj-head${p.iconSide ? ' is-side' : ''}">${p.icon ? `<img class="pj-icon${p.iconLarge ? ' is-lg' : ''}" src="${p.icon}"${p.icon2x ? ` srcset="${p.icon} 1x, ${p.icon2x} 2x"` : ''} alt="${esc(p.iconAlt || '')}" width="${p.iconSide ? 96 : p.iconLarge ? 128 : 112}" height="${p.iconSide ? 96 : p.iconLarge ? 128 : 112}">` : ''}<div class="pj-title"><h1>${esc(p.name)}</h1>
       <a class="pj-repo" href="${p.repo}" target="_blank" rel="noopener noreferrer">${icons.github}<span>${p.repo.replace('https://', '')}</span></a></div></header>
     ${p.about ? `<p class="pj-about">${esc(p.about).replace(/`([^`]+)`/g, '<code>$1</code>')}</p>` : `<p class="pj-about is-placeholder">Description coming soon. [Yahya to fill]</p>`}
+    ${p.links ? `<nav class="pj-links" aria-label="Links">${p.links.map(l => `<a href="${l.href}" target="_blank" rel="noopener noreferrer">${esc(l.label)} ↗</a>`).join('')}</nav>` : ''}
     ${p.hero ? `<figure class="hero"><button class="zoom" type="button" aria-label="Enlarge image">${img(p.hero, 'eager')}</button></figure>` : ''}
-    ${p.diagrams ? p.diagrams.map(d => `${d.title ? `<h3 class="diagram-title">${esc(d.title)}</h3>` : ''}<figure class="diagram${d.raw ? ' is-raw' : ''}"><button class="zoom" type="button" aria-label="Enlarge image"><img src="${d.src}" width="${d.width}" height="${d.height}" alt="${esc(d.alt)}" loading="lazy" decoding="async"></button><figcaption>${esc(d.caption)}</figcaption></figure>`).join('')
+    ${p.diagrams ? p.diagrams.map(diagram).join('')
       : `<figure class="slot" style="aspect-ratio:16/10"><span>Screenshot placeholder</span></figure>`}
     ${p.views ? views(p) : ''}
     <a class="next" href="/projects/${next.id}" data-nav><span>Next</span>${esc(next.name)} →</a>
@@ -90,6 +93,9 @@ function kudosPage() {
 }
 
 // each screenshot exists in dark and light; CSS shows the one matching [data-theme]
+const diagram = d => `${d.title ? `<h3 class="diagram-title">${esc(d.title)}</h3>` : ''}${d.svg
+  ? `<figure class="diagram is-svg"><div role="img" aria-label="${esc(d.alt)}">${svgs[d.svg]}</div>`
+  : `<figure class="diagram${d.raw ? ' is-raw' : ''}"><button class="zoom" type="button" aria-label="Enlarge image"><img src="${d.src}" width="${d.width}" height="${d.height}" alt="${esc(d.alt)}" loading="lazy" decoding="async"></button>`}<figcaption>${esc(d.caption)}</figcaption></figure>`;
 const img = (s, load = 'lazy') => `<img src="${s.src}" width="${s.width}" height="${s.height}" alt="${esc(s.alt)}" loading="${load}" decoding="async">`;
 // a shot is either one image (src) or a dark/light pair (name)
 const shot = (s, id) => s.src ? img(s) : ['dark', 'light'].map(t => `<img class="shot-${t}" src="/${id}/${s.name}-${t}.png" width="${s.width}" height="${s.height}" alt="${esc(s.alt)}" loading="lazy" decoding="async">`).join('');
