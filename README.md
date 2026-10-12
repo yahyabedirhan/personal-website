@@ -6,10 +6,6 @@
 
 It's my personal website. I'm Yahya Bedirhan Pak, a software engineer, and this is where I keep who I am, what I build and where I've worked. It lives at [yahyapak.dev](https://yahyapak.dev).
 
-Most of what I build these days helps me work with coding agents: [shipyard](https://github.com/yahyabedirhan/shipyard), a menu bar app for my agents' pull requests; [Havooch](https://github.com/yahyabedirhan/havooch), a video player for giving them feedback; my [skills](https://github.com/yahyabedirhan/skills); and Swift Lab, where I prototype Mac UI. And [topography](https://github.com/yahyabedirhan/topography), the contour background you see behind the site.
-
-The site is a quiet single column over that animated topographic background. Hovering a project (or scrolling past it on a phone) changes the terrain to that project's own style.
-
 ## Stack
 
 - [Vite](https://vitejs.dev) and plain JavaScript, no framework
