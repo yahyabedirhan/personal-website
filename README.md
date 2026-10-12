@@ -2,6 +2,10 @@
 
 <h1 align="center">yahyapak.dev</h1>
 
+<p align="center"><strong><a href="https://yahyapak.dev">Visit yahyapak.dev →</a></strong></p>
+
+![yahyapak.dev in dark mode: my name, links and projects in one quiet column, with contour lines drifting behind the page](assets/screenshots/home-dark.png)
+
 ## What is yahyapak.dev
 
 It's my personal website. I'm Yahya Bedirhan Pak, a software engineer, and this is where I keep who I am, what I build and where I've worked. It lives at [yahyapak.dev](https://yahyapak.dev).
@@ -18,7 +22,7 @@ It's my personal website. I'm Yahya Bedirhan Pak, a software engineer, and this 
 index.html      page shell; sets the theme before first paint
 src/            pages, content (data.js), background renderer, styles
 public/         site logo, app icons, diagrams, favicon
-assets/         images for this README
+assets/         logo and screenshot for this README
 wrangler.jsonc  Cloudflare Workers deploy settings
 ```
 
