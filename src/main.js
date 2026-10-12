@@ -1,6 +1,6 @@
 import './style.css';
 import { createBackground } from './bg.js';
-import { me, projects, experience, press, links, kudos } from './data.js';
+import { me, projects, previously, press, links, kudos } from './data.js';
 import { icons, esc } from './icons.js';
 import { initZoom } from './zoom.js';
 import { topoDiagram } from './topo-diagram.js';
@@ -36,7 +36,7 @@ function home() {
     ${socials()}
     <section><h2>Projects</h2><ul class="rows">${projects.map(p => `<li class="proj" data-state="${p.state}">
       <a class="row glass" href="/projects/${p.id}" data-nav><span class="pn">${esc(p.name)}</span><span class="pl">${esc(p.line)}</span><span class="pa" aria-hidden="true">→</span></a></li>`).join('')}</ul></section>
-    <section><h2>Experience</h2><ul class="rows">${experience.map(e => `<li><a class="row glass" href="${e.href}" target="_blank" rel="noopener noreferrer"><span class="pn">${esc(e.name)}</span><span class="pl">${esc(e.role)}</span><span class="pa" aria-hidden="true">↗</span></a></li>`).join('')}</ul></section>
+    <section><h2>Previously</h2><ul class="rows">${previously.map(e => `<li><a class="row glass" href="${e.href}" target="_blank" rel="noopener noreferrer"><span class="pn">${esc(e.name)}</span><span class="pl">${esc(e.role)}</span><span class="pa" aria-hidden="true">↗</span></a></li>`).join('')}</ul></section>
     <section><h2>Featured in</h2><ul class="rows press">${press.map(p => `<li><a class="row glass" href="${p.href}" target="_blank" rel="noopener noreferrer" title="${esc(p.title)}" aria-label="${esc(`${p.label}, in ${p.outlet}: ${p.title}`)}"><span class="pn">${esc(p.outlet)}</span><span class="pl">${esc(p.label)}</span><span class="pa" aria-hidden="true">↗</span></a></li>`).join('')}</ul></section>
     ${footer()}
   </main>`;
@@ -67,7 +67,7 @@ function project(id) {
   document.title = `${p.name} · ${me.name}`;
   app.innerHTML = `<main class="wrap">
     <a class="back" href="/" data-nav>← Index</a>
-    <header class="pj-head${p.iconSide ? ' is-side' : ''}">${p.icon ? `<img class="pj-icon" src="${p.icon}" alt="${esc(p.iconAlt || '')}" width="${p.iconSide ? 96 : 112}" height="${p.iconSide ? 96 : 112}">` : ''}<div class="pj-title"><h1>${esc(p.name)}</h1>
+    <header class="pj-head${p.iconSide ? ' is-side' : ''}">${p.icon ? `<img class="pj-icon${p.iconLarge ? ' is-lg' : ''}" src="${p.icon}"${p.icon2x ? ` srcset="${p.icon} 1x, ${p.icon2x} 2x"` : ''} alt="${esc(p.iconAlt || '')}" width="${p.iconSide ? 96 : p.iconLarge ? 128 : 112}" height="${p.iconSide ? 96 : p.iconLarge ? 128 : 112}">` : ''}<div class="pj-title"><h1>${esc(p.name)}</h1>
       <a class="pj-repo" href="${p.repo}" target="_blank" rel="noopener noreferrer">${icons.github}<span>${p.repo.replace('https://', '')}</span></a></div></header>
     ${p.about ? `<p class="pj-about">${esc(p.about).replace(/`([^`]+)`/g, '<code>$1</code>')}</p>` : `<p class="pj-about is-placeholder">Description coming soon. [Yahya to fill]</p>`}
     ${p.links ? `<nav class="pj-links" aria-label="Links">${p.links.map(l => `<a href="${l.href}" target="_blank" rel="noopener noreferrer">${esc(l.label)} ↗</a>`).join('')}</nav>` : ''}
@@ -89,7 +89,7 @@ function kudosPage() {
     <h1 class="title">Kudos</h1><p class="meta">${esc(kudos.intro)}</p>
     <ul class="kudos">${kudos.people.map(k => `<li><span>${esc(k.name)}</span><a href="${k.site}" target="_blank" rel="noreferrer">${host(k.site)}</a><a href="${k.x}" target="_blank" rel="noreferrer">@${k.x.split('/').pop()}</a></li>`).join('')}</ul>
   </main>`;
-  bg.setState(6); scrollTo(0, 0); return () => {};
+  bg.setState(5); scrollTo(0, 0); return () => {};
 }
 
 // each screenshot exists in dark and light; CSS shows the one matching [data-theme]

@@ -21,7 +21,7 @@ export function createBackground(canvas) {
 
   const coarse = matchMedia('(pointer: coarse)').matches;
   const still = matchMedia('(prefers-reduced-motion: reduce)');
-  const w = [1, 0, 0, 0, 0, 0, 0]; let target = 0, dark = 0, darkT = 0, raf = 0, last = 0, t = 0, lastDraw = 0;
+  const w = [1, 0, 0, 0, 0, 0]; let target = 0, dark = 0, darkT = 0, raf = 0, last = 0, t = 0, lastDraw = 0;
   const lines = () => (innerWidth < 600 ? 36 : innerWidth < 1024 ? 30 : 24);
   const resize = () => {
     // phones: 1x device pixels; desktop: up to 1.5x. Thin lines stay crisp enough, fill cost drops a lot.
@@ -43,7 +43,7 @@ export function createBackground(canvas) {
       const dt = Math.min(.05, (now - (last || now)) / 1000); last = now; lastDraw = now;
       const k = 1 - Math.exp(-dt * 4.5);
       let moving = false;
-      for (let i = 0; i < 7; i++) { const d = (i === target ? 1 : 0) - w[i]; w[i] += d * k; if (Math.abs(d) > .002) moving = true; }
+      for (let i = 0; i < w.length; i++) { const d = (i === target ? 1 : 0) - w[i]; w[i] += d * k; if (Math.abs(d) > .002) moving = true; }
       const dd = darkT - dark; dark += dd * (1 - Math.exp(-dt * 6)); if (Math.abs(dd) > .002) moving = true;
       if (!still.matches) t += dt;
       draw();
