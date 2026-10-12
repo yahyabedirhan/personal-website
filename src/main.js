@@ -3,8 +3,6 @@ import { createBackground } from './bg.js';
 import { me, projects, previously, press, links, kudos } from './data.js';
 import { icons, esc } from './icons.js';
 import { initZoom } from './zoom.js';
-import libraryArchitecture from './library-architecture.svg?raw';
-const svgs = { 'library-architecture': libraryArchitecture };
 
 const app = document.getElementById('app');
 const bg = createBackground(document.getElementById('bg'));
@@ -96,15 +94,7 @@ const figures = p => p.diagrams ? p.diagrams.map(diagram).join('')
 const shots = p => p.views ? views(p) : '';
 
 // each screenshot exists in dark and light; CSS shows the one matching [data-theme]
-// minWidth: below that width the diagram scrolls sideways instead of shrinking (phones)
-const diagram = d => {
-  const body = d.svg
-    ? `<div role="img" aria-label="${esc(d.alt)}">${svgs[d.svg]}</div>`
-    : `<button class="zoom" type="button" aria-label="Enlarge image"><img src="${d.src}" width="${d.width}" height="${d.height}" alt="${esc(d.alt)}" loading="lazy" decoding="async"></button>`;
-  const cls = `diagram${d.svg ? ' is-svg' : ''}${d.raw ? ' is-raw' : ''}`;
-  return `${d.title ? `<h3 class="diagram-title">${esc(d.title)}</h3>` : ''}<figure class="${cls}">${d.minWidth
-    ? `<div class="diagram-scroll"><div style="min-width:${d.minWidth}px">${body}</div></div>` : body}${d.caption ? `<figcaption>${esc(d.caption)}</figcaption>` : ''}</figure>`;
-};
+const diagram = d => `${d.title ? `<h3 class="diagram-title">${esc(d.title)}</h3>` : ''}<figure class="diagram${d.raw ? ' is-raw' : ''}"><button class="zoom" type="button" aria-label="Enlarge image"><img src="${d.src}" width="${d.width}" height="${d.height}" alt="${esc(d.alt)}" loading="lazy" decoding="async"></button><figcaption>${esc(d.caption)}</figcaption></figure>`;
 const img = (s, load = 'lazy') => `<img src="${s.src}" width="${s.width}" height="${s.height}" alt="${esc(s.alt)}" loading="${load}" decoding="async">`;
 // a shot is either one image (src) or a dark/light pair (name)
 const shot = (s, id) => s.src ? img(s) : ['dark', 'light'].map(t => `<img class="shot-${t}" src="/${id}/${s.name}-${t}.png" width="${s.width}" height="${s.height}" alt="${esc(s.alt)}" loading="lazy" decoding="async">`).join('');

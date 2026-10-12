@@ -35,16 +35,16 @@ export const projects = [
     hero: { src: '/havooch/thread-answered-and-queued-graphite.png', width: 2720, height: 1460,
       alt: 'Havooch with a project open: the agent answered thread #2, and a follow-up waits in the queue' },
     diagrams: [
-      { title: 'Review loop', src: '/havooch/havooch-review-loop.png', minWidth: 640, width: 2000, height: 1120, raw: true,
+      { title: 'Review loop', src: '/havooch/havooch-review-loop.png', width: 2000, height: 1120, raw: true,
         alt: 'The review loop: watch, pause and point, send, your agent works, it answers, and a new version joins your project',
         caption: 'Each round leaves a new version in your project, so you can see what changed.' },
-      { title: 'Comment anatomy', src: '/havooch/havooch-comment-anatomy.png', minWidth: 640, width: 2000, height: 1240, raw: true,
+      { title: 'Comment anatomy', src: '/havooch/havooch-comment-anatomy.png', width: 2000, height: 1240, raw: true,
         alt: 'One comment taken apart: your words, the moment, the region you drew, the frame and the transcript around it',
         caption: 'Your agent gets what you saw, not only what you typed.' },
-      { title: 'Feedback session', src: '/havooch/havooch-feedback-session.png', minWidth: 640, width: 2000, height: 1040, raw: true,
+      { title: 'Feedback session', src: '/havooch/havooch-feedback-session.png', width: 2000, height: 1040, raw: true,
         alt: 'One feedback session: confidence dips when you spot a problem, rises when you point at it, and peaks when you read the answer',
         caption: 'One session, from the first doubt to the answer on your thread.' },
-      { title: 'Havooch architecture', src: '/havooch/havooch-architecture.png', minWidth: 640, width: 2000, height: 1024, raw: true,
+      { title: 'Havooch architecture', src: '/havooch/havooch-architecture.png', width: 2000, height: 1024, raw: true,
         alt: 'How the Havooch app, the `havooch` command, your agent, the skill, your repository and your data connect',
         caption: 'Your agent reaches the app only through the havooch command, and the skill teaches it how.' },
     ],
@@ -81,9 +81,9 @@ export const projects = [
     hero: { src: '/topography/generator-dark.png', width: 1440, height: 900,
       alt: 'The Topography generator in dark mode: the page background is the live preview, with presets on the left and the settings panel on the right' },
     diagrams: [
-      // library-architecture.svg from yahyabedirhan/topography at 997bc7a, inline; its font @import is dropped
-      { title: 'Library architecture', svg: 'library-architecture', minWidth: 960,
-        alt: 'Library architecture of topography: three wrappers call one public API, which resolves settings from a params table and hands them to a single WebGL renderer and shader.' },
+      { title: 'Library architecture', src: '/topography/library-architecture.png', width: 1920, height: 1120, raw: true,
+        alt: 'Library architecture of topography: three wrappers call one public API, which resolves settings from a params table and hands them to a single WebGL renderer and shader.',
+        caption: 'How topography works: three wrappers call one API, which hands settings to one WebGL renderer.' },
     ],
     views: {
       title: 'Styles',
