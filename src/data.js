@@ -6,8 +6,26 @@ export const me = {
 // state: background slot (1 Swift Lab granite, 2 Havooch orange, 3 Shipyard green, 4 Skills violet, 5 Topography neutral)
 // about: the page description; null shows a placeholder for Yahya to fill
 export const projects = [
-  { id: 'shipyard', name: 'Shipyard', state: 3, repo: 'https://github.com/yahyabedirhan/shipyard', icon: '/icons/shipyard.webp',
-    line: 'Home for every project I ship', about: null },
+  { id: 'shipyard', name: 'Shipyard', state: 3, repo: 'https://github.com/yahyabedirhan/shipyard', icon: '/shipyard/shipyard.png', iconSide: true,
+    iconAlt: "shipyard's logo: a white sailboat with folded sails on two waves, on a dark green graphite tile",
+    line: 'Home for every project I ship',
+    about: 'shipyard is my macOS menu bar app. It lists the pull requests, issues and workflow runs my coding agents open across my GitHub repositories, shows one count of what needs my attention, and lets agents ping me with a `shipyard ping` command.',
+    // assets from yahyabedirhan/shipyard at 1f6e3e3
+    diagrams: [
+      { src: '/shipyard/architecture.png', width: 2000, height: 1080, raw: true,
+        alt: 'Shipyard architecture: GitHub, agents on the Mac and on servers, and Notion notes feed the Shipyard menu bar app, whose refresh turns them into a menu bar panel and notifications.',
+        caption: 'How shipyard works: four sources feed one refresh, which turns into a count in the menu bar and notifications.' },
+    ],
+    views: {
+      title: 'Two ways to see the same work',
+      groups: [
+        { head: 'List', text: 'Every project in one column, open or folded.', shots: [
+          { name: 'list', width: 800, height: 1008, alt: "shipyard's list layout: the Shipyard and Skills projects open with their pull requests, issues and runs, and Swift Lab and Havooch folded" }] },
+        { head: 'Tabs', text: 'One tab per project, plus All.', shots: [
+          { name: 'tabs-project', width: 800, height: 1190, alt: "shipyard's tabs layout on the Shipyard tab: pull requests, issues and workflow runs in groups" },
+          { name: 'tabs-all', width: 800, height: 1408, alt: "shipyard's tabs layout on the All tab: every project's pull requests in one list, open ones first" }] },
+      ],
+    } },
   { id: 'havooch', name: 'Havooch', state: 2, repo: 'https://github.com/yahyabedirhan/havooch', icon: '/icons/havooch.webp',
     line: 'Video player that you can watch with your agents', about: null },
   { id: 'swift-lab', name: 'Swift Lab', state: 1, repo: 'https://github.com/yahyabedirhan/swift-lab', icon: '/icons/swift-lab.webp',
