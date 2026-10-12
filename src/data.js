@@ -42,8 +42,28 @@ export const projects = [
       { src: '/diagrams/build-loop.webp', width: 2560, height: 1200, caption: 'Build loop: how an orchestrator turns tickets into one pull request.',
         alt: 'A flowchart: read the effort, show the plan, delegate unblocked tickets in parallel, integrate the batch and repeat while tickets are left, then review the whole branch, open the pull request and report' },
     ] },
-  { id: 'topography', name: 'Topography', state: 5, repo: 'https://github.com/yahyabedirhan/topography', icon: '/icons/topography.webp',
-    line: 'Animated topographic backgrounds for the web', about: null },
+  { id: 'topography', name: 'Topography', state: 5, repo: 'https://github.com/yahyabedirhan/topography', 
+    // assets from yahyabedirhan/topography at d6c0d98
+    icon: '/topography/topography.svg', iconAlt: "topography's logo: three contour rings drifting toward a summit, on folded paper on a graphite tile",
+    line: 'Animated topographic backgrounds for the web',
+    about: "Animated, tunable topographic contour-line backgrounds for the web. One WebGL shader draws seven hand-made terrain styles, with a framework-free core, a `<topography-bg>` web component and a React wrapper. It started from this site's contour explorations, and in the public generator people, and AI agents through WebMCP and llms.txt, tune a background and export it.",
+    links: [
+      { label: 'Generator', href: 'https://yahyabedirhan.github.io/topography/' },
+      { label: 'npm: @yahyapak/topography', href: 'https://www.npmjs.com/package/@yahyapak/topography' },
+      { label: 'npm: @yahyapak/topography-react', href: 'https://www.npmjs.com/package/@yahyapak/topography-react' },
+    ],
+    hero: { src: '/topography/generator-dark.png', width: 1440, height: 900,
+      alt: 'The Topography generator in dark mode: the page background is the live preview, with presets on the left and the settings panel on the right' },
+    diagrams: [
+      { title: 'How it fits together', svg: 'topography',
+        alt: 'The core turns settings into a renderer, a shader and a frame. The web component and the React wrapper build on the core, and the generator builds on the React wrapper.',
+        caption: 'One core draws every frame; the wrappers and the generator only pass it settings.' },
+    ],
+    views: {
+      title: 'Styles',
+      groups: [{ wide: true, text: 'The seven styles, three presets and six seed variants.', shots: [
+        { src: '/topography/styles.png', width: 1920, height: 1260, alt: '16 dark tiles: the seven terrain styles, three presets and six seed variants, each labelled' }] }],
+    } },
 ];
 
 // topo style per background state (0-based style index):
