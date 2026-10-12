@@ -72,9 +72,7 @@ function project(id) {
     ${p.about ? `<p class="pj-about">${esc(p.about).replace(/`([^`]+)`/g, '<code>$1</code>')}</p>` : `<p class="pj-about is-placeholder">Description coming soon. [Yahya to fill]</p>`}
     ${p.links ? `<nav class="pj-links" aria-label="Links">${p.links.map(l => `<a href="${l.href}" target="_blank" rel="noopener noreferrer">${esc(l.label)} ↗</a>`).join('')}</nav>` : ''}
     ${p.hero ? `<figure class="hero"><button class="zoom" type="button" aria-label="Enlarge image">${img(p.hero, 'eager')}</button></figure>` : ''}
-    ${p.diagrams ? p.diagrams.map(diagram).join('')
-      : `<figure class="slot" style="aspect-ratio:16/10"><span>Screenshot placeholder</span></figure>`}
-    ${p.views ? views(p) : ''}
+    ${(p.viewsFirst ? [shots, figures] : [figures, shots]).map(f => f(p)).join('')}
     <a class="next" href="/projects/${next.id}" data-nav><span>Next</span>${esc(next.name)} →</a>
   </main>`;
   bg.setState(p.state); scrollTo(0, 0);
@@ -91,6 +89,11 @@ function kudosPage() {
   </main>`;
   bg.setState(5); scrollTo(0, 0); return () => {};
 }
+
+// a project's diagrams (or a placeholder) and its screenshot sections; viewsFirst puts screenshots before diagrams
+const figures = p => p.diagrams ? p.diagrams.map(diagram).join('')
+  : `<figure class="slot" style="aspect-ratio:16/10"><span>Screenshot placeholder</span></figure>`;
+const shots = p => p.views ? views(p) : '';
 
 // each screenshot exists in dark and light; CSS shows the one matching [data-theme]
 const diagram = d => `${d.title ? `<h3 class="diagram-title">${esc(d.title)}</h3>` : ''}${d.svg

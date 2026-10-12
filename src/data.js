@@ -68,6 +68,7 @@ export const projects = [
         alt: 'A flowchart: read the effort, show the plan, delegate unblocked tickets in parallel, integrate the batch and repeat while tickets are left, then review the whole branch, open the pull request and report' },
     ] },
   { id: 'topography', name: 'Topography', state: 4, repo: 'https://github.com/yahyabedirhan/topography',
+    viewsFirst: true, // screenshot, then styles, then the diagram
     // assets from yahyabedirhan/topography at d6c0d98
     icon: '/topography/topography.svg', iconAlt: "topography's logo: three contour rings drifting toward a summit, on folded paper on a graphite tile",
     line: 'Animated topographic backgrounds for the web',
