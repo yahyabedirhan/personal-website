@@ -107,10 +107,10 @@ export const press = [
 ];
 
 export const links = [
-  { id: 'x', label: 'X', href: 'https://x.com/' },
+  { id: 'x', label: 'X', href: 'https://x.com/yahyabedirhan' },
   { id: 'github', label: 'GitHub', href: 'https://github.com/yahyabedirhan' },
   { id: 'linkedin', label: 'LinkedIn', href: 'https://linkedin.com/in/yahyabedirhanpak' },
-  { id: 'email', label: 'Email', href: 'mailto:hello@example.com' },
+  { id: 'email', label: 'Email', href: 'mailto:y.bedirhanpak@gmail.com' },
 ];
 
 export const kudos = {
