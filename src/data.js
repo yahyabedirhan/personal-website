@@ -101,10 +101,10 @@ export const previously = [
   { name: 'Zeplin', role: 'Software Engineer', href: 'https://zeplin.io' },
 ];
 
-// label: Yahya's answer heading in the article; title: the article's own title
+// label: the row text, a short form of the article title; title: the article's own title
 export const press = [
-  { outlet: 'Forbes', label: 'Eliminating Specs Outside The Codebase', title: 'The New Management Practices AI Demands From Tech Leaders', href: 'https://www.forbes.com/councils/forbestechcouncil/2026/04/27/the-new-management-practices-ai-demands-from-tech-leaders/' },
-  { outlet: 'Forbes', label: 'Open-Source Useful Tools', title: 'B2B Tech: How Brands Can Build Engaging, Supportive Communities', href: 'https://www.forbes.com/councils/forbestechcouncil/2026/04/15/b2b-tech-how-brands-can-build-engaging-supportive-communities/' },
+  { outlet: 'Forbes', label: 'Management Practices AI Demands From Tech Leaders', title: 'The New Management Practices AI Demands From Tech Leaders', href: 'https://www.forbes.com/councils/forbestechcouncil/2026/04/27/the-new-management-practices-ai-demands-from-tech-leaders/' },
+  { outlet: 'Forbes', label: 'How Brands Can Build Engaging, Supportive Communities', title: 'B2B Tech: How Brands Can Build Engaging, Supportive Communities', href: 'https://www.forbes.com/councils/forbestechcouncil/2026/04/15/b2b-tech-how-brands-can-build-engaging-supportive-communities/' },
 ];
 
 export const links = [
