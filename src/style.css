@@ -78,13 +78,13 @@ section{margin-top:64px}
 .pj-icon{display:block;width:112px;height:112px;margin:0 0 18px -8px}
 @media (max-width:520px){.pj-icon{width:88px;height:88px}}
 .pj-repo{display:inline-flex;gap:8px;align-items:center;color:var(--mut);font-size:13px;transition:color .2s}.pj-repo:hover{color:var(--fg)}
-.pj-about{margin:32px 0 40px;color:var(--mut);font-style:italic}
+.pj-about{margin:32px 0 40px}
+.pj-about.is-placeholder{color:var(--mut);font-style:italic}
 .slot{border-radius:16px;border:1px dashed color-mix(in srgb,var(--mut) 45%,transparent);display:grid;place-items:center;color:var(--mut);font-size:13px;
   background:repeating-linear-gradient(135deg,transparent 0 12px,var(--line) 12px 13px)}
 .slot span{padding:5px 12px;border-radius:99px;background:var(--paper)}
-.diagram{margin:0 0 24px;border-radius:12px;overflow-x:auto;-webkit-overflow-scrolling:touch;box-shadow:inset 0 0 0 .5px var(--line)}
-.diagram img{display:block;width:100%;height:auto}
-@media (max-width:600px){.diagram img{min-width:var(--min-width,0)}}
-.d-light,[data-theme=light] .d-dark{display:none!important}[data-theme=light] .d-light{display:block!important}
+.diagram{margin:0 0 32px}
+.diagram img{display:block;width:100%;height:auto;border-radius:14px;box-shadow:inset 0 0 0 .5px var(--line)}
+.diagram figcaption{margin-top:10px;font-size:13px;color:var(--mut)}
 .next{display:flex;gap:10px;align-items:baseline;margin-top:56px;padding-top:18px;border-top:1px solid var(--line);font-weight:500}
 .next span{color:var(--mut);font-weight:400;font-size:13px}.next:hover{opacity:.7}

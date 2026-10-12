@@ -65,8 +65,8 @@ function project(id) {
     <a class="back" href="/" data-nav>← Index</a>
     <header class="pj-head">${p.icon ? `<img class="pj-icon" src="${p.icon}" alt="" width="112" height="112">` : ''}<h1>${esc(p.name)}</h1>
       <a class="pj-repo" href="${p.repo}" target="_blank" rel="noopener noreferrer">${icons.github}<span>${p.repo.replace('https://', '')}</span></a></header>
-    <p class="pj-about">${esc(p.about)}</p>
-    ${p.diagrams ? p.diagrams.map(d => `<figure class="diagram"${d.minWidth ? ` style="--min-width:${d.minWidth}px"` : ''}><img class="d-dark" src="${d.src}.svg" alt="${esc(d.alt)}" loading="lazy"><img class="d-light" src="${d.src}-light.svg" alt="${esc(d.alt)}" loading="lazy"></figure>`).join('')
+    ${p.about ? `<p class="pj-about">${esc(p.about)}</p>` : `<p class="pj-about is-placeholder">Description coming soon. [Yahya to fill]</p>`}
+    ${p.diagrams ? p.diagrams.map(d => `<figure class="diagram"><img src="${d.src}" width="${d.width}" height="${d.height}" alt="${esc(d.alt)}" loading="lazy" decoding="async"><figcaption>${esc(d.caption)}</figcaption></figure>`).join('')
       : `<figure class="slot" style="aspect-ratio:16/10"><span>Screenshot placeholder</span></figure>`}
     <a class="next" href="/projects/${next.id}" data-nav><span>Next</span>${esc(next.name)} →</a>
   </main>`;

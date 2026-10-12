@@ -38,4 +38,5 @@ To open the dev server from another device, pass `--host`; Vite may also need th
 ## Credits
 
 - The design was inspired by [Emil Kowalski](https://emilkowal.ski), [Mert Duzgun](https://mertbuilds.com) and [Abdullah Enes Gules](https://enesgules.com).
+- The Skills page diagrams are by me, from [yahyabedirhan/skills](https://github.com/yahyabedirhan/skills) at commit `f03c580`.
 - The topographic background now lives on as its own library: [yahyabedirhan/topography](https://github.com/yahyabedirhan/topography).

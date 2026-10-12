@@ -4,22 +4,28 @@ export const me = {
 };
 
 // state: background slot (1 Swift Lab granite, 2 Havooch orange, 3 Shipyard green, 4 Skills violet, 5 Topography neutral)
-// about: placeholder text for Yahya to replace
+// about: the page description; null shows a placeholder for Yahya to fill
 export const projects = [
   { id: 'shipyard', name: 'Shipyard', state: 3, repo: 'https://github.com/yahyabedirhan/shipyard', icon: '/icons/shipyard.webp',
-    line: 'Home for every project I ship', about: 'Description coming soon. [Yahya to fill]' },
+    line: 'Home for every project I ship', about: null },
   { id: 'havooch', name: 'Havooch', state: 2, repo: 'https://github.com/yahyabedirhan/havooch', icon: '/icons/havooch.webp',
-    line: 'Video player that you can watch with your agents', about: 'Description coming soon. [Yahya to fill]' },
+    line: 'Video player that you can watch with your agents', about: null },
   { id: 'swift-lab', name: 'Swift Lab', state: 1, repo: 'https://github.com/yahyabedirhan/swift-lab', icon: '/icons/swift-lab.webp',
-    line: 'Native components, build without Xcode', about: 'Description coming soon. [Yahya to fill]' },
+    line: 'Native components, build without Xcode', about: null },
   { id: 'skills', name: 'Skills', state: 4, repo: 'https://github.com/yahyabedirhan/skills', icon: '/icons/skills.webp',
-    line: 'Agent skills I use across projects', about: 'Description coming soon. [Yahya to fill]',
+    line: 'Agent skills I use across projects',
+    about: "Agent skills I use across projects: my own, and forks of other people's that I've changed. They come in five families, and the main one, the effort workflow, takes a feature from an idea to a merged pull request: a thinking session decides what to build, and a fresh orchestrator builds it. They work with Claude Code, Codex and any agent the skills CLI supports.",
+    // diagrams by Yahya, from yahyabedirhan/skills at f03c580 (assets/images/diagrams/*-diagram.png)
     diagrams: [
-      { src: '/diagrams/skill-families', minWidth: 620, alt: 'The five skill families and the skills in each' },
-      { src: '/diagrams/effort-lifecycle', alt: 'The effort lifecycle from init-effort to settle-effort' },
+      { src: '/diagrams/skill-families.webp', width: 2560, height: 1440, caption: 'Skill families: five families, from the foundation up.',
+        alt: 'Five skill families stacked from the foundation up: agent setup, communication style and design frameworks at the base, with the effort workflow and daily workflows on top, each listing its skills' },
+      { src: '/diagrams/effort-workflow.webp', width: 2560, height: 1440, caption: 'Effort workflow: how one feature goes from an idea to a merged pull request.',
+        alt: 'Swimlanes for you, the thinking session, the orchestrator and sub-agents across five phases: start, thinking, handover, build and settle, from init-effort to settle-effort after you approve the pull request' },
+      { src: '/diagrams/build-loop.webp', width: 2560, height: 1200, caption: 'Build loop: how an orchestrator turns tickets into one pull request.',
+        alt: 'A flowchart: read the effort, show the plan, delegate unblocked tickets in parallel, integrate the batch and repeat while tickets are left, then review the whole branch, open the pull request and report' },
     ] },
   { id: 'topography', name: 'Topography', state: 5, repo: 'https://github.com/yahyabedirhan/topography', icon: '/icons/topography.webp',
-    line: 'Animated topographic backgrounds for the web', about: 'Description coming soon. [Yahya to fill]' },
+    line: 'Animated topographic backgrounds for the web', about: null },
 ];
 
 // topo style per background state (0-based style index):
