@@ -6,11 +6,11 @@ export const me = {
 // state: background slot (1 Havooch orange, 2 Shipyard green, 3 Skills violet, 4 Topography neutral)
 // about: the page description; null shows a placeholder for Yahya to fill
 export const projects = [
-  { id: 'shipyard', name: 'Shipyard', state: 2, repo: 'https://github.com/yahyabedirhan/shipyard', icon: '/shipyard/shipyard.png', iconSide: true,
-    iconAlt: "shipyard's logo: a white sailboat with folded sails on two waves, on a dark green graphite tile",
+  { id: 'shipyard', name: 'Shipyard', state: 2, repo: 'https://github.com/yahyabedirhan/shipyard', icon: '/shipyard/shipyard.png',
+    iconAlt: "shipyard's logo: a white sailboat with folded sails on two waves, on a dark graphite tile",
     line: 'Home for every project I ship',
     about: 'shipyard is my macOS menu bar app. It lists the pull requests, issues and workflow runs my coding agents open across my GitHub repositories, shows one count of what needs my attention, and lets agents ping me with a `shipyard ping` command.',
-    // assets from yahyabedirhan/shipyard at 1f6e3e3
+    // assets from yahyabedirhan/shipyard at 1fe2b4a
     diagrams: [
       { src: '/shipyard/architecture.png', width: 2000, height: 1080, raw: true,
         alt: 'Shipyard architecture: GitHub, agents on the Mac and on servers, and Notion notes feed the Shipyard menu bar app, whose refresh turns them into a menu bar panel and notifications.',
@@ -20,19 +20,19 @@ export const projects = [
       title: 'Layouts',
       groups: [
         { head: 'List layout', text: 'All projects in one column; each project can be expanded or collapsed.', shots: [
-          { name: 'list', width: 800, height: 1008, alt: "shipyard's list layout: the Shipyard and Skills projects open with their pull requests, issues and runs, and the others folded" }] },
+          { name: 'list', width: 800, height: 1008, alt: "shipyard's list layout: the Shipyard and Skills projects open with their pull requests, issues and runs, and Swift Lab and Havooch folded" }] },
         { head: 'Tabs layout', text: 'One tab per project, plus an All tab.', shots: [
           { name: 'tabs-project', width: 800, height: 1190, alt: "shipyard's tabs layout on the Shipyard tab: pull requests, issues and workflow runs in groups" },
           { name: 'tabs-all', width: 800, height: 1408, alt: "shipyard's tabs layout on the All tab: every project's pull requests in one list, open ones first" }] },
       ],
     } },
   { id: 'havooch', name: 'Havooch', state: 1, repo: 'https://github.com/yahyabedirhan/havooch',
-    // assets from yahyabedirhan/havooch at e75c17c; havooch-mark.svg is there for small inline uses
-    icon: '/havooch/havooch-app-icon-256.png', icon2x: '/havooch/havooch-app-icon-512.png', iconLarge: true,
+    // assets from yahyabedirhan/havooch at 0e606c3; havooch-mark.svg is there for small inline uses
+    icon: '/havooch/havooch-app-icon-256.png', icon2x: '/havooch/havooch-app-icon-512.png',
     iconAlt: "Havooch's app icon: the head of Havuç, an orange and white cat folded from paper, on a dark graphite rounded tile",
     line: 'Video player that you can watch with your agents',
     about: "Havooch is a video player for your Mac that lets you give feedback to a coding agent the way you'd give it to a person. You pause the video, point at the spot, and say what you want changed. Your agent gets each comment with the moment and the frame it's about, does the work, and answers you right beside the video.",
-    hero: { src: '/havooch/thread-answered-and-queued-dark.png', width: 2720, height: 1460,
+    hero: { src: '/havooch/thread-answered-and-queued-graphite.png', width: 2720, height: 1460,
       alt: 'Havooch with a project open: the agent answered thread #2, and a follow-up waits in the queue' },
     diagrams: [
       { title: 'Review loop', src: '/havooch/havooch-review-loop.png', width: 2000, height: 1120, raw: true,
@@ -44,16 +44,16 @@ export const projects = [
       { title: 'Feedback session', src: '/havooch/havooch-feedback-session.png', width: 2000, height: 1040, raw: true,
         alt: 'One feedback session: confidence dips when you spot a problem, rises when you point at it, and peaks when you read the answer',
         caption: 'One session, from the first doubt to the answer on your thread.' },
-      { title: 'Havooch architecture', src: '/havooch/havooch-connect.png', width: 2000, height: 1024, raw: true,
+      { title: 'Havooch architecture', src: '/havooch/havooch-architecture.png', width: 2000, height: 1024, raw: true,
         alt: 'How the Havooch app, the `havooch` command, your agent, the skill, your repository and your data connect',
         caption: 'Your agent reaches the app only through the havooch command, and the skill teaches it how.' },
     ],
     views: {
       title: 'In the app',
       groups: [{ wide: true, shots: [
-        { src: '/havooch/version-switcher-dark.png', width: 2720, height: 1460, alt: 'A project on v3: the version switcher in the header, and the thread list grouped by version' },
-        { src: '/havooch/side-by-side-dark.png', width: 2720, height: 1460, alt: 'Compare: v1 and v3 side by side on one playhead' },
-        { src: '/havooch/connect-view-dark.png', width: 2720, height: 1460, alt: 'The Connect view: the command is linked, the skill is installed, and Codex is picked' }] }],
+        { src: '/havooch/version-switcher-graphite.png', width: 2720, height: 1460, alt: 'A project on v3: the version switcher in the header, and the thread list grouped by version' },
+        { src: '/havooch/side-by-side-graphite.png', width: 2720, height: 1460, alt: 'Compare: v1 and v3 side by side on one playhead' },
+        { src: '/havooch/connect-view-graphite.png', width: 2720, height: 1460, alt: 'The Connect view: the command is linked, the skill is installed, and Codex is picked' }] }],
     } },
   { id: 'skills', name: 'Skills', state: 3, repo: 'https://github.com/yahyabedirhan/skills', icon: '/icons/skills.webp',
     line: 'Agent skills I use across projects',
@@ -68,21 +68,22 @@ export const projects = [
         alt: 'A flowchart: read the effort, show the plan, delegate unblocked tickets in parallel, integrate the batch and repeat while tickets are left, then review the whole branch, open the pull request and report' },
     ] },
   { id: 'topography', name: 'Topography', state: 4, repo: 'https://github.com/yahyabedirhan/topography',
-    // assets from yahyabedirhan/topography at d6c0d98
-    icon: '/topography/topography.svg', iconAlt: "topography's logo: three contour rings drifting toward a summit, on folded paper on a graphite tile",
+    viewsFirst: true, // screenshot, then styles, then the diagram
+    // assets from yahyabedirhan/topography at d6c0d98 (logo and diagram at 997bc7a)
+    icon: '/topography/topography.png', iconAlt: "topography's logo: three contour rings on paper folded along one diagonal crease, on a graphite tile",
     line: 'Animated topographic backgrounds for the web',
     about: "Animated, tunable topographic contour-line backgrounds for the web. One WebGL shader draws seven hand-made terrain styles, with a framework-free core, a `<topography-bg>` web component and a React wrapper. It started from this site's contour explorations, and in the public generator people, and AI agents through WebMCP and llms.txt, tune a background and export it.",
     links: [
-      { label: 'Generator', href: 'https://yahyabedirhan.github.io/topography/' },
+      { label: 'Playground', href: 'https://yahyabedirhan.github.io/topography/' },
       { label: 'npm: @yahyapak/topography', href: 'https://www.npmjs.com/package/@yahyapak/topography' },
       { label: 'npm: @yahyapak/topography-react', href: 'https://www.npmjs.com/package/@yahyapak/topography-react' },
     ],
     hero: { src: '/topography/generator-dark.png', width: 1440, height: 900,
       alt: 'The Topography generator in dark mode: the page background is the live preview, with presets on the left and the settings panel on the right' },
     diagrams: [
-      { title: 'How it fits together', svg: 'topography',
-        alt: 'The core turns settings into a renderer, a shader and a frame. The web component and the React wrapper build on the core, and the generator builds on the React wrapper.',
-        caption: 'One core draws every frame; the wrappers and the generator only pass it settings.' },
+      { title: 'Library architecture', src: '/topography/library-architecture.png', width: 1920, height: 1120, raw: true,
+        alt: 'Library architecture of topography: three wrappers call one public API, which resolves settings from a params table and hands them to a single WebGL renderer and shader.',
+        caption: 'How topography works: three wrappers call one API, which hands settings to one WebGL renderer.' },
     ],
     views: {
       title: 'Styles',
@@ -100,17 +101,17 @@ export const previously = [
   { name: 'Zeplin', role: 'Software Engineer', href: 'https://zeplin.io' },
 ];
 
-// label: Yahya's answer heading in the article; title: the article's own title
+// label: the row text, a short form of the article title; title: the article's own title
 export const press = [
-  { outlet: 'Forbes', label: 'Eliminating Specs Outside The Codebase', title: 'The New Management Practices AI Demands From Tech Leaders', href: 'https://www.forbes.com/councils/forbestechcouncil/2026/04/27/the-new-management-practices-ai-demands-from-tech-leaders/' },
-  { outlet: 'Forbes', label: 'Open-Source Useful Tools', title: 'B2B Tech: How Brands Can Build Engaging, Supportive Communities', href: 'https://www.forbes.com/councils/forbestechcouncil/2026/04/15/b2b-tech-how-brands-can-build-engaging-supportive-communities/' },
+  { outlet: 'Forbes', label: 'Management Practices AI Demands From Tech Leaders', title: 'The New Management Practices AI Demands From Tech Leaders', href: 'https://www.forbes.com/councils/forbestechcouncil/2026/04/27/the-new-management-practices-ai-demands-from-tech-leaders/' },
+  { outlet: 'Forbes', label: 'How Brands Can Build Engaging, Supportive Communities', title: 'B2B Tech: How Brands Can Build Engaging, Supportive Communities', href: 'https://www.forbes.com/councils/forbestechcouncil/2026/04/15/b2b-tech-how-brands-can-build-engaging-supportive-communities/' },
 ];
 
 export const links = [
-  { id: 'x', label: 'X', href: 'https://x.com/' },
+  { id: 'x', label: 'X', href: 'https://x.com/yahyabedirhan' },
   { id: 'github', label: 'GitHub', href: 'https://github.com/yahyabedirhan' },
   { id: 'linkedin', label: 'LinkedIn', href: 'https://linkedin.com/in/yahyabedirhanpak' },
-  { id: 'email', label: 'Email', href: 'mailto:hello@example.com' },
+  { id: 'email', label: 'Email', href: 'mailto:y.bedirhanpak@gmail.com' },
 ];
 
 export const kudos = {

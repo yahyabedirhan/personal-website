@@ -32,7 +32,8 @@ export function createBackground(canvas) {
   const draw = () => {
     gl.uniform2f(U.uRes, canvas.width, canvas.height); gl.uniform1f(U.uTime, t); gl.uniform1f(U.uDark, dark);
     gl.uniform1fv(U.uW, w); gl.uniform1f(U.uN, lines());
-    gl.uniform1f(U.uCol, Math.min(300, innerWidth / 2) / innerHeight);
+    // faded column: half the page width (576 / 2 + 24 gutter) plus 20px of margin
+    gl.uniform1f(U.uCol, Math.min(332, innerWidth / 2) / innerHeight);
     gl.uniform1f(U.uFade, .7 * (innerWidth < 720 ? .4 : 1));
     gl.drawArrays(gl.TRIANGLES, 0, 3);
   };
