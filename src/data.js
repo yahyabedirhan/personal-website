@@ -3,10 +3,10 @@ export const me = {
   title: 'Software Engineer',
 };
 
-// state: background slot (1 Swift Lab granite, 2 Havooch orange, 3 Shipyard green, 4 Skills violet, 5 Topography neutral)
+// state: background slot (1 Havooch orange, 2 Shipyard green, 3 Skills violet, 4 Topography neutral)
 // about: the page description; null shows a placeholder for Yahya to fill
 export const projects = [
-  { id: 'shipyard', name: 'Shipyard', state: 3, repo: 'https://github.com/yahyabedirhan/shipyard', icon: '/shipyard/shipyard.png', iconSide: true,
+  { id: 'shipyard', name: 'Shipyard', state: 2, repo: 'https://github.com/yahyabedirhan/shipyard', icon: '/shipyard/shipyard.png', iconSide: true,
     iconAlt: "shipyard's logo: a white sailboat with folded sails on two waves, on a dark green graphite tile",
     line: 'Home for every project I ship',
     about: 'shipyard is my macOS menu bar app. It lists the pull requests, issues and workflow runs my coding agents open across my GitHub repositories, shows one count of what needs my attention, and lets agents ping me with a `shipyard ping` command.',
@@ -20,17 +20,15 @@ export const projects = [
       title: 'Layouts',
       groups: [
         { head: 'List layout', text: 'All projects in one column; each project can be expanded or collapsed.', shots: [
-          { name: 'list', width: 800, height: 1008, alt: "shipyard's list layout: the Shipyard and Skills projects open with their pull requests, issues and runs, and Swift Lab and Havooch folded" }] },
+          { name: 'list', width: 800, height: 1008, alt: "shipyard's list layout: the Shipyard and Skills projects open with their pull requests, issues and runs, and the others folded" }] },
         { head: 'Tabs layout', text: 'One tab per project, plus an All tab.', shots: [
           { name: 'tabs-project', width: 800, height: 1190, alt: "shipyard's tabs layout on the Shipyard tab: pull requests, issues and workflow runs in groups" },
           { name: 'tabs-all', width: 800, height: 1408, alt: "shipyard's tabs layout on the All tab: every project's pull requests in one list, open ones first" }] },
       ],
     } },
-  { id: 'havooch', name: 'Havooch', state: 2, repo: 'https://github.com/yahyabedirhan/havooch', icon: '/icons/havooch.webp',
+  { id: 'havooch', name: 'Havooch', state: 1, repo: 'https://github.com/yahyabedirhan/havooch', icon: '/icons/havooch.webp',
     line: 'Video player that you can watch with your agents', about: null },
-  { id: 'swift-lab', name: 'Swift Lab', state: 1, repo: 'https://github.com/yahyabedirhan/swift-lab', icon: '/icons/swift-lab.webp',
-    line: 'Native components, build without Xcode', about: null },
-  { id: 'skills', name: 'Skills', state: 4, repo: 'https://github.com/yahyabedirhan/skills', icon: '/icons/skills.webp',
+  { id: 'skills', name: 'Skills', state: 3, repo: 'https://github.com/yahyabedirhan/skills', icon: '/icons/skills.webp',
     line: 'Agent skills I use across projects',
     about: "Agent skills I use across projects: my own, and forks of other people's that I've changed. They come in five families, and the main one, the effort workflow, takes a feature from an idea to a merged pull request: a thinking session decides what to build, and a fresh orchestrator builds it. They work with Claude Code, Codex and any agent the skills CLI supports.",
     // diagrams by Yahya, from yahyabedirhan/skills at f03c580 (assets/images/diagrams/*-diagram.png)
@@ -42,15 +40,15 @@ export const projects = [
       { src: '/diagrams/build-loop.webp', width: 2560, height: 1200, caption: 'Build loop: how an orchestrator turns tickets into one pull request.',
         alt: 'A flowchart: read the effort, show the plan, delegate unblocked tickets in parallel, integrate the batch and repeat while tickets are left, then review the whole branch, open the pull request and report' },
     ] },
-  { id: 'topography', name: 'Topography', state: 5, repo: 'https://github.com/yahyabedirhan/topography', icon: '/icons/topography.webp',
+  { id: 'topography', name: 'Topography', state: 4, repo: 'https://github.com/yahyabedirhan/topography', icon: '/icons/topography.webp',
     line: 'Animated topographic backgrounds for the web', about: null },
 ];
 
 // topo style per background state (0-based style index):
-// idle T1, Swift Lab T2, Havooch T8, Shipyard T4, Skills T5, Topography T6 (neutral), Kudos T12 dunes
-export const styleMap = [0, 1, 7, 3, 4, 5, 11];
+// idle T1, Havooch T8, Shipyard T4, Skills T5, Topography T6 (neutral), Kudos T12 dunes
+export const styleMap = [0, 7, 3, 4, 5, 11];
 
-export const experience = [
+export const previously = [
   { name: 'Polymet', role: 'Founding Engineer', href: 'https://polymet.ai' },
   { name: 'Zeplin', role: 'Software Engineer', href: 'https://zeplin.io' },
 ];
