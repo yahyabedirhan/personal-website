@@ -69,8 +69,8 @@ export const projects = [
     ] },
   { id: 'topography', name: 'Topography', state: 4, repo: 'https://github.com/yahyabedirhan/topography',
     viewsFirst: true, // screenshot, then styles, then the diagram
-    // assets from yahyabedirhan/topography at d6c0d98
-    icon: '/topography/topography.svg', iconAlt: "topography's logo: three contour rings drifting toward a summit, on folded paper on a graphite tile",
+    // assets from yahyabedirhan/topography at d6c0d98 (logo and diagram at 997bc7a)
+    icon: '/topography/topography.png', iconAlt: "topography's logo: three contour rings on paper folded along one diagonal crease, on a graphite tile",
     line: 'Animated topographic backgrounds for the web',
     about: "Animated, tunable topographic contour-line backgrounds for the web. One WebGL shader draws seven hand-made terrain styles, with a framework-free core, a `<topography-bg>` web component and a React wrapper. It started from this site's contour explorations, and in the public generator people, and AI agents through WebMCP and llms.txt, tune a background and export it.",
     links: [
@@ -81,9 +81,9 @@ export const projects = [
     hero: { src: '/topography/generator-dark.png', width: 1440, height: 900,
       alt: 'The Topography generator in dark mode: the page background is the live preview, with presets on the left and the settings panel on the right' },
     diagrams: [
-      { title: 'How it fits together', svg: 'topography',
-        alt: 'The core turns settings into a renderer, a shader and a frame. The web component and the React wrapper build on the core, and the generator builds on the React wrapper.',
-        caption: 'One core draws every frame; the wrappers and the generator only pass it settings.' },
+      // library-architecture.svg from yahyabedirhan/topography at 997bc7a, inline; its font @import is dropped
+      { title: 'Library architecture', svg: 'library-architecture', minWidth: 960,
+        alt: 'Library architecture of topography: three wrappers call one public API, which resolves settings from a params table and hands them to a single WebGL renderer and shader.' },
     ],
     views: {
       title: 'Styles',

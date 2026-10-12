@@ -3,8 +3,8 @@ import { createBackground } from './bg.js';
 import { me, projects, previously, press, links, kudos } from './data.js';
 import { icons, esc } from './icons.js';
 import { initZoom } from './zoom.js';
-import { topoDiagram } from './topo-diagram.js';
-const svgs = { topography: topoDiagram };
+import libraryArchitecture from './library-architecture.svg?raw';
+const svgs = { 'library-architecture': libraryArchitecture };
 
 const app = document.getElementById('app');
 const bg = createBackground(document.getElementById('bg'));
@@ -103,7 +103,7 @@ const diagram = d => {
     : `<button class="zoom" type="button" aria-label="Enlarge image"><img src="${d.src}" width="${d.width}" height="${d.height}" alt="${esc(d.alt)}" loading="lazy" decoding="async"></button>`;
   const cls = `diagram${d.svg ? ' is-svg' : ''}${d.raw ? ' is-raw' : ''}`;
   return `${d.title ? `<h3 class="diagram-title">${esc(d.title)}</h3>` : ''}<figure class="${cls}">${d.minWidth
-    ? `<div class="diagram-scroll"><div style="min-width:${d.minWidth}px">${body}</div></div>` : body}<figcaption>${esc(d.caption)}</figcaption></figure>`;
+    ? `<div class="diagram-scroll"><div style="min-width:${d.minWidth}px">${body}</div></div>` : body}${d.caption ? `<figcaption>${esc(d.caption)}</figcaption>` : ''}</figure>`;
 };
 const img = (s, load = 'lazy') => `<img src="${s.src}" width="${s.width}" height="${s.height}" alt="${esc(s.alt)}" loading="${load}" decoding="async">`;
 // a shot is either one image (src) or a dark/light pair (name)
