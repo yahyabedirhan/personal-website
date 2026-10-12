@@ -19,10 +19,11 @@ The site is a quiet single column over that animated topographic background. Hov
 ## Layout
 
 ```text
-index.html   page shell; sets the theme before first paint
-src/         pages, content (data.js), background renderer, styles
-public/      site logo, app icons, diagrams, favicon
-assets/      images for this README
+index.html      page shell; sets the theme before first paint
+src/            pages, content (data.js), background renderer, styles
+public/         site logo, app icons, diagrams, favicon
+assets/         images for this README
+wrangler.jsonc  Cloudflare Workers deploy settings
 ```
 
 Design prototypes live on the `prototype/ui-variants` branch and never ship.
@@ -40,7 +41,7 @@ To open the dev server from another device, pass `--host`; Vite may also need th
 
 ## Deploy
 
-The site runs on Cloudflare Pages, which builds `main` with `npm run build` and serves `dist/` at [yahyapak.dev](https://yahyapak.dev). There is no top-level `404.html`, so Pages serves `index.html` for every path, and deep links like `/projects/havooch` work.
+The site runs on Cloudflare Workers as static assets. On every push to `main`, Workers Builds runs `npm run build` and then `npx wrangler deploy`, which serves `dist/` at [yahyapak.dev](https://yahyapak.dev). `wrangler.jsonc` holds the settings: `not_found_handling: "single-page-application"` serves `index.html` for every unknown path, so deep links like `/projects/havooch` work.
 
 ## Credits
 
