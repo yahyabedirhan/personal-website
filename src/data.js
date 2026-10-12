@@ -73,7 +73,7 @@ export const projects = [
     line: 'Animated topographic backgrounds for the web',
     about: "Animated, tunable topographic contour-line backgrounds for the web. One WebGL shader draws seven hand-made terrain styles, with a framework-free core, a `<topography-bg>` web component and a React wrapper. It started from this site's contour explorations, and in the public generator people, and AI agents through WebMCP and llms.txt, tune a background and export it.",
     links: [
-      { label: 'Generator', href: 'https://yahyabedirhan.github.io/topography/' },
+      { label: 'Playground', href: 'https://yahyabedirhan.github.io/topography/' },
       { label: 'npm: @yahyapak/topography', href: 'https://www.npmjs.com/package/@yahyapak/topography' },
       { label: 'npm: @yahyapak/topography-react', href: 'https://www.npmjs.com/package/@yahyapak/topography-react' },
     ],
