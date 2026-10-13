@@ -8,7 +8,7 @@ export const me = {
 export const projects = [
   { id: 'shipyard', name: 'Shipyard', state: 2, repo: 'https://github.com/yahyabedirhan/shipyard', icon: '/shipyard/shipyard.png',
     iconAlt: "shipyard's logo: a white sailboat with folded sails on two waves, on a dark graphite tile",
-    line: 'Menu bar app for the pull requests your agents open',
+    line: "Menu bar app for your agents' pull requests",
     about: 'Shipyard is a macOS menu bar app for seeing and reviewing the pull requests your coding agents open for you. It lists pull requests, issues and workflow runs across your GitHub repositories and shows one count of what needs you: new, changed, waiting on your review or failing checks. Your agents can ping you with the `shipyard ping` command, and one TOML file, which you or your agents edit, sets what it shows.',
     // assets from yahyabedirhan/shipyard at 1fe2b4a
     diagrams: [
@@ -30,7 +30,7 @@ export const projects = [
     // assets from yahyabedirhan/havooch at 0e606c3; havooch-mark.svg is there for small inline uses
     icon: '/havooch/havooch-app-icon-256.png', icon2x: '/havooch/havooch-app-icon-512.png',
     iconAlt: "Havooch's app icon: the head of Havuç, an orange and white cat folded from paper, on a dark graphite rounded tile",
-    line: 'Video player that lets you give feedback to your agents',
+    line: 'Video player for giving feedback to your agents',
     about: "Havooch is a video player for your Mac that lets you give feedback to a coding agent the way you'd give it to a person. You pause the video, point at the spot, and say what you want changed. Your agent gets each comment with the moment and the frame it's about, does the work, and answers you right beside the video.",
     hero: { src: '/havooch/thread-answered-and-queued-graphite.png', width: 2720, height: 1460,
       alt: 'Havooch with a project open: the agent answered thread #2, and a follow-up waits in the queue' },
