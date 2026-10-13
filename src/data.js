@@ -71,7 +71,7 @@ export const projects = [
     viewsFirst: true, // screenshot, then styles, then the diagram
     // assets from yahyabedirhan/topography at d6c0d98 (logo at 997bc7a, diagram at d30e231)
     icon: '/topography/topography.png', iconAlt: "topography's logo: three contour rings on paper folded along one diagonal crease, on a graphite tile",
-    line: 'Animated contour-line backgrounds for web pages',
+    line: 'Animated contour-line web backgrounds',
     about: "topography.js is a JavaScript package that draws animated contour lines, like those on a topographic map, as the background of a web page. One WebGL shader draws seven hand-made terrain styles, with a framework-free core, a `<topography-bg>` web component and a React component. It started from this site's contour explorations, and in the public playground people, and AI agents through WebMCP and llms.txt, set up a background and export it.",
     links: [
       { label: 'Playground', href: 'https://yahyabedirhan.github.io/topography/' },
