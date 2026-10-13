@@ -8,8 +8,8 @@ export const me = {
 export const projects = [
   { id: 'shipyard', name: 'Shipyard', state: 2, repo: 'https://github.com/yahyabedirhan/shipyard', icon: '/shipyard/shipyard.png',
     iconAlt: "shipyard's logo: a white sailboat with folded sails on two waves, on a dark graphite tile",
-    line: 'Home for every project I ship',
-    about: 'shipyard is my macOS menu bar app. It lists the pull requests, issues and workflow runs my coding agents open across my GitHub repositories, shows one count of what needs my attention, and lets agents ping me with a `shipyard ping` command.',
+    line: 'Menu bar app for the pull requests your agents open',
+    about: 'Shipyard is a macOS menu bar app for seeing and reviewing the pull requests your coding agents open for you. It lists pull requests, issues and workflow runs across your GitHub repositories and shows one count of what needs you: new, changed, waiting on your review or failing checks. Your agents can ping you with the `shipyard ping` command, and one TOML file, which you or your agents edit, sets what it shows.',
     // assets from yahyabedirhan/shipyard at 1fe2b4a
     diagrams: [
       { src: '/shipyard/architecture.png', width: 2000, height: 1080, raw: true,
@@ -30,7 +30,7 @@ export const projects = [
     // assets from yahyabedirhan/havooch at 0e606c3; havooch-mark.svg is there for small inline uses
     icon: '/havooch/havooch-app-icon-256.png', icon2x: '/havooch/havooch-app-icon-512.png',
     iconAlt: "Havooch's app icon: the head of Havuç, an orange and white cat folded from paper, on a dark graphite rounded tile",
-    line: 'Video player that you can watch with your agents',
+    line: 'Video player that lets you give feedback to your agents',
     about: "Havooch is a video player for your Mac that lets you give feedback to a coding agent the way you'd give it to a person. You pause the video, point at the spot, and say what you want changed. Your agent gets each comment with the moment and the frame it's about, does the work, and answers you right beside the video.",
     hero: { src: '/havooch/thread-answered-and-queued-graphite.png', width: 2720, height: 1460,
       alt: 'Havooch with a project open: the agent answered thread #2, and a follow-up waits in the queue' },
@@ -71,8 +71,8 @@ export const projects = [
     viewsFirst: true, // screenshot, then styles, then the diagram
     // assets from yahyabedirhan/topography at d6c0d98 (logo at 997bc7a, diagram at d30e231, screenshot from PR #13 at 9f603a0)
     icon: '/topography/topography.png', iconAlt: "topography's logo: three contour rings on paper folded along one diagonal crease, on a graphite tile",
-    line: 'Animated contour-line web backgrounds',
-    about: "topography.js is a JavaScript package that draws animated contour lines, like those on a topographic map, as the background of a web page. One WebGL shader draws seven hand-made terrain styles, with a framework-free core, a `<topography-bg>` web component and a React component. It started from this site's contour explorations, and in the public playground people, and AI agents through WebMCP and llms.txt, set up a background and export it.",
+    line: 'Animated topographic backgrounds for the web',
+    about: "topography.js is a JavaScript library that draws animated contour lines, like those on a topographic map, as the background of a web page. One WebGL shader draws seven terrain styles, and you set the lines, the terrain, the motion and the colours. It drops in as a `<topography-bg>` web component, a React component or one JavaScript call. In the playground, people, and agents through WebMCP and llms.txt, set up a background and copy the code.",
     links: [
       { label: 'Playground', href: 'https://yahyabedirhan.github.io/topography/' },
       { label: 'npm: topography.js', href: 'https://www.npmjs.com/package/topography.js' },
