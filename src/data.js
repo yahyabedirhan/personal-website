@@ -67,14 +67,14 @@ export const projects = [
       { src: '/diagrams/build-loop.webp', width: 2560, height: 1200, caption: 'Build loop: how an orchestrator turns tickets into one pull request.',
         alt: 'A flowchart: read the effort, show the plan, delegate unblocked tickets in parallel, integrate the batch and repeat while tickets are left, then review the whole branch, open the pull request and report' },
     ] },
-  { id: 'topography', name: 'topographic', state: 4, repo: 'https://github.com/yahyabedirhan/topography',
+  { id: 'topography', name: 'topographic', state: 4, repo: 'https://github.com/yahyabedirhan/topographic',
     viewsFirst: true, // screenshot, then styles, then the diagram
-    // assets from yahyabedirhan/topography (logo at 997bc7a; diagram and screenshot from the topographic rename at bed9e88)
+    // assets from yahyabedirhan/topographic (logo at 997bc7a; diagram at f85c3f6, screenshot at bed9e88)
     icon: '/topography/topography.png', iconAlt: "The topographic logo: three contour rings on paper folded along one diagonal crease, on a graphite tile",
     line: 'Animated topographic backgrounds for the web',
     about: "topographic is a JavaScript library that draws topographic backgrounds: animated contour lines, like those on a topographic map, behind a web page. One WebGL shader draws seven terrain styles, and you set the lines, the terrain, the motion and the colours. It drops in as a `<topographic-bg>` web component, a React component or one JavaScript call. In the playground, people, and agents through WebMCP and llms.txt, set up a background and copy the code.",
     links: [
-      { label: 'Playground', href: 'https://yahyabedirhan.github.io/topography/' },
+      { label: 'Playground', href: 'https://yahyabedirhan.github.io/topographic/' },
       { label: 'npm: topographic', href: 'https://www.npmjs.com/package/topographic' },
       { label: 'npm: topographic-react', href: 'https://www.npmjs.com/package/topographic-react' },
     ],
