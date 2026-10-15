@@ -69,17 +69,17 @@ export const projects = [
     ] },
   { id: 'topographic', name: 'topographic', state: 4, repo: 'https://github.com/yahyabedirhan/topographic',
     viewsFirst: true, // screenshots, then the diagrams
-    // assets from yahyabedirhan/topographic at 06cc94b (readme-launch): logo, screenshots and diagrams
+    // assets from yahyabedirhan/topographic main at d0a5ea3: logo, screenshots and diagrams
     icon: '/topographic/topographic.png', iconAlt: "The topographic logo: three contour rings on paper folded along one diagonal crease, on a graphite tile",
-    line: 'Animated contour-line backgrounds for the web',
-    about: "topographic draws the lines of a topographic map behind a web page, in 2D or as a 3D terrain with a moving camera. The terrain comes from seven generated styles, or from any real place on Earth. It is a small npm library with no dependencies, plus a playground where you pick a look, frame a place on the map, and copy the code. Install it with `npm install topographic`, then drop in the `<topographic-bg>` web component, the React component or one JavaScript call. It exports PNGs and 3D video clips, and agents can drive the playground through WebMCP and llms.txt.",
+    line: 'WebGL contour-line backgrounds for the web, in 2D and 3D',
+    about: "topographic renders animated contour lines from a procedural terrain or a heightfield, as a 2D fragment shader or a 3D mesh with a camera. Terrain comes from seven procedural styles or from Terrarium elevation tiles for any area up to 300 km on a side. The npm package has no runtime dependencies and ships a `<topographic-bg>` web component and a React wrapper. The playground edits the settings and exports embed code, PNG (full view or a crop) and MP4/WebM clips. It serves llms.txt and registers WebMCP tools for agents.",
     links: [
       { label: 'Playground', href: 'https://yahyabedirhan.github.io/topographic/' },
       { label: 'npm: topographic', href: 'https://www.npmjs.com/package/topographic' },
       { label: 'npm: topographic-react', href: 'https://www.npmjs.com/package/topographic-react' },
     ],
-    hero: { src: '/topographic/hero-3d.webp', width: 1200, height: 676,
-      alt: 'The camera swings around the Matterhorn and Zermatt in 3D: real elevation drawn as pale contour lines on a dark block' },
+    hero: { src: '/topographic/hero.webp', width: 2400, height: 1350,
+      alt: 'Fine granite in 3D: a summit ringed by pale contour lines, gullies fanning out to a dark horizon' },
     diagrams: [
       { title: 'Library architecture', src: '/topographic/library-architecture.png', width: 1920, height: 1362, raw: true,
         alt: 'How topographic fits together: the web component, the React component and the playground call one public API, which also takes an optional heightfield. Settings resolve from the params table, styles and presets, and one WebGL renderer draws them as a 2D contour shader or a 3D terrain pass, whose frames record() encodes as video.',
