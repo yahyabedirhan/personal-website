@@ -94,22 +94,22 @@ export const projects = [
     views: {
       title: 'Examples',
       groups: [
-        { head: 'Looks', text: 'Seven terrain styles, with lines, colours and motion you set.', shots: [
+        { head: 'Looks', text: 'Seven procedural terrain styles. Lines, colours and motion are settings, and a given seed always renders the same terrain.', shots: [
           { src: '/topographic/look-survey-ridge-2d.webp', width: 640, height: 400, alt: 'Survey ridge: pale lines around a long ridge on dark paper' },
           { src: '/topographic/look-sea-dunes-2d.webp', width: 640, height: 400, alt: 'Sea dunes: blue-green dune lines on deep teal' },
           { src: '/topographic/look-stepped-petals-2d.webp', width: 640, height: 400, alt: 'Stepped petals: plum lines on pale pink paper' }] },
-        { head: '3D', text: 'The same map, lifted into a terrain with a camera.', shots: [
+        { head: '3D', text: "`mode: '3d'` draws the same contour field on a mesh, seen through a camera.", shots: [
           { src: '/topographic/look-night-flower-3d.webp', width: 640, height: 400, alt: 'Night flower in 3D: blue rings rising to a soft dome' },
           { src: '/topographic/look-terraces-3d.webp', width: 640, height: 400, alt: 'Terraces in 3D: amber lines stepping up a hill' },
           { src: '/topographic/look-rocky-spine-3d.webp', width: 640, height: 400, alt: 'Rocky spine in 3D: brown lines over a rough ridge on light paper' }] },
-        { head: 'Real places', text: 'Ten places are one click away, and the Map lets you frame any other.', shots: [
+        { head: 'Real places', text: 'Heightfields built from Terrarium elevation tiles: ten preset places, or any area up to 300 km on a side.', shots: [
           { src: '/topographic/place-istanbul.webp', width: 640, height: 400, alt: 'Istanbul, with the Bosphorus between the two shores' },
           { src: '/topographic/place-geirangerfjord.webp', width: 640, height: 400, alt: 'Geirangerfjord between steep walls' },
           { src: '/topographic/place-grand-canyon.webp', width: 640, height: 400, alt: 'The Grand Canyon from rim to rim' },
           { src: '/topographic/place-fuji.webp', width: 640, height: 400, alt: 'Mount Fuji, the cone and its lakes' },
           { src: '/topographic/place-everest.webp', width: 640, height: 400, alt: 'Everest above the Khumbu valley' },
           { src: '/topographic/place-matterhorn.webp', width: 640, height: 400, alt: 'The Matterhorn above Zermatt' }] },
-        { head: 'Try it', text: 'The playground: pick a look from the dock, tune it, open the Map for a real place, and export the code, a PNG or a video.', wide: true, shots: [
+        { head: 'Try it', text: 'The playground: looks in the dock, settings under Tune, real places under Map, and embed code, PNG and video under Export.', wide: true, shots: [
           { src: '/topographic/playground-dark.webp', width: 1440, height: 900, alt: 'The playground in dark mode: Istanbul in 3D behind the page, the dock of looks along the bottom, the controls at the top right and a minimap of the place in the corner' },
           { src: '/topographic/map-popover-dark.webp', width: 1440, height: 900, alt: 'The Map popover over Istanbul: a dark map with a white frame around the city, the place menu above, and Clear and Applied below' }] },
       ],
