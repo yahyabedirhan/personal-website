@@ -3,7 +3,7 @@ export const me = {
   title: 'Software Engineer',
 };
 
-// state: background slot (1 Havooch orange, 2 Shipyard green, 3 Skills violet, 4 Topography neutral)
+// state: background slot (1 Havooch orange, 2 Shipyard green, 3 Skills violet, 4 topographic neutral)
 // about: the page description; null shows a placeholder for Yahya to fill
 export const projects = [
   { id: 'shipyard', name: 'Shipyard', state: 2, repo: 'https://github.com/yahyabedirhan/shipyard', icon: '/shipyard/shipyard.png',
@@ -67,23 +67,23 @@ export const projects = [
       { src: '/diagrams/build-loop.webp', width: 2560, height: 1200, caption: 'Build loop: how an orchestrator turns tickets into one pull request.',
         alt: 'A flowchart: read the effort, show the plan, delegate unblocked tickets in parallel, integrate the batch and repeat while tickets are left, then review the whole branch, open the pull request and report' },
     ] },
-  { id: 'topography', name: 'topography.js', state: 4, repo: 'https://github.com/yahyabedirhan/topography',
+  { id: 'topography', name: 'topographic', state: 4, repo: 'https://github.com/yahyabedirhan/topographic',
     viewsFirst: true, // screenshot, then styles, then the diagram
-    // assets from yahyabedirhan/topography at d6c0d98 (logo at 997bc7a, diagram at d30e231, screenshot from PR #13 at 9f603a0)
-    icon: '/topography/topography.png', iconAlt: "topography's logo: three contour rings on paper folded along one diagonal crease, on a graphite tile",
+    // assets from yahyabedirhan/topographic (logo at 997bc7a; diagram at f85c3f6, screenshot at bed9e88)
+    icon: '/topography/topography.png', iconAlt: "The topographic logo: three contour rings on paper folded along one diagonal crease, on a graphite tile",
     line: 'Animated topographic backgrounds for the web',
-    about: "topography.js is a JavaScript library that draws animated contour lines, like those on a topographic map, as the background of a web page. One WebGL shader draws seven terrain styles, and you set the lines, the terrain, the motion and the colours. It drops in as a `<topography-bg>` web component, a React component or one JavaScript call. In the playground, people, and agents through WebMCP and llms.txt, set up a background and copy the code.",
+    about: "topographic is a JavaScript library that draws topographic backgrounds: animated contour lines, like those on a topographic map, behind a web page. One WebGL shader draws seven terrain styles, and you set the lines, the terrain, the motion and the colours. It drops in as a `<topographic-bg>` web component, a React component or one JavaScript call. In the playground, people, and agents through WebMCP and llms.txt, set up a background and copy the code.",
     links: [
-      { label: 'Playground', href: 'https://yahyabedirhan.github.io/topography/' },
-      { label: 'npm: topography.js', href: 'https://www.npmjs.com/package/topography.js' },
-      { label: 'npm: topography-react', href: 'https://www.npmjs.com/package/topography-react' },
+      { label: 'Playground', href: 'https://yahyabedirhan.github.io/topographic/' },
+      { label: 'npm: topographic', href: 'https://www.npmjs.com/package/topographic' },
+      { label: 'npm: topographic-react', href: 'https://www.npmjs.com/package/topographic-react' },
     ],
     hero: { src: '/topography/playground-dark.png', width: 1440, height: 900,
-      alt: 'The topography.js playground in dark mode: the page background is the live preview, with presets on the left and the settings panel on the right' },
+      alt: 'The topographic playground in dark mode: the page background is the live preview, with presets on the left and the settings panel on the right' },
     diagrams: [
       { title: 'Library architecture', src: '/topography/library-architecture.png', width: 1920, height: 1120, raw: true,
-        alt: 'Library architecture of topography.js: the web component, the React component and the playground call one public API, which resolves settings from a params table and hands them to a single WebGL renderer and shader.',
-        caption: 'How topography.js works: the web component, the React component and the playground call one API, which hands settings to one WebGL renderer.' },
+        alt: 'Library architecture of topographic: the web component, the React component and the playground call one public API, which resolves settings from a params table and hands them to a single WebGL renderer and shader.',
+        caption: 'How topographic works: the web component, the React component and the playground call one API, which hands settings to one WebGL renderer.' },
     ],
     views: {
       title: 'Styles',
@@ -93,7 +93,7 @@ export const projects = [
 ];
 
 // topo style per background state (0-based style index):
-// idle T1, Havooch T8, Shipyard T4, Skills T5, Topography T6 (neutral), Kudos T12 dunes
+// idle T1, Havooch T8, Shipyard T4, Skills T5, topographic T6 (neutral), Kudos T12 dunes
 export const styleMap = [0, 7, 3, 4, 5, 11];
 
 export const previously = [
