@@ -68,27 +68,44 @@ export const projects = [
         alt: 'A flowchart: read the effort, show the plan, delegate unblocked tickets in parallel, integrate the batch and repeat while tickets are left, then review the whole branch, open the pull request and report' },
     ] },
   { id: 'topography', name: 'topographic', state: 4, repo: 'https://github.com/yahyabedirhan/topographic',
-    viewsFirst: true, // screenshot, then styles, then the diagram
-    // assets from yahyabedirhan/topographic (logo at 997bc7a; diagram at f85c3f6, screenshot at bed9e88)
+    viewsFirst: true, // screenshots, then the diagrams
+    // assets from yahyabedirhan/topographic: logo at 997bc7a, styles.png at a856f06;
+    // the other screenshots at a1ea2d8 and the diagrams at a8d3579, on its readme-refresh branch
     icon: '/topography/topography.png', iconAlt: "The topographic logo: three contour rings on paper folded along one diagonal crease, on a graphite tile",
     line: 'Animated topographic backgrounds for the web',
-    about: "topographic is a JavaScript library that draws topographic backgrounds: animated contour lines, like those on a topographic map, behind a web page. One WebGL shader draws seven terrain styles, and you set the lines, the terrain, the motion and the colours. It drops in as a `<topographic-bg>` web component, a React component or one JavaScript call. In the playground, people, and agents through WebMCP and llms.txt, set up a background and copy the code.",
+    about: "topographic is a JavaScript library that draws topographic backgrounds: animated contour lines, like those on a topographic map, behind a web page. It draws them as a flat 2D map, or as a 3D terrain that a camera moves around, and `record()` saves the 3D view as an MP4 or WebM video. `setHeightfield()` takes your own elevation grid, so it can draw a real place. You set the lines, the terrain, the motion and the colours, and it drops in as a `<topographic-bg>` web component, a React component or one JavaScript call. In the playground, people, and agents through WebMCP and llms.txt, set up a background and copy the code. The 3D view, `record()` and `setHeightfield()` ship in the npm packages from 0.2.0. The place picker for real places is still a dev-only prototype, not in the public playground.",
     links: [
       { label: 'Playground', href: 'https://yahyabedirhan.github.io/topographic/' },
       { label: 'npm: topographic', href: 'https://www.npmjs.com/package/topographic' },
       { label: 'npm: topographic-react', href: 'https://www.npmjs.com/package/topographic-react' },
     ],
     hero: { src: '/topography/playground-dark.png', width: 1440, height: 900,
-      alt: 'The topographic playground in dark mode: the page background is the live preview, with presets on the left and the settings panel on the right' },
+      alt: 'The topographic playground in dark mode: contour lines drift behind the page, and the settings panel sits on the right' },
     diagrams: [
-      { title: 'Library architecture', src: '/topography/library-architecture.png', width: 1920, height: 1120, raw: true,
-        alt: 'Library architecture of topographic: the web component, the React component and the playground call one public API, which resolves settings from a params table and hands them to a single WebGL renderer and shader.',
-        caption: 'How topographic works: the web component, the React component and the playground call one API, which hands settings to one WebGL renderer.' },
+      { title: 'Library architecture', src: '/topography/library-architecture.png', width: 1920, height: 1360, raw: true,
+        alt: 'How topographic fits together: the web component, the React component and the playground call one public API, which also takes an optional heightfield. Settings resolve from the params table, styles and presets, and one WebGL renderer draws them as a 2D contour shader or a 3D terrain pass, whose frames record() encodes as video.',
+        caption: 'Every wrapper calls one API, and one renderer draws 2D or 3D from the same resolved settings. record() turns the 3D view into an MP4 or WebM clip.' },
+      { title: 'One terrain, two views', src: '/topography/terrain-two-views.png', width: 1920, height: 1248, raw: true,
+        alt: 'One terrain, two views: settings, or an optional heightfield, feed one shared contour field. In 2D a fragment shader paints its lines on every pixel. In 3D a mesh is lifted by the same field, painted with the same lines and seen through a moving camera.',
+        caption: 'The 2D map and the 3D terrain run the same GLSL contour field and line painter. In 3D the field also lifts a mesh, and a camera moves around it.' },
+      { title: 'From a place to a terrain', src: '/topography/real-place-pipeline.png', width: 1920, height: 1216, raw: true,
+        alt: 'How a real place becomes a terrain in the prototype: the map frame gives a bounding box, a worker fetches Terrarium elevation tiles, stitches and resamples them to a 256 by 256 grid, scales the relief and smooths it, and the region hook hands the heightfield to the renderer with setHeightfield().',
+        caption: 'In the dev-only prototype, a worker turns the framed map area into a smoothed 0..1 elevation grid. setHeightfield() then draws it as the 2D map or the 3D terrain.' },
     ],
     views: {
-      title: 'Styles',
-      groups: [{ wide: true, text: 'The seven styles, three presets and six seed variants.', shots: [
-        { src: '/topography/styles.png', width: 1920, height: 1260, alt: '16 dark tiles: the seven terrain styles, three presets and six seed variants, each labelled' }] }],
+      title: 'In the browser',
+      groups: [
+        { head: '2D and 3D', text: 'The same Long ridge style and seed, as a flat map and as a 3D terrain.', shots: [
+          { src: '/topography/long-ridge-2d-dark.png', width: 1440, height: 900, alt: 'The Long ridge style in 2D, dark mode: flat contour lines curve around one long ridge' },
+          { src: '/topography/long-ridge-3d-dark.png', width: 1440, height: 900, alt: 'The same Long ridge style and seed in 3D: the contour lines wrap a raised ridge on a layered block' }] },
+        { head: 'Video export', text: 'record() saves the 3D view as a video. This loop was made with it.', wide: true, shots: [
+          { src: '/topography/long-ridge-3d-orbit.webp', width: 720, height: 406, alt: 'The camera orbits the Long ridge block in 3D, dark mode' }] },
+        { head: 'Real places', text: 'In the dev-only prototype, you frame a place on a map, and its real elevation becomes the terrain. The public playground does not have the place picker yet.', shots: [
+          { src: '/topography/place-picker-dark.png', width: 1440, height: 900, alt: 'The place picker: a dark map of Istanbul with a white frame around the region to draw, city shortcuts above, and relief and smoothing options below' },
+          { name: 'istanbul-3d', width: 1440, height: 900, alt: 'Istanbul in 3D: real elevation drawn as contour lines, with the Bosphorus cutting the city in two' }] },
+        { head: 'Styles', text: 'The seven styles, three presets and six seed variants.', wide: true, shots: [
+          { src: '/topography/styles.png', width: 1920, height: 1260, alt: '16 dark tiles: the seven terrain styles, three presets and six seed variants, each labelled' }] },
+      ],
     } },
 ];
 
