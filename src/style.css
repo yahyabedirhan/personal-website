@@ -98,6 +98,8 @@ section{margin-top:64px}
 .shots.n1{grid-template-columns:min(400px,100%)}
 .shots.n2{grid-template-columns:repeat(2,min(400px,calc(50% - 8px)))}
 @media (max-width:520px){.shots.n2{grid-template-columns:min(400px,100%)}}
+.shots.n3,.shots.n6{grid-template-columns:repeat(3,minmax(0,1fr));justify-content:stretch}
+@media (max-width:520px){.shots.n3,.shots.n6{grid-template-columns:repeat(2,minmax(0,1fr))}}
 .shot{margin:0}
 .shot img{display:block;width:100%;height:auto}
 .shot .shot-light,:root[data-theme=light] .shot .shot-dark{display:none}
