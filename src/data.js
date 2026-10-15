@@ -67,28 +67,52 @@ export const projects = [
       { src: '/diagrams/build-loop.webp', width: 2560, height: 1200, caption: 'Build loop: how an orchestrator turns tickets into one pull request.',
         alt: 'A flowchart: read the effort, show the plan, delegate unblocked tickets in parallel, integrate the batch and repeat while tickets are left, then review the whole branch, open the pull request and report' },
     ] },
-  { id: 'topography', name: 'topographic', state: 4, repo: 'https://github.com/yahyabedirhan/topographic',
-    viewsFirst: true, // screenshot, then styles, then the diagram
-    // assets from yahyabedirhan/topographic (logo at 997bc7a; diagram at f85c3f6, screenshot at bed9e88)
-    icon: '/topography/topography.png', iconAlt: "The topographic logo: three contour rings on paper folded along one diagonal crease, on a graphite tile",
-    line: 'Animated topographic backgrounds for the web',
-    about: "topographic is a JavaScript library that draws topographic backgrounds: animated contour lines, like those on a topographic map, behind a web page. One WebGL shader draws seven terrain styles, and you set the lines, the terrain, the motion and the colours. It drops in as a `<topographic-bg>` web component, a React component or one JavaScript call. In the playground, people, and agents through WebMCP and llms.txt, set up a background and copy the code.",
+  { id: 'topographic', name: 'topographic', state: 4, repo: 'https://github.com/yahyabedirhan/topographic',
+    viewsFirst: true, // screenshots, then the diagrams
+    // assets from yahyabedirhan/topographic at 06cc94b (readme-launch): logo, screenshots and diagrams
+    icon: '/topographic/topographic.png', iconAlt: "The topographic logo: three contour rings on paper folded along one diagonal crease, on a graphite tile",
+    line: 'Animated contour-line backgrounds for the web',
+    about: "topographic draws the lines of a topographic map behind a web page, in 2D or as a 3D terrain with a moving camera. The terrain comes from seven generated styles, or from any real place on Earth. It is a small npm library with no dependencies, plus a playground where you pick a look, frame a place on the map, and copy the code. Install it with `npm install topographic`, then drop in the `<topographic-bg>` web component, the React component or one JavaScript call. It exports PNGs and 3D video clips, and agents can drive the playground through WebMCP and llms.txt.",
     links: [
       { label: 'Playground', href: 'https://yahyabedirhan.github.io/topographic/' },
       { label: 'npm: topographic', href: 'https://www.npmjs.com/package/topographic' },
       { label: 'npm: topographic-react', href: 'https://www.npmjs.com/package/topographic-react' },
     ],
-    hero: { src: '/topography/playground-dark.png', width: 1440, height: 900,
-      alt: 'The topographic playground in dark mode: the page background is the live preview, with presets on the left and the settings panel on the right' },
+    hero: { src: '/topographic/hero-3d.webp', width: 1200, height: 676,
+      alt: 'The camera swings around the Matterhorn and Zermatt in 3D: real elevation drawn as pale contour lines on a dark block' },
     diagrams: [
-      { title: 'Library architecture', src: '/topography/library-architecture.png', width: 1920, height: 1120, raw: true,
-        alt: 'Library architecture of topographic: the web component, the React component and the playground call one public API, which resolves settings from a params table and hands them to a single WebGL renderer and shader.',
-        caption: 'How topographic works: the web component, the React component and the playground call one API, which hands settings to one WebGL renderer.' },
+      { title: 'Library architecture', src: '/topographic/library-architecture.png', width: 1920, height: 1362, raw: true,
+        alt: 'How topographic fits together: the web component, the React component and the playground call one public API, which also takes an optional heightfield. Settings resolve from the params table, styles and presets, and one WebGL renderer draws them as a 2D contour shader or a 3D terrain pass, whose frames record() encodes as video.',
+        caption: 'Every wrapper calls one API, and one renderer draws 2D or 3D from the same resolved settings.' },
+      { title: 'One terrain, two views', src: '/topographic/terrain-two-views.png', width: 1920, height: 1250, raw: true,
+        alt: 'One terrain, two views: settings, or an optional heightfield, feed one shared contour field. In 2D a fragment shader paints its lines on every pixel. In 3D a mesh is lifted by the same field, painted with the same lines and seen through a moving camera.',
+        caption: 'The 2D map and the 3D terrain run the same contour field and line painter.' },
+      { title: 'From a place to a terrain', src: '/topographic/real-place-pipeline.png', width: 1920, height: 1218, raw: true,
+        alt: 'How a real place becomes a terrain in the playground: the Map popover gives a bounding box, a worker fetches Terrarium elevation tiles, stitches and resamples them to a 256 by 256 grid, scales the relief and smooths it, and the region hook hands the heightfield to the renderer with setHeightfield().',
+        caption: 'A worker turns the framed area into a smoothed 0..1 grid, and setHeightfield() draws it.' },
     ],
     views: {
-      title: 'Styles',
-      groups: [{ wide: true, text: 'The seven styles, three presets and six seed variants.', shots: [
-        { src: '/topography/styles.png', width: 1920, height: 1260, alt: '16 dark tiles: the seven terrain styles, three presets and six seed variants, each labelled' }] }],
+      title: 'Examples',
+      groups: [
+        { head: 'Looks', text: 'Seven terrain styles, with lines, colours and motion you set.', shots: [
+          { src: '/topographic/look-survey-ridge-2d.webp', width: 640, height: 400, alt: 'Survey ridge: pale lines around a long ridge on dark paper' },
+          { src: '/topographic/look-sea-dunes-2d.webp', width: 640, height: 400, alt: 'Sea dunes: blue-green dune lines on deep teal' },
+          { src: '/topographic/look-stepped-petals-2d.webp', width: 640, height: 400, alt: 'Stepped petals: plum lines on pale pink paper' }] },
+        { head: '3D', text: 'The same map, lifted into a terrain with a camera.', shots: [
+          { src: '/topographic/look-night-flower-3d.webp', width: 640, height: 400, alt: 'Night flower in 3D: blue rings rising to a soft dome' },
+          { src: '/topographic/look-terraces-3d.webp', width: 640, height: 400, alt: 'Terraces in 3D: amber lines stepping up a hill' },
+          { src: '/topographic/look-rocky-spine-3d.webp', width: 640, height: 400, alt: 'Rocky spine in 3D: brown lines over a rough ridge on light paper' }] },
+        { head: 'Real places', text: 'Ten places are one click away, and the Map lets you frame any other.', shots: [
+          { src: '/topographic/place-istanbul.webp', width: 640, height: 400, alt: 'Istanbul, with the Bosphorus between the two shores' },
+          { src: '/topographic/place-geirangerfjord.webp', width: 640, height: 400, alt: 'Geirangerfjord between steep walls' },
+          { src: '/topographic/place-grand-canyon.webp', width: 640, height: 400, alt: 'The Grand Canyon from rim to rim' },
+          { src: '/topographic/place-fuji.webp', width: 640, height: 400, alt: 'Mount Fuji, the cone and its lakes' },
+          { src: '/topographic/place-everest.webp', width: 640, height: 400, alt: 'Everest above the Khumbu valley' },
+          { src: '/topographic/place-matterhorn.webp', width: 640, height: 400, alt: 'The Matterhorn above Zermatt' }] },
+        { head: 'Try it', text: 'The playground: pick a look from the dock, tune it, open the Map for a real place, and export the code, a PNG or a video.', wide: true, shots: [
+          { src: '/topographic/playground-dark.webp', width: 1440, height: 900, alt: 'The playground in dark mode: Istanbul in 3D behind the page, the dock of looks along the bottom, the controls at the top right and a minimap of the place in the corner' },
+          { src: '/topographic/map-popover-dark.webp', width: 1440, height: 900, alt: 'The Map popover over Istanbul: a dark map with a white frame around the city, the place menu above, and Clear and Applied below' }] },
+      ],
     } },
 ];
 
