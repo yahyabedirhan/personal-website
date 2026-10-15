@@ -47,4 +47,4 @@ The site runs on Cloudflare Workers as static assets. On every push to `main`, W
 
 - The design was inspired by [Emil Kowalski](https://emilkowal.ski), [Mert Duzgun](https://mertbuilds.com) and [Abdullah Enes Gules](https://enesgules.com).
 - The Skills page diagrams are by me, from [yahyabedirhan/skills](https://github.com/yahyabedirhan/skills) at commit `f03c580`.
-- The topographic background now lives on as its own library, Topography: [yahyabedirhan/topography](https://github.com/yahyabedirhan/topography).
+- The topographic background now lives on as its own library, topographic: [yahyabedirhan/topography](https://github.com/yahyabedirhan/topography).
