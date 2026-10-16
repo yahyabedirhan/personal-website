@@ -71,8 +71,8 @@ export const projects = [
     viewsFirst: true, // screenshots, then the diagrams
     // assets from yahyabedirhan/topographic main at d0a5ea3: logo, screenshots and diagrams
     icon: '/topographic/topographic.png', iconAlt: "The topographic logo: three contour rings on paper folded along one diagonal crease, on a graphite tile",
-    line: 'Contour-line backgrounds in 2D and 3D',
-    about: "Moving contour lines, like the lines on a hiking map, as a background for web pages. Flat (2D) or as a landscape (3D).",
+    line: 'Animated topographic maps in 2D and 3D',
+    about: "Animated topographic maps for web backgrounds, rendered with WebGL in 2D and 3D.",
     // shown under the hero, above the examples
     details: "The landscape can be made up, or it can come from a real place on Earth. You can change the shape, the lines, the colours and the motion, so there is no limit to the looks you can make. The npm package has no dependencies and works in plain HTML and in React. In the playground, you change the settings and export the code, a PNG image or a video. AI agents can use the playground through llms.txt and WebMCP.",
     links: [
