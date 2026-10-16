@@ -80,6 +80,7 @@ section{margin-top:64px}
 .pj-repo{display:inline-flex;gap:8px;align-items:center;color:var(--mut);font-size:13px;transition:color .2s}.pj-repo:hover{color:var(--fg)}
 .pj-about{margin:32px 0 40px}
 .pj-details{margin:28px 0 8px}
+.pj-details + .pj-details{margin-top:12px}
 .pj-about.is-placeholder{color:var(--mut);font-style:italic}
 .slot{border-radius:16px;border:1px dashed color-mix(in srgb,var(--mut) 45%,transparent);display:grid;place-items:center;color:var(--mut);font-size:13px;
   background:repeating-linear-gradient(135deg,transparent 0 12px,var(--line) 12px 13px)}

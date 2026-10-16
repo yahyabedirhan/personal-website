@@ -74,7 +74,7 @@ export const projects = [
     line: 'Animated topographic maps in 2D and 3D',
     about: "Animated topographic maps for web backgrounds, rendered with WebGL in 2D and 3D.",
     // shown under the hero, above the examples
-    details: "The landscape can be made up, or it can come from a real place on Earth. You can change the shape, the lines, the colours and the motion, so there is no limit to the looks you can make. The npm package has no dependencies and works in plain HTML and in React. In the playground, you change the settings and export the code, a PNG image or a video. AI agents can use the playground through llms.txt and WebMCP.",
+    details: "The landscape can be made up, or it can come from a real place on Earth. You can change the shape, the lines, the colours and the motion, so there is no limit to the looks you can make.\n\nThe npm package has no dependencies and works in plain HTML and in React. In the playground, you change the settings and export the code, a PNG image or a video. AI agents can use the playground through llms.txt and WebMCP.",
     links: [
       { label: 'Playground', href: 'https://yahyabedirhan.github.io/topographic/' },
       { label: 'npm: topographic', href: 'https://www.npmjs.com/package/topographic' },

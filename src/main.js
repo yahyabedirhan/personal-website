@@ -70,7 +70,7 @@ function project(id) {
     ${p.about ? `<p class="pj-about">${esc(p.about).replace(/`([^`]+)`/g, '<code>$1</code>')}</p>` : `<p class="pj-about is-placeholder">Description coming soon. [Yahya to fill]</p>`}
     ${p.links ? `<nav class="pj-links" aria-label="Links">${p.links.map(l => `<a href="${l.href}" target="_blank" rel="noopener noreferrer">${esc(l.label)} ↗</a>`).join('')}</nav>` : ''}
     ${p.hero ? `<figure class="hero"><button class="zoom" type="button" aria-label="Enlarge image">${img(p.hero, 'eager')}</button></figure>` : ''}
-    ${p.details ? `<p class="pj-about pj-details">${esc(p.details).replace(/`([^`]+)`/g, '<code>$1</code>')}</p>` : ''}
+    ${p.details ? p.details.split('\n\n').map(d => `<p class="pj-about pj-details">${esc(d).replace(/`([^`]+)`/g, '<code>$1</code>')}</p>`).join('') : ''}
     ${(p.viewsFirst ? [shots, figures] : [figures, shots]).map(f => f(p)).join('')}
     <a class="next" href="/projects/${next.id}" data-nav><span>Next</span>${esc(next.name)} →</a>
   </main>`;
