@@ -74,7 +74,7 @@ export const projects = [
     line: 'Contour-line backgrounds in 2D and 3D',
     about: "Animated contour-line backgrounds for the web, rendered with WebGL in 2D or as a 3D terrain.",
     // shown under the hero, above the examples
-    details: "Terrain comes from seven procedural styles or from Terrarium elevation tiles for any area up to 300 km on a side. The npm package has no runtime dependencies and ships a `<topographic-bg>` web component and a React wrapper. The playground edits the settings and exports embed code, PNG (full view or a crop) and MP4/WebM clips. It serves llms.txt and registers WebMCP tools for agents.",
+    details: "Use one of seven built-in styles, or real elevation data from any place on Earth. The npm package has no dependencies. It includes a web component and a React component. In the playground, you change the settings and export code, PNG or video. AI agents can use it through llms.txt and WebMCP.",
     links: [
       { label: 'Playground', href: 'https://yahyabedirhan.github.io/topographic/' },
       { label: 'npm: topographic', href: 'https://www.npmjs.com/package/topographic' },
