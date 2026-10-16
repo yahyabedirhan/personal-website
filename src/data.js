@@ -72,7 +72,9 @@ export const projects = [
     // assets from yahyabedirhan/topographic main at d0a5ea3: logo, screenshots and diagrams
     icon: '/topographic/topographic.png', iconAlt: "The topographic logo: three contour rings on paper folded along one diagonal crease, on a graphite tile",
     line: 'WebGL contour-line backgrounds for the web, in 2D and 3D',
-    about: "topographic renders animated contour lines from a procedural terrain or a heightfield, as a 2D fragment shader or a 3D mesh with a camera. Terrain comes from seven procedural styles or from Terrarium elevation tiles for any area up to 300 km on a side. The npm package has no runtime dependencies and ships a `<topographic-bg>` web component and a React wrapper. The playground edits the settings and exports embed code, PNG (full view or a crop) and MP4/WebM clips. It serves llms.txt and registers WebMCP tools for agents.",
+    about: "Animated contour-line backgrounds for the web, rendered with WebGL in 2D or as a 3D terrain.",
+    // shown under the hero, above the examples
+    details: "Terrain comes from seven procedural styles or from Terrarium elevation tiles for any area up to 300 km on a side. The npm package has no runtime dependencies and ships a `<topographic-bg>` web component and a React wrapper. The playground edits the settings and exports embed code, PNG (full view or a crop) and MP4/WebM clips. It serves llms.txt and registers WebMCP tools for agents.",
     links: [
       { label: 'Playground', href: 'https://yahyabedirhan.github.io/topographic/' },
       { label: 'npm: topographic', href: 'https://www.npmjs.com/package/topographic' },

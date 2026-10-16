@@ -79,6 +79,7 @@ section{margin-top:64px}
 .pj-icon{--icon:128px;--icon-inset:calc(var(--icon) * 50 / 512);display:block;width:var(--icon);height:var(--icon);margin:0 0 calc(18px - var(--icon-inset)) calc(-1 * var(--icon-inset))}
 .pj-repo{display:inline-flex;gap:8px;align-items:center;color:var(--mut);font-size:13px;transition:color .2s}.pj-repo:hover{color:var(--fg)}
 .pj-about{margin:32px 0 40px}
+.pj-details{margin:28px 0 8px}
 .pj-about.is-placeholder{color:var(--mut);font-style:italic}
 .slot{border-radius:16px;border:1px dashed color-mix(in srgb,var(--mut) 45%,transparent);display:grid;place-items:center;color:var(--mut);font-size:13px;
   background:repeating-linear-gradient(135deg,transparent 0 12px,var(--line) 12px 13px)}
