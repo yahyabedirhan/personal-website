@@ -93,6 +93,8 @@ function kudosPage() {
 const figures = p => p.diagrams ? p.diagrams.map(diagram).join('')
   : `<figure class="slot" style="aspect-ratio:16/10"><span>Screenshot placeholder</span></figure>`;
 const shots = p => p.views ? views(p) : '';
+// escaped text with [label](https://…) links
+const linked = t => esc(t).replace(/\[([^\]]+)\]\((https:\/\/[^)\s]+)\)/g, '<a href="$2" target="_blank" rel="noopener noreferrer">$1</a>');
 
 // each screenshot exists in dark and light; CSS shows the one matching [data-theme]
 const diagram = d => `${d.title ? `<h3 class="diagram-title">${esc(d.title)}</h3>` : ''}<figure class="diagram${d.raw ? ' is-raw' : ''}"><button class="zoom" type="button" aria-label="Enlarge image"><img src="${d.src}" width="${d.width}" height="${d.height}" alt="${esc(d.alt)}" loading="lazy" decoding="async"></button><figcaption>${esc(d.caption)}</figcaption></figure>`;
@@ -100,7 +102,7 @@ const img = (s, load = 'lazy') => `<img src="${s.src}" width="${s.width}" height
 // a shot is either one image (src) or a dark/light pair (name)
 const shot = (s, id) => s.src ? img(s) : ['dark', 'light'].map(t => `<img class="shot-${t}" src="/${id}/${s.name}-${t}.png" width="${s.width}" height="${s.height}" alt="${esc(s.alt)}" loading="lazy" decoding="async">`).join('');
 const views = (p) => `<section class="views"><h2>${esc(p.views.title)}</h2>${p.views.groups.map(g =>
-  `${g.head ? `<h3>${esc(g.head)}</h3>` : ''}${g.text ? `<p>${esc(g.text)}</p>` : ''}<div class="shots n${g.shots.length}${g.wide ? ' is-wide' : ''}">${g.shots.map(s => `<figure class="shot"><button class="zoom" type="button" aria-label="Enlarge image">${shot(s, p.id)}</button></figure>`).join('')}</div>`).join('')}</section>`;
+  `${g.head ? `<h3>${esc(g.head)}</h3>` : ''}${g.text ? `<p>${linked(g.text)}</p>` : ''}<div class="shots n${g.shots.length}${g.wide ? ' is-wide' : ''}">${g.shots.map(s => `<figure class="shot"><button class="zoom" type="button" aria-label="Enlarge image">${shot(s, p.id)}</button></figure>`).join('')}</div>`).join('')}</section>`;
 
 function notFound() {
   app.innerHTML = `<main class="wrap"><a class="back" href="/" data-nav>← Index</a><h1 class="title">Not found</h1></main>`;

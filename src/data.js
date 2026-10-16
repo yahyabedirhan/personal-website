@@ -111,7 +111,7 @@ export const projects = [
           { src: '/topographic/place-fuji.webp', width: 640, height: 400, alt: 'Mount Fuji, the cone and its lakes' },
           { src: '/topographic/place-everest.webp', width: 640, height: 400, alt: 'Everest above the Khumbu valley' },
           { src: '/topographic/place-matterhorn.webp', width: 640, height: 400, alt: 'The Matterhorn above Zermatt' }] },
-        { head: 'Try it', text: 'In the playground, pick a look at the bottom, change the settings under Tune, choose a real place under Map, and get the code, a PNG or a video under Export.', wide: true, shots: [
+        { head: 'Try it', text: 'In the [playground](https://yahyabedirhan.github.io/topographic/), pick a look at the bottom, change the settings under Tune, choose a real place under Map, and get the code, a PNG or a video under Export.', wide: true, shots: [
           { src: '/topographic/playground-dark.webp', width: 1440, height: 900, alt: 'The playground in dark mode: Istanbul in 3D behind the page, the dock of looks along the bottom, the controls at the top right and a minimap of the place in the corner' },
           { src: '/topographic/map-popover-dark.webp', width: 1440, height: 900, alt: 'The Map popover over Istanbul: a dark map with a white frame around the city, the place menu above, and Clear and Applied below' }] },
       ],
