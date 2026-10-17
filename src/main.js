@@ -83,25 +83,38 @@ function project(id) {
   return () => {};
 }
 
+const optState = () => ({ full: 'Analytics is on in this browser.', pageviews: 'You are opted out. Only page views are counted.', off: 'You are fully opted out. Nothing is sent.' })[getMode()];
+const optLabel = () => (getMode() === 'full' ? 'Opt out' : 'Opt in');
+const collected = [
+  ['Pages visited', 'the page, where you came from'],
+  ['Clicks', 'which links and projects help'],
+  ['Page speed', 'to keep pages fast'],
+  ['Device and country', 'to fit how people browse'],
+];
+
 function aboutPage() {
   document.title = `About · ${me.name}`;
-  const optBtn = analyticsOn() ? `<p><button class="foot-link optout" data-section="about" data-track="optout">${getMode() === 'full' ? 'Opt out' : 'Opt in'}</button></p>` : '';
-  app.innerHTML = `<main class="wrap prose">
+  const opt = `<div class="opt"><p class="opt-state">${optState()}</p>${analyticsOn() ? `<button class="opt-btn optout" data-section="about" data-track="optout">${optLabel()}</button>` : ''}</div>`;
+  app.innerHTML = `<main class="wrap about">
     <a class="back" href="/" data-nav data-section="nav" data-track="back">← Index</a>
     <h1 class="title">About</h1>
-    <p class="meta">This is the personal website of ${esc(me.name)}.</p>
+    <p class="meta">This is the personal website of ${esc(me.name)}, a software engineer. You can find me here:</p>
     ${socials()}
-    <h2>Analytics</h2>
-    <p>To understand traffic, how people use the site and how fast it loads, it uses PostHog (EU) for analytics and Sentry (EU) for error reports. There are no cookies. Data is anonymised: the IP address is discarded and no personal information is kept. Unique visitors are counted per day with an anonymous hash that changes daily.</p>
-    <ul>
-      <li>Page views: the page, the site you came from, and whether it was the first page of your visit.</li>
-      <li>Time on each page and how far you scrolled, to see what gets read.</li>
-      <li>Clicks on links and buttons, to see which projects and links are useful. Never your email address.</li>
-      <li>Load speed (web vitals), to keep pages fast.</li>
-      <li>Device, browser, country and whether your device prefers dark or light.</li>
-      <li>Errors, to fix bugs.</li></ul>
-    <p>Opting out stops everything except page views. The choice is saved in this browser, so each browser and device needs its own opt out. You can also add <code>?optout</code> (page views only), <code>?optout=all</code> (nothing at all) or <code>?optin</code> to any address.</p>
-    ${optBtn}
+    <section><h2>Analytics</h2>
+      <p class="lede">The site keeps anonymous stats with no cookies. They help me see what people find useful and keep the site fast.</p>
+      <h3>What is collected</h3>
+      <ul class="rows">${collected.map(([n, r]) => `<li><div class="row"><span class="pn">${n}</span><span class="pl">${r}</span></div></li>`).join('')}</ul>
+      <h3>What is never collected</h3>
+      <p class="note">No cookies, no names or emails, no IP addresses, no screen recordings.</p>
+      <h3>Where it goes</h3>
+      <ul class="rows">
+        <li><div class="row"><span class="pn">PostHog</span><span class="pl">analytics, stored in the EU</span></div></li>
+        <li><div class="row"><span class="pn">Sentry</span><span class="pl">error reports, stored in the EU</span></div></li></ul>
+      <h3>Opt out</h3>
+      ${opt}
+      <p class="note">Your choice is saved in this browser, so each browser and device opts out separately.</p>
+      <p class="fine">Or add <code>?optout</code> (page views only), <code>?optout=all</code> (nothing at all) or <code>?optin</code> to any address. Full detail in <a href="https://github.com/yahyabedirhan/personal-website/blob/main/PRIVACY.md" target="_blank" rel="noopener noreferrer" data-section="about" data-track="privacy">PRIVACY.md</a>.</p>
+    </section>
     ${footer()}
   </main>`;
   bg.setState(0); scrollTo(0, 0); return () => {};
@@ -153,7 +166,8 @@ function render() {
   });
   app.querySelector('.optout')?.addEventListener('click', e => {
     getMode() === 'full' ? optOut() : optIn();
-    e.currentTarget.textContent = getMode() === 'full' ? 'Opt out' : 'Opt in';
+    e.currentTarget.textContent = optLabel();
+    const st = app.querySelector('.opt-state'); if (st) st.textContent = optState();
   });
 }
 if ('scrollRestoration' in history) history.scrollRestoration = 'manual';
