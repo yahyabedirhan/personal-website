@@ -26,6 +26,8 @@ function load() {
       capture_performance: false,
       capture_exceptions: false,
     });
+    // tag every event, queued ones included, so sites sharing one project can be told apart
+    posthog.register({ site: 'personal-website' });
     ph = posthog;
     queue.splice(0).forEach(([name, props]) => ph.capture(name, props));
   }).catch(() => {});
