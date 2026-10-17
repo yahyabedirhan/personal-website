@@ -63,6 +63,8 @@ section{margin-top:64px}
 /* footer */
 .foot{display:flex;gap:18px;align-items:center;margin-top:72px}
 .foot-link{font-size:13px;color:var(--mut);transition:color .2s}
+.optout{padding:0}
+.prose h2{margin:32px 0 8px}.prose ul{padding-left:18px;color:var(--mut)}.prose p:not(.meta){color:var(--mut)}.prose code{font-size:13px}
 .foot .theme{display:grid;place-items:center;width:36px;height:36px;margin:-10px;color:var(--mut);transition:color .2s}
 .foot-link:hover,.foot .theme:hover,.back:hover{color:var(--fg)}
 
