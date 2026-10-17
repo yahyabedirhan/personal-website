@@ -1,7 +1,10 @@
 // Error reporting with Sentry, errors only. Without VITE_SENTRY_DSN at build time this module does
 // nothing and @sentry/browser is never fetched. With it, the SDK loads after the page is idle;
 // errors thrown before that are buffered and sent once it is ready.
-const DSN = import.meta.env.VITE_SENTRY_DSN;
+import { getMode } from './privacy.js';
+
+// only for visitors who have not opted out (analytics preference "full")
+const DSN = getMode() === 'full' ? import.meta.env.VITE_SENTRY_DSN : undefined;
 
 if (DSN) {
   const early = [];

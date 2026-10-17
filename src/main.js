@@ -1,10 +1,12 @@
+import './privacy.js';
 import './errors.js';
 import './style.css';
 import { createBackground } from './bg.js';
 import { me, projects, previously, press, links, kudos } from './data.js';
 import { icons, esc } from './icons.js';
 import { initZoom } from './zoom.js';
-import { pageview } from './analytics.js';
+import { pageview, optOut, optIn, analyticsOn } from './analytics.js';
+import { getMode } from './privacy.js';
 
 const app = document.getElementById('app');
 const bg = createBackground(document.getElementById('bg'));
@@ -28,6 +30,7 @@ const themeIcon = () => (isLight() ? icons.moon : icons.sun);
 const themeAria = () => (isLight() ? 'Switch to dark mode' : 'Switch to light mode');
 const socials = () => `<nav class="socials" aria-label="Elsewhere" data-section="social">${links.map(l => `<a class="glass" data-track="${l.id}" href="${l.href}" target="_blank" rel="noopener noreferrer" aria-label="${l.label}">${icons[l.id]}</a>`).join('')}</nav>`;
 const footer = () => `<footer class="foot"><a class="foot-link" href="/kudos" data-nav data-section="kudos" data-track="kudos">Kudos</a>
+  <a class="foot-link" href="/about" data-nav data-section="about" data-track="footer">About</a>
   <button class="theme" data-section="theme" data-track="theme" aria-label="${themeAria()}">${themeIcon()}</button></footer>`;
 
 function home() {
@@ -80,6 +83,30 @@ function project(id) {
   return () => {};
 }
 
+function aboutPage() {
+  document.title = `About · ${me.name}`;
+  const optBtn = analyticsOn() ? `<p><button class="foot-link optout" data-section="about" data-track="optout">${getMode() === 'full' ? 'Opt out' : 'Opt in'}</button></p>` : '';
+  app.innerHTML = `<main class="wrap prose">
+    <a class="back" href="/" data-nav data-section="nav" data-track="back">← Index</a>
+    <h1 class="title">About</h1>
+    <p class="meta">This is the personal website of ${esc(me.name)}.</p>
+    ${socials()}
+    <h2>Analytics</h2>
+    <p>To understand traffic, how people use the site and how fast it loads, it uses PostHog (EU) for analytics and Sentry (EU) for error reports. There are no cookies. Data is anonymised: the IP address is discarded and no personal information is kept. Unique visitors are counted per day with an anonymous hash that changes daily.</p>
+    <ul>
+      <li>Page views: the page, the site you came from, and whether it was the first page of your visit.</li>
+      <li>Time on each page and how far you scrolled, to see what gets read.</li>
+      <li>Clicks on links and buttons, to see which projects and links are useful. Never your email address.</li>
+      <li>Load speed (web vitals), to keep pages fast.</li>
+      <li>Device, browser, country and whether your device prefers dark or light.</li>
+      <li>Errors, to fix bugs.</li></ul>
+    <p>Opting out stops everything except page views. The choice is saved in this browser, so each browser and device needs its own opt out. You can also add <code>?optout</code> (page views only), <code>?optout=all</code> (nothing at all) or <code>?optin</code> to any address.</p>
+    ${optBtn}
+    ${footer()}
+  </main>`;
+  bg.setState(0); scrollTo(0, 0); return () => {};
+}
+
 function kudosPage() {
   document.title = `Kudos · ${me.name}`;
   const host = u => u.replace(/^https?:\/\//, '');
@@ -116,13 +143,17 @@ function render() {
   const path = location.pathname.replace(/\/+$/, '') || '/';
   const m = path.match(/^\/projects\/([\w-]+)$/);
   document.title = me.name;
-  dispose = path === '/' ? home() : m ? project(m[1]) : path === '/kudos' ? kudosPage() : notFound();
+  dispose = path === '/' ? home() : m ? project(m[1]) : path === '/kudos' ? kudosPage() : path === '/about' ? aboutPage() : notFound();
   pageview();
   if (path === '/') { const y = sessionStorage.getItem('home-y'); if (y) { scrollTo(0, +y); sessionStorage.removeItem('home-y'); } else scrollTo(0, 0); }
   app.querySelector('.theme')?.addEventListener('click', e => {
     const light = !isLight(); root.dataset.theme = light ? 'light' : 'dark';
     try { light ? localStorage.setItem('theme', 'light') : localStorage.removeItem('theme'); } catch {}
     bg.setDark(!light); e.currentTarget.innerHTML = themeIcon(); e.currentTarget.setAttribute('aria-label', themeAria());
+  });
+  app.querySelector('.optout')?.addEventListener('click', e => {
+    getMode() === 'full' ? optOut() : optIn();
+    e.currentTarget.textContent = getMode() === 'full' ? 'Opt out' : 'Opt in';
   });
 }
 if ('scrollRestoration' in history) history.scrollRestoration = 'manual';
