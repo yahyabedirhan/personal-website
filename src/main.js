@@ -113,7 +113,8 @@ function aboutPage() {
       <h3>Opt out</h3>
       ${opt}
       <p class="note">Your choice is saved in this browser, so each browser and device opts out separately.</p>
-      <p class="fine">Or add <code>?optout</code> (page views only), <code>?optout=all</code> (nothing at all) or <code>?optin</code> to any address. Full detail in <a href="https://github.com/yahyabedirhan/personal-website/blob/main/PRIVACY.md" target="_blank" rel="noopener noreferrer" data-section="about" data-track="privacy">PRIVACY.md</a>.</p>
+      <p class="fine">Or add <code>?optout</code> (page views only), <code>?optout=all</code> (nothing at all) or <code>?optin</code> to any address.</p>
+      <p class="fine">Full detail in <a href="https://github.com/yahyabedirhan/personal-website/blob/main/PRIVACY.md" target="_blank" rel="noopener noreferrer" data-section="about" data-track="privacy">PRIVACY.md</a>.</p>
     </section>
     ${footer()}
   </main>`;
