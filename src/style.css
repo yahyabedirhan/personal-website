@@ -63,8 +63,31 @@ section{margin-top:64px}
 /* footer */
 .foot{display:flex;gap:18px;align-items:center;margin-top:72px}
 .foot-link{font-size:13px;color:var(--mut);transition:color .2s}
-.optout{padding:0}
-.prose h2{margin:32px 0 8px}.prose ul{padding-left:18px;color:var(--mut)}.prose p:not(.meta){color:var(--mut)}.prose code{font-size:13px}
+/* about: one rhythm, measured between visible ink (text glyph boxes, icon glyphs, the opt box edge)
+   --in: heading to its content, intro to icons    --out: between groups    title to first group matches project pages
+   --lead is the half-leading of 15px/1.65 text, --row-top/--row-bottom the row padding plus half-leading above and below row text,
+   --icon-top/--icon-bottom the space between the 40px hit box and its glyphs */
+.about{--name-col:150px;--in:22px;--out:48px;--lead:3px;--row-top:13px;--row-bottom:11px;--icon-top:13px;--icon-bottom:11px}
+.about .title{margin-bottom:42px}
+.about h2,.about h3{font:500 15px/1.65 Inter,sans-serif;color:var(--fg);letter-spacing:normal;margin:0}
+.about .grp+.grp{margin-top:calc(var(--out) - 2 * var(--lead))}
+.about .grp:has(>.rows:last-child)+.grp{margin-top:calc(var(--out) - var(--lead) - var(--row-bottom))}
+.about section{margin:0}
+.about .grp:has(>.socials)+.analytics{margin-top:calc(var(--out) - var(--lead) - var(--icon-bottom))}
+.about .grp>*+*{margin-top:calc(var(--in) - 2 * var(--lead))}
+.about .grp>*+.rows{margin-top:calc(var(--in) - var(--lead) - var(--row-top))}
+.about .grp>*+.socials{margin:calc(var(--in) - var(--lead) - var(--icon-top)) 0 0 -10px}
+.about .grp>*+.opt{margin-top:calc(var(--in) - var(--lead) - 1px)}
+.about .grp>.opt+*{margin-top:calc(var(--in) - var(--lead) + 1px)}
+.about .grp>.fine{margin-top:6px}.about .grp>.fine+.fine{margin-top:8px}
+.about-hi,.about .grp>p{color:var(--mut)}
+.about .rows .row{cursor:default}
+.about .fine{font-size:13px;color:var(--mut)}
+.about .fine a{text-decoration:underline;text-underline-offset:3px}.about .fine a:hover{color:var(--fg)}
+.about code{font:500 .9em/1 ui-monospace,SFMono-Regular,Menlo,monospace;padding:.1em .35em;border-radius:5px;background:var(--line)}
+.opt{display:flex;align-items:center;justify-content:space-between;gap:16px;margin:0 calc(-1 * var(--row-pad-x));padding:12px var(--row-pad-x);border-radius:14px;background:var(--glass-fill);box-shadow:var(--glass-edge)}
+.opt-btn{flex:none;font-size:13px;font-weight:500;padding:6px 14px;border-radius:99px;box-shadow:inset 0 0 0 .5px var(--mut);transition:background .2s}
+.opt-btn:hover{background:var(--line)}
 .foot .theme{display:grid;place-items:center;width:36px;height:36px;margin:-10px;color:var(--mut);transition:color .2s}
 .foot-link:hover,.foot .theme:hover,.back:hover{color:var(--fg)}
 
