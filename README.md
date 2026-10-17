@@ -55,12 +55,7 @@ Both are off unless their key is set when the site is built. Vite inlines `VITE_
 - Locally: copy `.env.example` to `.env` and fill in the values.
 - Cloudflare: add them as build variables in Workers Builds (the Worker's Settings > Build > Variables and secrets), then redeploy. Variables set only on the Worker at runtime don't reach the build.
 
-PostHog keeps everything in memory: no cookies, no localStorage, no session recording, no autocapture. It sends `$pageview` once per route change (with UTM parameters and referrer), `$pageleave`, and two click events:
-
-| Event | Property |
-| --- | --- |
-| `project_opened` | `project`: the project id |
-| `outbound_click` | `target`: `github`, `x`, `linkedin`, `mail`, `forbes`, `polymet`, `zeplin`, or the link's host |
+PostHog keeps everything in memory: no cookies, no localStorage, no session recording, no autocapture. The events it sends are defined in `src/analytics.js`.
 
 Sentry reports errors only: no tracing, no replay, no session tracking.
 
