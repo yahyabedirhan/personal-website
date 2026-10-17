@@ -36,24 +36,34 @@ function track(name, props) {
   ph ? ph.capture(name, props) : queue.push([name, props]);
 }
 
-// $pageview carries the URL (UTM params included) and the referrer by default
-// URL is fixed at call time so a pageview queued before posthog-js loads keeps its own route
-export const pageview = () => track('$pageview', { $current_url: location.href, $pathname: location.pathname });
+// $pageview carries the URL (UTM params included) and the referrer by default.
+// URL is fixed at call time so a pageview queued before posthog-js loads keeps its own route.
+// entry is true only for the route the visit landed on (typed, shared or linked from elsewhere).
+let entry = true;
+export const pageview = () => {
+  track('$pageview', { $current_url: location.href, $pathname: location.pathname, entry });
+  entry = false;
+};
 
-// Two click events only: project_opened for links to a project page, outbound_click for links off the site
-const TARGETS = { 'github.com': 'github', 'x.com': 'x', 'linkedin.com': 'linkedin', 'forbes.com': 'forbes', 'polymet.ai': 'polymet', 'zeplin.io': 'zeplin' };
+// One click event for everything: ui_click { section, target, href, route }.
+// section comes from the nearest data-section, target from data-track on the element,
+// and anything without data-track falls back to its host (links) or "unknown".
+// Extra props: project (project rows), theme (the theme being switched to), image (zoom).
 function onClick(e) {
-  const a = e.target.closest('a[href]');
-  if (!a) return;
-  const url = new URL(a.href, location.href);
-  if (url.protocol === 'mailto:') return track('outbound_click', { target: 'mail' });
-  if (url.origin === location.origin) {
-    const m = url.pathname.match(/^\/projects\/([\w-]+)$/);
-    if (m) track('project_opened', { project: m[1] });
-    return;
-  }
-  const host = url.hostname.replace(/^www\./, '');
-  track('outbound_click', { target: TARGETS[host] || host });
+  const el = e.target.closest('a[href], button');
+  if (!el || el.closest('.zoom-layer')) return;
+  const section = el.closest('[data-section]')?.dataset.section || 'other';
+  const props = { section, route: location.pathname };
+  if (el.tagName === 'A') {
+    const url = new URL(el.href, location.href);
+    props.href = url.protocol === 'mailto:' ? 'mailto' : url.origin === location.origin ? url.pathname : url.origin + url.pathname;
+    props.outbound = url.origin !== location.origin;
+    props.target = el.dataset.track || (url.protocol === 'mailto:' ? 'email' : url.hostname.replace(/^www\./, ''));
+  } else props.target = el.dataset.track || 'unknown';
+  if (section === 'project') props.project = props.target;
+  if (section === 'theme') props.theme = document.documentElement.dataset.theme === 'light' ? 'dark' : 'light';
+  if (section === 'zoom') props.image = el.querySelector('img')?.getAttribute('src');
+  track('ui_click', props);
 }
 
 if (KEY) {
