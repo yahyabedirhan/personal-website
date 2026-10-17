@@ -10,7 +10,7 @@ export const projects = [
     iconAlt: "shipyard's logo: a white sailboat with folded sails on two waves, on a dark graphite tile",
     line: "Menu bar app for your agents' pull requests",
     about: 'Shipyard is a macOS menu bar app for seeing and reviewing the pull requests your coding agents open for you. It lists pull requests, issues and workflow runs across your GitHub repositories and shows one count of what needs you: new, changed, waiting on your review or failing checks. Your agents can ping you with the `shipyard ping` command, and one TOML file, which you or your agents edit, sets what it shows.',
-    // assets from yahyabedirhan/shipyard at 82e112b
+    // assets from yahyabedirhan/shipyard at 1debb22
     diagrams: [
       { src: '/shipyard/architecture.png', width: 2000, height: 1080, raw: true,
         alt: 'Shipyard architecture: GitHub, agents on the Mac and on servers, and Notion notes feed the Shipyard menu bar app, whose refresh turns them into a menu bar panel and notifications.',
