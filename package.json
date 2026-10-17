@@ -9,5 +9,9 @@
   },
   "devDependencies": {
     "vite": "^8.3.4"
+  },
+  "dependencies": {
+    "@sentry/browser": "^11.8.0",
+    "posthog-js": "^1.438.12"
   }
 }

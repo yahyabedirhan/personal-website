@@ -43,6 +43,27 @@ To open the dev server from another device, pass `--host`; Vite may also need th
 
 The site runs on Cloudflare Workers as static assets. On every push to `main`, Workers Builds runs `npm run build` and then `npx wrangler deploy`, which serves `dist/` at [yahyapak.dev](https://yahyapak.dev). `wrangler.jsonc` holds the settings: `not_found_handling: "single-page-application"` serves `index.html` for every unknown path, so deep links like `/projects/havooch` work.
 
+## Analytics and errors
+
+Both are off unless their key is set when the site is built. Vite inlines `VITE_*` variables at build time, so they must exist in the build environment, not at runtime. Without a key, its library is never loaded.
+
+| Variable | Turns on |
+| --- | --- |
+| `VITE_POSTHOG_KEY` | [PostHog](https://posthog.com) analytics, EU cloud |
+| `VITE_SENTRY_DSN` | [Sentry](https://sentry.io) error reporting |
+
+- Locally: copy `.env.example` to `.env` and fill in the values.
+- Cloudflare: add them as build variables in Workers Builds (the Worker's Settings > Build > Variables and secrets), then redeploy. Variables set only on the Worker at runtime don't reach the build.
+
+PostHog keeps everything in memory: no cookies, no localStorage, no session recording, no autocapture. It sends `$pageview` once per route change (with UTM parameters and referrer), `$pageleave`, and two click events:
+
+| Event | Property |
+| --- | --- |
+| `project_opened` | `project`: the project id |
+| `outbound_click` | `target`: `github`, `x`, `linkedin`, `mail`, `forbes`, `polymet`, `zeplin`, or the link's host |
+
+Sentry reports errors only: no tracing, no replay, no session tracking.
+
 ## Credits
 
 - The design was inspired by [Emil Kowalski](https://emilkowal.ski), [Mert Duzgun](https://mertbuilds.com) and [Abdullah Enes Gules](https://enesgules.com).

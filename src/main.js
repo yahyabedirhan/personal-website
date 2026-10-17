@@ -1,8 +1,10 @@
+import './errors.js';
 import './style.css';
 import { createBackground } from './bg.js';
 import { me, projects, previously, press, links, kudos } from './data.js';
 import { icons, esc } from './icons.js';
 import { initZoom } from './zoom.js';
+import { pageview } from './analytics.js';
 
 const app = document.getElementById('app');
 const bg = createBackground(document.getElementById('bg'));
@@ -115,6 +117,7 @@ function render() {
   const m = path.match(/^\/projects\/([\w-]+)$/);
   document.title = me.name;
   dispose = path === '/' ? home() : m ? project(m[1]) : path === '/kudos' ? kudosPage() : notFound();
+  pageview();
   if (path === '/') { const y = sessionStorage.getItem('home-y'); if (y) { scrollTo(0, +y); sessionStorage.removeItem('home-y'); } else scrollTo(0, 0); }
   app.querySelector('.theme')?.addEventListener('click', e => {
     const light = !isLight(); root.dataset.theme = light ? 'light' : 'dark';
