@@ -1,3 +1,4 @@
+import './errors.js';
 import './style.css';
 import { createBackground } from './bg.js';
 import { me, projects, previously, press, links, kudos } from './data.js';
