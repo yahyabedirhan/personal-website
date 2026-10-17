@@ -20,10 +20,10 @@ export const projects = [
       title: 'Layouts',
       groups: [
         { head: 'List layout', text: 'All projects in one column; each project can be expanded or collapsed.', shots: [
-          { name: 'list', width: 800, height: 958, alt: "shipyard's list layout: the Shipyard and Skills projects open with their pull requests, issues and runs, and Swift Lab and Havooch folded" }] },
+          { name: 'list', width: 800, height: 958, alt: "shipyard's list layout: the Shipyard and Skills projects open with their pull requests and issues, and Claude Mods and Havooch folded" }] },
         { head: 'Tabs layout', text: 'One tab per project, plus an All tab.', shots: [
-          { name: 'tabs-project', width: 800, height: 1016, alt: "shipyard's tabs layout on the Shipyard tab: pull requests, issues and workflow runs in groups" },
-          { name: 'tabs-all', width: 800, height: 1408, alt: "shipyard's tabs layout on the All tab: every project's pull requests in one list, open ones first" }] },
+          { name: 'tabs-project', width: 800, height: 1016, alt: "shipyard's tabs layout on the Skills tab: pull requests and issues in groups" },
+          { name: 'tabs-all', width: 800, height: 1408, alt: "shipyard's tabs layout on the All tab: every project's pull requests in one list, then their issues" }] },
       ],
     } },
   { id: 'havooch', name: 'Havooch', state: 1, repo: 'https://github.com/yahyabedirhan/havooch',
