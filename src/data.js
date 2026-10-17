@@ -10,7 +10,7 @@ export const projects = [
     iconAlt: "shipyard's logo: a white sailboat with folded sails on two waves, on a dark graphite tile",
     line: "Menu bar app for your agents' pull requests",
     about: 'Shipyard is a macOS menu bar app for seeing and reviewing the pull requests your coding agents open for you. It lists pull requests, issues and workflow runs across your GitHub repositories and shows one count of what needs you: new, changed, waiting on your review or failing checks. Your agents can ping you with the `shipyard ping` command, and one TOML file, which you or your agents edit, sets what it shows.',
-    // assets from yahyabedirhan/shipyard at 1fe2b4a
+    // assets from yahyabedirhan/shipyard at 1debb22
     diagrams: [
       { src: '/shipyard/architecture.png', width: 2000, height: 1080, raw: true,
         alt: 'Shipyard architecture: GitHub, agents on the Mac and on servers, and Notion notes feed the Shipyard menu bar app, whose refresh turns them into a menu bar panel and notifications.',
@@ -20,10 +20,10 @@ export const projects = [
       title: 'Layouts',
       groups: [
         { head: 'List layout', text: 'All projects in one column; each project can be expanded or collapsed.', shots: [
-          { name: 'list', width: 800, height: 1008, alt: "shipyard's list layout: the Shipyard and Skills projects open with their pull requests, issues and runs, and Swift Lab and Havooch folded" }] },
+          { name: 'list', width: 800, height: 958, alt: "shipyard's list layout: the Shipyard and Skills projects open with their pull requests and issues, and Claude Mods and Havooch folded" }] },
         { head: 'Tabs layout', text: 'One tab per project, plus an All tab.', shots: [
-          { name: 'tabs-project', width: 800, height: 1190, alt: "shipyard's tabs layout on the Shipyard tab: pull requests, issues and workflow runs in groups" },
-          { name: 'tabs-all', width: 800, height: 1408, alt: "shipyard's tabs layout on the All tab: every project's pull requests in one list, open ones first" }] },
+          { name: 'tabs-project', width: 800, height: 1016, alt: "shipyard's tabs layout on the Skills tab: pull requests and issues in groups" },
+          { name: 'tabs-all', width: 800, height: 1408, alt: "shipyard's tabs layout on the All tab: every project's pull requests in one list, then their issues" }] },
       ],
     } },
   { id: 'havooch', name: 'Havooch', state: 1, repo: 'https://github.com/yahyabedirhan/havooch',
