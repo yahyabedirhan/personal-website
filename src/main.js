@@ -98,7 +98,7 @@ function aboutPage() {
   app.innerHTML = `<main class="wrap about">
     <a class="back" href="/" data-nav data-section="nav" data-track="back">← Index</a>
     <h1 class="title">About</h1>
-    <p class="meta">Hi, I'm Yahya. You can also find me here:</p>
+    <p class="about-hi">Hi, I'm Yahya. You can also find me here:</p>
     ${socials()}
     <section><h2>Analytics</h2>
       <p class="lede">The site keeps anonymous stats with no cookies. They help me see what people find useful and keep the site fast.</p>
