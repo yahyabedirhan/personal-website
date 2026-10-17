@@ -69,3 +69,9 @@ Sentry reports errors only: no tracing, no replay, no session tracking.
 - The design was inspired by [Emil Kowalski](https://emilkowal.ski), [Mert Duzgun](https://mertbuilds.com) and [Abdullah Enes Gules](https://enesgules.com).
 - The Skills page diagrams are by me, from [yahyabedirhan/skills](https://github.com/yahyabedirhan/skills) at commit `f03c580`.
 - The topographic background now lives on as its own library, topographic: [yahyabedirhan/topographic](https://github.com/yahyabedirhan/topographic).
+
+## License
+
+The code is licensed under the [Apache License 2.0](LICENSE). See [LICENSE](LICENSE) and [NOTICE](NOTICE). If you reuse or adapt it, please credit Yahya Bedirhan Pak with a link to [yahyapak.dev](https://yahyapak.dev).
+
+The site content is not covered by this license and is all rights reserved: my name, writing, logos, images, screenshots, the diagrams in `public/` and the project data in `src/data.js`.
