@@ -5,7 +5,7 @@ import { createBackground } from './bg.js';
 import { me, projects, previously, press, links, kudos } from './data.js';
 import { icons, esc } from './icons.js';
 import { initZoom } from './zoom.js';
-import { pageview, optOut, optIn, analyticsOn } from './analytics.js';
+import { pageview, optOut, optIn } from './analytics.js';
 import { getMode } from './privacy.js';
 
 const app = document.getElementById('app');
@@ -83,7 +83,9 @@ function project(id) {
   return () => {};
 }
 
-const optState = () => ({ full: 'Analytics is on in this browser.', pageviews: 'You are opted out. Only page views are counted.', off: 'You are fully opted out. Nothing is sent.' })[getMode()];
+// Whether this build has analytics at all; a local build without VITE_POSTHOG_KEY has none.
+const analyticsBuilt = Boolean(import.meta.env.VITE_POSTHOG_KEY);
+const optState = () => !analyticsBuilt ? 'This build sends no analytics.' : ({ full: 'Analytics is on in this browser.', pageviews: 'You are opted out. Only page views are counted.', off: 'You are fully opted out. Nothing is sent.' })[getMode()];
 const optLabel = () => (getMode() === 'full' ? 'Opt out' : 'Opt in');
 const collected = [
   ['Pages visited', 'the page, where you came from'],
@@ -95,7 +97,7 @@ const collected = [
 
 function aboutPage() {
   document.title = `About · ${me.name}`;
-  const opt = `<div class="opt"><p class="opt-state">${optState()}</p>${analyticsOn() ? `<button class="opt-btn optout" data-section="about" data-track="optout">${optLabel()}</button>` : ''}</div>`;
+  const opt = `<div class="opt"><p class="opt-state">${optState()}</p>${analyticsBuilt ? `<button class="opt-btn optout" data-section="about" data-track="optout">${optLabel()}</button>` : ''}</div>`;
   app.innerHTML = `<main class="wrap about">
     <a class="back" href="/" data-nav data-section="nav" data-track="back">← Index</a>
     <h1 class="title">About</h1>
