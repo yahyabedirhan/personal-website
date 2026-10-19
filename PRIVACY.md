@@ -15,15 +15,15 @@ yahyapak.dev uses light, cookieless analytics to understand which pages and proj
 
 Every event also carries `site`, which is always `personal-website`, and `system_theme`, which says whether your device prefers dark or light. It also says whether it comes from a person or an AI agent: `actor` is `human` or `agent`, with a `visitor_id` or an `agent_id`.
 
-The browser sends its device type, operating system, browser, screen size, language and timezone. Country and city are not recorded: in cookieless mode PostHog drops the IP address before it could look them up. The IP address is never stored. To count unique visitors per day without cookies, PostHog hashes the IP and browser details with a salt that changes every day, so PostHog's own id only recognises a visitor within one day.
+Your browser also shares its type, screen size, language and timezone. Your IP address is never stored, and your country and city are not recorded.
 
 ## Visitor id
 
-The first visit makes a random UUID and saves it in local storage under `visitor`. Every event carries it as `visitor_id`, so the visits of one browser can be counted together across days. The id is random: it holds nothing about you, and it differs per browser and device. Opting out deletes it and stops sending it, and clearing site data removes it.
+The first visit saves a random id in your browser under `visitor`, so return visits count once. It holds nothing about you. Opting out deletes it.
 
 ## People and agents
 
-The site counts AI agents apart from people. An agent's events carry a random `agent_id` for one browser tab instead of the visitor id. A visit counts as an agent's when the browser is run by automation, such as Playwright, or when an agent opens the site with `?analytics_agent=<name>&analytics_purpose=<purpose>`, which is optional. Only a name and a purpose from short lists in `src/privacy.js` are recorded, never free text.
+AI agents are counted apart from people. An agent gets its own random id for one browser tab. Browsers run by automation, such as Playwright, count as agents. An agent can say which agent it is and why it is here with `?analytics_agent=<name>&analytics_purpose=<purpose>`. This is optional, and only names and purposes from the short lists in `src/privacy.js` are recorded.
 
 ## What is never collected
 
