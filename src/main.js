@@ -5,7 +5,7 @@ import { createBackground } from './bg.js';
 import { me, projects, previously, press, links, kudos } from './data.js';
 import { icons, esc } from './icons.js';
 import { initZoom } from './zoom.js';
-import { pageview, optOut, optIn, analyticsOn } from './analytics.js';
+import { pageview, optOut, optIn } from './analytics.js';
 import { getMode } from './privacy.js';
 
 const app = document.getElementById('app');
@@ -89,12 +89,13 @@ const collected = [
   ['Pages visited', 'the page, where you came from'],
   ['Clicks', 'which links and projects help'],
   ['Page speed', 'to keep pages fast'],
-  ['Device and country', 'to fit how people browse'],
+  ['Device and timezone', 'to fit how people browse'],
+  ['Person or AI agent', 'to count agents apart from people'],
 ];
 
 function aboutPage() {
   document.title = `About · ${me.name}`;
-  const opt = `<div class="opt"><p class="opt-state">${optState()}</p>${analyticsOn() ? `<button class="opt-btn optout" data-section="about" data-track="optout">${optLabel()}</button>` : ''}</div>`;
+  const opt = `<div class="opt"><p class="opt-state">${optState()}</p><button class="opt-btn optout" data-section="about" data-track="optout">${optLabel()}</button></div>`;
   app.innerHTML = `<main class="wrap about">
     <a class="back" href="/" data-nav data-section="nav" data-track="back">← Index</a>
     <h1 class="title">About</h1>
@@ -102,11 +103,11 @@ function aboutPage() {
     ${socials()}</div>
     <section class="analytics">
       <div class="grp"><h2>Analytics</h2>
-      <p>The site keeps anonymous stats with no cookies. They help me see what people find useful and keep the site fast.</p></div>
+      <p>The site keeps anonymous stats with no cookies. They help me see what people find useful and keep the site fast. Opting out keeps your visits out of these stats.</p></div>
       <div class="grp"><h3>What is collected</h3>
       <ul class="rows">${collected.map(([n, r]) => `<li><div class="row"><span class="pn">${n}</span><span class="pl">${r}</span></div></li>`).join('')}</ul></div>
       <div class="grp"><h3>What is never collected</h3>
-      <p class="note">No cookies, no names or emails, no IP addresses, no screen recordings. One random id stays in this browser so return visits count once; opting out deletes it.</p></div>
+      <p class="note">The site never sets cookies, never stores IP addresses, and never collects names, emails or screen recordings.</p></div>
       <div class="grp"><h3>Where it goes</h3>
       <ul class="rows">
         <li><div class="row"><span class="pn">PostHog</span><span class="pl">analytics, stored in the EU</span></div></li>
@@ -114,7 +115,6 @@ function aboutPage() {
       <div class="grp"><h3>Opt out</h3>
       ${opt}
       <p class="note">Your choice is saved in this browser, so each browser and device opts out separately.</p>
-      <p class="fine">Or add <code>?optout</code> (page views only), <code>?optout=all</code> (nothing at all) or <code>?optin</code> to any address.</p>
       <p class="fine">Full detail in <a href="https://github.com/yahyabedirhan/personal-website/blob/main/PRIVACY.md" target="_blank" rel="noopener noreferrer" data-section="about" data-track="privacy">PRIVACY.md</a>.</p></div>
     </section>
     ${footer()}
