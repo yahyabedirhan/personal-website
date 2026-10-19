@@ -73,7 +73,7 @@ function project(id) {
     <header class="pj-head">${p.icon ? `<img class="pj-icon" src="${p.icon}"${p.icon2x ? ` srcset="${p.icon} 1x, ${p.icon2x} 2x"` : ''} alt="${esc(p.iconAlt || '')}" width="128" height="128">` : ''}<div class="pj-title"><h1>${esc(p.name)}</h1>
       <a class="pj-repo" data-section="project_link" data-track="repo" href="${p.repo}" target="_blank" rel="noopener noreferrer">${icons.github}<span>${p.repo.replace('https://', '')}</span></a></div></header>
     ${p.about ? `<p class="pj-about">${esc(p.about).replace(/`([^`]+)`/g, '<code>$1</code>')}</p>` : `<p class="pj-about is-placeholder">Description coming soon. [Yahya to fill]</p>`}
-    ${p.links ? `<nav class="pj-links" aria-label="Links" data-section="project_link">${p.links.map(l => `<a data-track="${esc(l.label.toLowerCase().replace(/[^a-z0-9]+/g, '-'))}" href="${l.href}" target="_blank" rel="noopener noreferrer">${esc(l.label)} ↗</a>`).join('')}</nav>` : ''}
+    ${p.links ? `<nav class="pj-links${p.links.some(l => l.icon) ? ' has-icons' : ''}" aria-label="Links" data-section="project_link">${p.links.map(link).join('')}</nav>` : ''}
     ${p.hero ? `<figure class="hero"><button class="zoom" data-section="zoom" data-track="hero" type="button" aria-label="Enlarge image">${img(p.hero, 'eager')}</button></figure>` : ''}
     ${p.details ? p.details.split('\n\n').map(d => `<p class="pj-about pj-details">${linked(d).replace(/`([^`]+)`/g, '<code>$1</code>')}</p>`).join('') : ''}
     ${(p.viewsFirst ? [shots, figures] : [figures, shots]).map(f => f(p)).join('')}
@@ -133,6 +133,8 @@ function kudosPage() {
   bg.setState(5); scrollTo(0, 0); return () => {};
 }
 
+// a project link: with an icon from icons.js, or as text with an arrow; main links show brighter
+const link = l => `<a${l.main ? ' class="main"' : ''} data-track="${esc(l.track || l.label.toLowerCase().replace(/[^a-z0-9]+/g, '-'))}" href="${l.href}" target="_blank" rel="noopener noreferrer">${l.icon ? `${icons[l.icon]}<span>${esc(l.label)}</span>` : `${esc(l.label)} ↗`}</a>`;
 // a project's diagrams (or a placeholder) and its screenshot sections; viewsFirst puts screenshots before diagrams
 const figures = p => p.diagrams ? p.diagrams.map(diagram).join('')
   : `<figure class="slot" style="aspect-ratio:16/10"><span>Screenshot placeholder</span></figure>`;
