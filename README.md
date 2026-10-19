@@ -55,7 +55,7 @@ Both are off unless their key is set when the site is built. Vite inlines `VITE_
 - Locally: copy `.env.example` to `.env` and fill in the values.
 - Cloudflare: add them as build variables in Workers Builds (the Worker's Settings > Build > Variables and secrets), then redeploy. Variables set only on the Worker at runtime don't reach the build.
 
-PostHog runs in cookieless mode and keeps everything in memory: no cookies, no session recording, no autocapture. The only localStorage key is `analytics`, set when a visitor opts out. The events it sends are defined in `src/analytics.js`.
+PostHog runs in cookieless mode and keeps everything in memory: no cookies, no session recording, no autocapture. Analytics use two localStorage keys: `analytics`, set when a visitor opts out, and `visitor`, a random UUID sent as the `visitor_id` event property so one browser's visits group across days. Opting out deletes `visitor`. The events it sends are defined in `src/analytics.js`.
 
 Sentry reports errors only: no tracing, no replay, no session tracking.
 
