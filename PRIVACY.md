@@ -23,12 +23,7 @@ The first visit makes a random id (a UUID) and saves it in local storage under `
 
 ## People and agents
 
-Every event says whether it comes from a person or an AI agent. An agent's events carry a random `agent_id` instead of the visitor id, kept for one browser tab only.
-
-- A browser driven by automation, such as Playwright or Selenium, counts as an agent, with whether it was headless or visible.
-- An agent can open the site with `?analytics_agent=<name>&analytics_purpose=<purpose>`. The name and purpose come only from fixed lists (such as `claude` and `testing`); anything else is ignored. No field takes text an agent writes, so an agent cannot send details about the person it works for, even by accident.
-
-The full lists are in `src/privacy.js`.
+The site counts AI agents apart from people. An agent's events carry a random `agent_id` for one browser tab instead of the visitor id. A visit counts as an agent's when the browser is run by automation, such as Playwright, or when an agent opens the site with `?analytics_agent=<name>&analytics_purpose=<purpose>`, which is optional. Only a name and a purpose from short lists in `src/privacy.js` are recorded, never free text.
 
 ## What is never collected
 
