@@ -83,7 +83,7 @@ function project(id) {
   return () => {};
 }
 
-const optState = () => ({ full: 'Analytics is on in this browser.', pageviews: 'You are opted out. Only page views are counted.', off: 'You are fully opted out. Nothing is sent.' })[getMode()];
+const optState = () => ({ full: 'Analytics is on in this browser.', pageviews: "You're opted out from analytics events. We still count that the page was opened, nothing more.", off: 'You are fully opted out. Nothing is sent.' })[getMode()];
 const optLabel = () => (getMode() === 'full' ? 'Opt out' : 'Opt in');
 const collected = [
   ['Pages visited', 'the page, where you came from'],
