@@ -2,7 +2,7 @@
 // and posthog-js is never fetched. With it, posthog-js loads after the first paint, in memory only.
 // The visitor's preference (see privacy.js) decides how much is sent: "off" loads nothing,
 // "pageviews" lets only $pageview and $pageleave through, "full" sends everything below.
-import { getMode, setMode, visitorId } from './privacy.js';
+import { ACTOR_KEYS, actorProps, getMode, setMode } from './privacy.js';
 
 const KEY = getMode() === 'off' ? undefined : import.meta.env.VITE_POSTHOG_KEY;
 const PAGEVIEWS_ONLY = new Set(['$pageview', '$pageleave', 'analytics_opted_out']);
@@ -37,12 +37,15 @@ function load() {
       capture_heatmaps: false,
       capture_performance: { web_vitals: true, web_vitals_attribution: false, web_vitals_allowed_metrics: ['LCP', 'CLS', 'INP', 'FCP'], network_timing: false },
       capture_exceptions: false,
+      // WebDriver browsers (Playwright, Selenium, Puppeteer) are sent, not dropped: pageviews arrive as $bot_pageview,
+      // and actorProps() marks their events actor: agent. A preview option of posthog-js, which may change.
+      __preview_capture_bot_pageviews: true,
       // pageviews mode: drop everything but pageviews (and the one opt-out event), and the scroll and duration props on the pageviews
       before_send: e => {
         if (!e || getMode() === 'full') return e;
         if (!PAGEVIEWS_ONLY.has(e.event)) return null;
         for (const k in e.properties) if (k.startsWith('$prev_pageview_')) delete e.properties[k];
-        delete e.properties.visitor_id;
+        for (const k of ACTOR_KEYS) delete e.properties[k];
         return e;
       },
     });
@@ -51,8 +54,8 @@ function load() {
       site: 'personal-website',
       system_theme: matchMedia('(prefers-color-scheme: light)').matches ? 'light' : 'dark',
     });
-    // posthog keeps its daily cookieless id; visitor_id groups one browser's visits across days
-    if (getMode() === 'full') posthog.register({ visitor_id: visitorId() });
+    // posthog keeps its daily cookieless id; actor says person or agent, and visitor_id or agent_id groups one browser's visits
+    if (getMode() === 'full') posthog.register(actorProps());
     ph = posthog;
     queue.splice(0).forEach(([name, props]) => ph.capture(name, props));
   }).catch(() => {});
@@ -77,7 +80,7 @@ export function optOut() {
   if (ph) ph.capture('analytics_opted_out', {}, { send_instantly: true });
   else queue.push(['analytics_opted_out', {}]);
   setMode('pageviews');
-  ph?.unregister('visitor_id');
+  for (const k of ACTOR_KEYS) ph?.unregister(k);
 }
 export const optIn = () => setMode('full');
 
