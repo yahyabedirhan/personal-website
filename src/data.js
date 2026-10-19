@@ -71,14 +71,17 @@ export const projects = [
     viewsFirst: true, // screenshots, then the diagrams
     // assets from yahyabedirhan/topographic main at d0a5ea3: logo, screenshots and diagrams
     icon: '/topographic/topographic.png', iconAlt: "The topographic logo: three contour rings on paper folded along one diagonal crease, on a graphite tile",
-    line: 'Animated topographic maps in 2D and 3D',
-    about: "Animated topographic maps for web backgrounds, rendered with WebGL in 2D and 3D.",
+    line: 'Topographic terrain, rendered live with WebGL',
+    about: 'Topographic terrain rendered with WebGL. Generate a land or turn a real place into a topographic terrain.',
     // shown under the hero, above the examples
-    details: "The landscape can be made up, or it can come from a real place on Earth. You can change the shape, the lines, the colours and the motion, so there is no limit to the looks you can make.\n\nThe npm package has no dependencies and works in plain HTML and in React. In the [playground](https://topographic.yahyapak.dev/), you change the settings and export the code, a PNG image or a video. AI agents can use the [playground](https://topographic.yahyapak.dev/) through llms.txt and WebMCP.",
+    details: 'Use it in plain HTML, in JavaScript or in React. In the [playground](https://topographic.yahyapak.dev/), pick a real place or shape a land, then copy the code, a PNG image or a video.',
+    // icon: a key of icons in icons.js; main: shown brighter, as the first places to go
     links: [
-      { label: 'Playground', href: 'https://topographic.yahyapak.dev/' },
-      { label: 'npm: topographic', href: 'https://www.npmjs.com/package/topographic' },
-      { label: 'npm: topographic-react', href: 'https://www.npmjs.com/package/topographic-react' },
+      { label: 'Playground', href: 'https://topographic.yahyapak.dev/', icon: 'playground', main: true },
+      { label: 'Docs', href: 'https://topographic.yahyapak.dev/docs', icon: 'docs', main: true },
+      { label: 'topographic', href: 'https://www.npmjs.com/package/topographic', icon: 'npm', track: 'npm-topographic' },
+      { label: 'topographic-react', href: 'https://www.npmjs.com/package/topographic-react', icon: 'npm', track: 'npm-topographic-react' },
+      { label: 'GitHub', href: 'https://github.com/yahyabedirhan/topographic', icon: 'github' },
     ],
     hero: { src: '/topographic/hero.webp', width: 2400, height: 1350,
       alt: 'Fine granite in 3D: a summit ringed by pale contour lines, gullies fanning out to a dark horizon' },
@@ -88,7 +91,7 @@ export const projects = [
         caption: 'The web component, the React component and the [playground](https://topographic.yahyapak.dev/) all use the same code. One renderer draws both 2D and 3D.' },
       { title: 'One terrain, two views', src: '/topographic/terrain-two-views.png', width: 1920, height: 1250, raw: true,
         alt: 'One terrain, two views: settings, or an optional heightfield, feed one shared contour field. In 2D a fragment shader paints its lines on every pixel. In 3D a mesh is lifted by the same field, painted with the same lines and seen through a moving camera.',
-        caption: '2D and 3D use the same land shape and the same lines. 3D only adds height and a camera.' },
+        caption: '2D and 3D use the same land and the same lines. 3D only adds height and a camera.' },
       { title: 'From a place to a terrain', src: '/topographic/real-place-pipeline.png', width: 1920, height: 1218, raw: true,
         alt: 'How a real place becomes a terrain in the playground: the Map popover gives a bounding box, a worker fetches Terrarium elevation tiles, stitches and resamples them to a 256 by 256 grid, scales the relief and smooths it, and the region hook hands the heightfield to the renderer with setHeightfield().',
         caption: 'The [playground](https://topographic.yahyapak.dev/) downloads height data for the area, smooths it and turns it into a grid of heights. setHeightfield() then draws it.' },
@@ -96,22 +99,22 @@ export const projects = [
     views: {
       title: 'Examples',
       groups: [
-        { head: 'Looks', text: 'You can change the shape of the land, the lines, the colours and the motion. There is no limit to the looks you can make.', shots: [
-          { src: '/topographic/look-survey-ridge-2d.webp', width: 640, height: 400, alt: 'Survey ridge: pale lines around a long ridge on dark paper' },
-          { src: '/topographic/look-sea-dunes-2d.webp', width: 640, height: 400, alt: 'Sea dunes: blue-green dune lines on deep teal' },
-          { src: '/topographic/look-stepped-petals-2d.webp', width: 640, height: 400, alt: 'Stepped petals: plum lines on pale pink paper' }] },
-        { head: '3D', text: 'The same lines can also be shown as a 3D landscape. You can view it from any angle.', shots: [
-          { src: '/topographic/look-night-flower-3d.webp', width: 640, height: 400, alt: 'Night flower in 3D: blue rings rising to a soft dome' },
-          { src: '/topographic/look-terraces-3d.webp', width: 640, height: 400, alt: 'Terraces in 3D: amber lines stepping up a hill' },
-          { src: '/topographic/look-rocky-spine-3d.webp', width: 640, height: 400, alt: 'Rocky spine in 3D: brown lines over a rough ridge on light paper' }] },
-        { head: 'Real places', text: 'The landscape can also come from a real place, using real height data. The [playground](https://topographic.yahyapak.dev/) has ten places ready to use, and you can choose any area up to 300 km wide.', shots: [
+        { head: 'Real places', text: 'Turn a real place into a terrain, from real elevation data. The [playground](https://topographic.yahyapak.dev/) has ten places ready to use, and you can choose any area up to 300 km wide.', shots: [
           { src: '/topographic/place-istanbul.webp', width: 640, height: 400, alt: 'Istanbul, with the Bosphorus between the two shores' },
           { src: '/topographic/place-geirangerfjord.webp', width: 640, height: 400, alt: 'Geirangerfjord between steep walls' },
           { src: '/topographic/place-grand-canyon.webp', width: 640, height: 400, alt: 'The Grand Canyon from rim to rim' },
           { src: '/topographic/place-fuji.webp', width: 640, height: 400, alt: 'Mount Fuji, the cone and its lakes' },
           { src: '/topographic/place-everest.webp', width: 640, height: 400, alt: 'Everest above the Khumbu valley' },
           { src: '/topographic/place-matterhorn.webp', width: 640, height: 400, alt: 'The Matterhorn above Zermatt' }] },
-        { head: 'Try it: [Playground](https://topographic.yahyapak.dev/)', text: 'In the [playground](https://topographic.yahyapak.dev/), pick a look at the bottom, change the settings under Tune, choose a real place under Map, and get the code, a PNG or a video under Export.', wide: true, shots: [
+        { head: 'Looks', text: 'Or generate a land of your own. You change its shape, the lines, the colours and the motion, and the same settings always draw the same land.', shots: [
+          { src: '/topographic/look-survey-ridge-2d.webp', width: 640, height: 400, alt: 'Survey ridge: pale lines around a long ridge on dark paper' },
+          { src: '/topographic/look-sea-dunes-2d.webp', width: 640, height: 400, alt: 'Sea dunes: blue-green dune lines on deep teal' },
+          { src: '/topographic/look-stepped-petals-2d.webp', width: 640, height: 400, alt: 'Stepped petals: plum lines on pale pink paper' }] },
+        { head: '3D', text: 'Every terrain can also be shown in 3D, and you can view it from any angle.', shots: [
+          { src: '/topographic/look-night-flower-3d.webp', width: 640, height: 400, alt: 'Night flower in 3D: blue rings rising to a soft dome' },
+          { src: '/topographic/look-terraces-3d.webp', width: 640, height: 400, alt: 'Terraces in 3D: amber lines stepping up a hill' },
+          { src: '/topographic/look-rocky-spine-3d.webp', width: 640, height: 400, alt: 'Rocky spine in 3D: brown lines over a rough ridge on light paper' }] },
+        { head: 'Try it: [Playground](https://topographic.yahyapak.dev/)', text: 'In the [playground](https://topographic.yahyapak.dev/), choose a real place under Map or a look at the bottom, change the settings under Tune, and copy the code, a PNG image or a video under Export.', wide: true, shots: [
           { src: '/topographic/playground-dark.webp', width: 1440, height: 900, alt: 'The playground in dark mode: Istanbul in 3D behind the page, the dock of looks along the bottom, the controls at the top right and a minimap of the place in the corner' },
           { src: '/topographic/map-popover-dark.webp', width: 1440, height: 900, alt: 'The Map popover over Istanbul: a dark map with a white frame around the city, the place menu above, and Clear and Applied below' }] },
       ],
