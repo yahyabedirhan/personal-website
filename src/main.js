@@ -117,7 +117,6 @@ function aboutPage() {
       <div class="grp"><h3>Opt out</h3>
       ${opt}
       <p class="note">Your choice is saved in this browser, so each browser and device opts out separately.</p>
-      <p class="fine">Or add <code>?analytics_optout</code> to any address to send page views only, <code>?analytics_optout=all</code> to send nothing, or <code>?analytics_optin</code> to undo either.</p>
       <p class="fine">Full detail in <a href="https://github.com/yahyabedirhan/personal-website/blob/main/PRIVACY.md" target="_blank" rel="noopener noreferrer" data-section="about" data-track="privacy">PRIVACY.md</a>.</p></div>
     </section>
     ${footer()}
