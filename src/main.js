@@ -83,9 +83,7 @@ function project(id) {
   return () => {};
 }
 
-// Whether this build has analytics at all; a local build without VITE_POSTHOG_KEY has none.
-const analyticsBuilt = Boolean(import.meta.env.VITE_POSTHOG_KEY);
-const optState = () => !analyticsBuilt ? 'This build sends no analytics.' : ({ full: 'Analytics is on in this browser.', pageviews: 'You are opted out. Only page views are counted.', off: 'You are fully opted out. Nothing is sent.' })[getMode()];
+const optState = () => ({ full: 'Analytics is on in this browser.', pageviews: 'You are opted out. Only page views are counted.', off: 'You are fully opted out. Nothing is sent.' })[getMode()];
 const optLabel = () => (getMode() === 'full' ? 'Opt out' : 'Opt in');
 const collected = [
   ['Pages visited', 'the page, where you came from'],
@@ -97,7 +95,7 @@ const collected = [
 
 function aboutPage() {
   document.title = `About · ${me.name}`;
-  const opt = `<div class="opt"><p class="opt-state">${optState()}</p>${analyticsBuilt ? `<button class="opt-btn optout" data-section="about" data-track="optout">${optLabel()}</button>` : ''}</div>`;
+  const opt = `<div class="opt"><p class="opt-state">${optState()}</p><button class="opt-btn optout" data-section="about" data-track="optout">${optLabel()}</button></div>`;
   app.innerHTML = `<main class="wrap about">
     <a class="back" href="/" data-nav data-section="nav" data-track="back">← Index</a>
     <h1 class="title">About</h1>
