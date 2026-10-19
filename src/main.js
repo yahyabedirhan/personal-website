@@ -106,7 +106,7 @@ function aboutPage() {
       <div class="grp"><h3>What is collected</h3>
       <ul class="rows">${collected.map(([n, r]) => `<li><div class="row"><span class="pn">${n}</span><span class="pl">${r}</span></div></li>`).join('')}</ul></div>
       <div class="grp"><h3>What is never collected</h3>
-      <p class="note">No cookies, no names or emails, no IP addresses, no screen recordings.</p></div>
+      <p class="note">No cookies, no names or emails, no IP addresses, no screen recordings. One random id stays in this browser so return visits count once; opting out deletes it.</p></div>
       <div class="grp"><h3>Where it goes</h3>
       <ul class="rows">
         <li><div class="row"><span class="pn">PostHog</span><span class="pl">analytics, stored in the EU</span></div></li>

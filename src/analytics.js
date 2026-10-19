@@ -2,7 +2,7 @@
 // and posthog-js is never fetched. With it, posthog-js loads after the first paint, in memory only.
 // The visitor's preference (see privacy.js) decides how much is sent: "off" loads nothing,
 // "pageviews" lets only $pageview and $pageleave through, "full" sends everything below.
-import { getMode, setMode } from './privacy.js';
+import { getMode, setMode, visitorId } from './privacy.js';
 
 const KEY = getMode() === 'off' ? undefined : import.meta.env.VITE_POSTHOG_KEY;
 const PAGEVIEWS_ONLY = new Set(['$pageview', '$pageleave', 'analytics_opted_out']);
@@ -17,7 +17,7 @@ function load() {
   ]).then(([{ default: posthog }]) => {
     posthog.init(KEY, {
       api_host: 'https://eu.i.posthog.com',
-      persistence: 'memory',           // no cookies, no localStorage
+      persistence: 'memory',           // no cookies; posthog-js itself writes nothing to localStorage
       // anonymous id hashed server side from IP + user agent with a daily salt, IP then dropped:
       // same-day unique visitors without storing anything on the device
       cookieless_mode: 'always',
@@ -42,6 +42,7 @@ function load() {
         if (!e || getMode() === 'full') return e;
         if (!PAGEVIEWS_ONLY.has(e.event)) return null;
         for (const k in e.properties) if (k.startsWith('$prev_pageview_')) delete e.properties[k];
+        delete e.properties.visitor_id;
         return e;
       },
     });
@@ -50,6 +51,8 @@ function load() {
       site: 'personal-website',
       system_theme: matchMedia('(prefers-color-scheme: light)').matches ? 'light' : 'dark',
     });
+    // posthog keeps its daily cookieless id; visitor_id groups one browser's visits across days
+    if (getMode() === 'full') posthog.register({ visitor_id: visitorId() });
     ph = posthog;
     queue.splice(0).forEach(([name, props]) => ph.capture(name, props));
   }).catch(() => {});
@@ -74,6 +77,7 @@ export function optOut() {
   if (ph) ph.capture('analytics_opted_out', {}, { send_instantly: true });
   else queue.push(['analytics_opted_out', {}]);
   setMode('pageviews');
+  ph?.unregister('visitor_id');
 }
 export const optIn = () => setMode('full');
 
