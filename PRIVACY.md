@@ -6,20 +6,20 @@ yahyapak.dev uses light, cookieless analytics to understand which pages and proj
 
 | Event | Contains | Why |
 | --- | --- | --- |
-| `$pageview` | the page address (including UTM tags in shared links), the referring site, and `entry` (whether this was the first page of the visit) | see which pages people visit and how they arrive |
+| `$pageview` | the page address, including UTM tags in shared links, the referring site, and `entry`, which says whether this was the first page of the visit | see which pages people visit and how they arrive |
 | `$pageleave` | time spent on the page and how far down it was scrolled | see whether pages are actually read |
-| `ui_click` | which link or button was clicked (section and name), its address, and whether it leads off the site; mail links never include the address | see which projects and links people find useful |
-| Web vitals | page load and responsiveness timings (LCP, INP, CLS, FCP) for the page | check that pages load fast |
+| `ui_click` | which link or button was clicked, by section and name, its address, and whether it leads off the site; mail links never include the address | see which projects and links people find useful |
+| Web vitals | page load and responsiveness timings for the page: LCP, INP, CLS and FCP | check that pages load fast |
 | `analytics_opted_out` | nothing beyond the common properties | count how many people opt out |
-| Error reports (Sentry) | the error message, stack trace, page and browser | fix bugs |
+| Error reports, sent to Sentry | the error message, stack trace, page and browser | fix bugs |
 
-Every event also carries `site` (always `personal-website`), `system_theme` (whether your device prefers dark or light) and who it comes from: `actor` (`human` or `agent`) with a `visitor_id` or an `agent_id`.
+Every event also carries `site`, which is always `personal-website`, and `system_theme`, which says whether your device prefers dark or light. It also says whether it comes from a person or an AI agent: `actor` is `human` or `agent`, with a `visitor_id` or an `agent_id`.
 
 The browser sends its device type, operating system, browser, screen size, language and timezone. Country and city are not recorded: in cookieless mode PostHog drops the IP address before it could look them up. The IP address is never stored. To count unique visitors per day without cookies, PostHog hashes the IP and browser details with a salt that changes every day, so PostHog's own id only recognises a visitor within one day.
 
 ## Visitor id
 
-The first visit makes a random id (a UUID) and saves it in local storage under `visitor`. Every event carries it as `visitor_id`, so the visits of one browser can be counted together across days. The id is random: it holds nothing about you, and it differs per browser and device. Opting out deletes it and stops sending it, and clearing site data removes it.
+The first visit makes a random UUID and saves it in local storage under `visitor`. Every event carries it as `visitor_id`, so the visits of one browser can be counted together across days. The id is random: it holds nothing about you, and it differs per browser and device. Opting out deletes it and stops sending it, and clearing site data removes it.
 
 ## People and agents
 
