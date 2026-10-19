@@ -103,11 +103,11 @@ function aboutPage() {
     ${socials()}</div>
     <section class="analytics">
       <div class="grp"><h2>Analytics</h2>
-      <p>The site keeps anonymous stats with no cookies. They help me see what people find useful and keep the site fast.</p></div>
+      <p>The site keeps anonymous stats with no cookies. They help me see what people find useful and keep the site fast. It keeps one random id in this browser so return visits count once, and AI agents get their own id for one browser tab. Opting out deletes both.</p></div>
       <div class="grp"><h3>What is collected</h3>
       <ul class="rows">${collected.map(([n, r]) => `<li><div class="row"><span class="pn">${n}</span><span class="pl">${r}</span></div></li>`).join('')}</ul></div>
       <div class="grp"><h3>What is never collected</h3>
-      <p class="note">No cookies, no names or emails, no IP addresses, no screen recordings. One random id stays in this browser so return visits count once, and AI agents get their own id for one tab; opting out deletes both.</p></div>
+      <p class="note">The site never sets cookies, never stores IP addresses, and never collects names, emails or screen recordings.</p></div>
       <div class="grp"><h3>Where it goes</h3>
       <ul class="rows">
         <li><div class="row"><span class="pn">PostHog</span><span class="pl">analytics, stored in the EU</span></div></li>

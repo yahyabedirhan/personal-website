@@ -27,7 +27,10 @@ The site counts AI agents apart from people. An agent's events carry a random `a
 
 ## What is never collected
 
-Your name, email, raw IP address, screen recordings, or anything that follows you across devices or other sites.
+- The site never sets cookies and never fingerprints your browser.
+- It never stores your IP address, and never collects your name or email.
+- It never records your screen.
+- It never collects anything that follows you across devices or other sites.
 
 ## Opting out
 
