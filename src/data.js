@@ -99,7 +99,7 @@ export const projects = [
     views: {
       title: 'Examples',
       groups: [
-        { head: 'Real places', text: 'Turn a real place into a terrain, from real elevation data. The [playground](https://topographic.yahyapak.dev/) has ten places ready to use, and you can choose any area up to 300 km wide.', shots: [
+        { head: 'Real places', text: 'Turn a real place into a terrain, from real elevation data. In the [playground](https://topographic.yahyapak.dev/), pick a famous place or frame any area on the map.', shots: [
           { src: '/topographic/place-istanbul.webp', width: 640, height: 400, alt: 'Istanbul, with the Bosphorus between the two shores' },
           { src: '/topographic/place-geirangerfjord.webp', width: 640, height: 400, alt: 'Geirangerfjord between steep walls' },
           { src: '/topographic/place-grand-canyon.webp', width: 640, height: 400, alt: 'The Grand Canyon from rim to rim' },
