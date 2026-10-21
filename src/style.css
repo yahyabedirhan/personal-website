@@ -102,6 +102,8 @@ section{margin-top:64px}
 .pj-head{margin-top:40px}
 /* logos are 512px canvases with a 50px transparent margin around the tile; pull the image out by that margin so the tile lines up with the text */
 .pj-icon{--icon:128px;--icon-inset:calc(var(--icon) * 50 / 512);display:block;width:var(--icon);height:var(--icon);margin:0 0 calc(18px - var(--icon-inset)) calc(-1 * var(--icon-inset))}
+/* a logo whose tile fills the whole image (iconFull): no margin to pull out, so draw it at the tile size the padded logos show */
+.pj-icon.is-full{width:calc(var(--icon) * 412 / 512);height:calc(var(--icon) * 412 / 512);margin:0 0 18px}
 .pj-repo{display:inline-flex;gap:8px;align-items:center;color:var(--mut);font-size:13px;transition:color .2s}.pj-repo:hover{color:var(--fg)}
 .pj-about{margin:32px 0 40px}
 .pj-details{margin:28px 0 8px}
