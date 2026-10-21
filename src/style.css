@@ -120,6 +120,8 @@ section{margin-top:64px}
 .pj-about code{font:500 .88em/1 ui-monospace,SFMono-Regular,Menlo,monospace;padding:.1em .35em;border-radius:5px;background:var(--line)}
 .diagram.is-raw img{border-radius:0;box-shadow:none}
 .views{margin:8px 0 40px}
+/* after a details paragraph, leave the same room as after the about text */
+.pj-details + .views{margin-top:40px}
 .views h2{font:600 22px/1.2 Literata,Georgia,serif;letter-spacing:-.012em;margin:0 0 20px}
 .views h3{font-size:15px;font-weight:600;margin:28px 0 4px}
 .views h3+p{margin:0 0 16px;color:var(--mut);font-size:14px}
