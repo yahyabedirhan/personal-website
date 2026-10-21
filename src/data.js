@@ -12,7 +12,7 @@ export const projects = [
     about: 'shipyard is a macOS menu bar app for keeping up with your projects while your agents work. It shows your pull requests, issues, workflow runs, pings from your agents and notes, grouped by project, in one list in the menu bar. It is for people whose coding agents work on their projects, and for maintainers who review what other people open.',
     details: 'A number in the menu bar counts what needs your attention: items that are new, changed since you last looked, waiting on your review, or failing their checks.\n\nshipyard signs in to GitHub through the GitHub CLI, `gh`, or Sign in with GitHub, and reads your notes from Notion through its CLI, `ntn`. Your agents talk to you through the `shipyard` command. Its settings live in one configuration file, which your agents edit for you with the shipyard skill.',
     viewsFirst: true, // screenshots, then the diagram
-    // assets from yahyabedirhan/shipyard at ed01f35: logo and screenshots, which show made-up demo content; architecture.png at 1debb22
+    // assets from yahyabedirhan/shipyard at 1001f7b: logo and screenshots, which show made-up demo content; architecture.png at 1debb22
     diagrams: [
       { src: '/shipyard/architecture.png', width: 2000, height: 1080, raw: true,
         alt: "shipyard's architecture: GitHub, agents on the Mac and on servers, and Notion notes feed the shipyard menu bar app, whose refresh turns them into a menu bar panel and notifications.",
