@@ -70,7 +70,7 @@ function project(id) {
   document.title = `${p.name} · ${me.name}`;
   app.innerHTML = `<main class="wrap">
     <a class="back" href="/" data-nav data-section="nav" data-track="back">← Index</a>
-    <header class="pj-head">${p.icon ? `<img class="pj-icon" src="${p.icon}"${p.icon2x ? ` srcset="${p.icon} 1x, ${p.icon2x} 2x"` : ''} alt="${esc(p.iconAlt || '')}" width="128" height="128">` : ''}<div class="pj-title"><h1>${esc(p.name)}</h1>
+    <header class="pj-head">${p.icon ? `<img class="pj-icon${p.iconFull ? ' is-full' : ''}" src="${p.icon}"${p.icon2x ? ` srcset="${p.icon} 1x, ${p.icon2x} 2x"` : ''} alt="${esc(p.iconAlt || '')}" width="128" height="128">` : ''}<div class="pj-title"><h1>${esc(p.name)}</h1>
       <a class="pj-repo" data-section="project_link" data-track="repo" href="${p.repo}" target="_blank" rel="noopener noreferrer">${icons.github}<span>${p.repo.replace('https://', '')}</span></a></div></header>
     ${p.about ? `<p class="pj-about">${esc(p.about).replace(/`([^`]+)`/g, '<code>$1</code>')}</p>` : `<p class="pj-about is-placeholder">Description coming soon. [Yahya to fill]</p>`}
     ${p.links ? `<nav class="pj-links${p.links.some(l => l.icon) ? ' has-icons' : ''}" aria-label="Links" data-section="project_link">${p.links.map(link).join('')}</nav>` : ''}
