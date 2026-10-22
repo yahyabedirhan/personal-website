@@ -43,7 +43,7 @@ export const projects = [
           { src: '/shipyard/preset-review-queue-dark.png', width: 800, height: 380, alt: 'The review-queue preset: two pull requests waiting on your review, one in yahyabedirhan/shipyard and one in yahyabedirhan/topographic' }] },
       ],
     } },
-  { id: 'havooch', name: 'Havooch', state: 1, repo: 'https://github.com/yahyabedirhan/havooch',
+  { id: 'havooch', name: 'havooch', state: 1, repo: 'https://github.com/yahyabedirhan/havooch',
     // assets from yahyabedirhan/havooch at 0e606c3; havooch-mark.svg is there for small inline uses
     icon: '/havooch/havooch-app-icon-256.png', icon2x: '/havooch/havooch-app-icon-512.png',
     iconAlt: "Havooch's app icon: the head of Havuç, an orange and white cat folded from paper, on a dark graphite rounded tile",
@@ -72,7 +72,7 @@ export const projects = [
         { src: '/havooch/side-by-side-graphite.png', width: 2720, height: 1460, alt: 'Compare: v1 and v3 side by side on one playhead' },
         { src: '/havooch/connect-view-graphite.png', width: 2720, height: 1460, alt: 'The Connect view: the command is linked, the skill is installed, and Codex is picked' }] }],
     } },
-  { id: 'skills', name: 'Skills', state: 3, repo: 'https://github.com/yahyabedirhan/skills', icon: '/icons/skills.webp',
+  { id: 'skills', name: 'skills', state: 3, repo: 'https://github.com/yahyabedirhan/skills', icon: '/icons/skills.webp',
     line: 'Agent skills I use across projects',
     about: "Agent skills I use across projects: my own, and forks of other people's that I've changed. They come in five families, and the main one, the effort workflow, takes a feature from an idea to a merged pull request: a thinking session decides what to build, and a fresh orchestrator builds it. They work with Claude Code, Codex and any agent the skills CLI supports.",
     // diagrams by Yahya, from yahyabedirhan/skills at f03c580 (assets/images/diagrams/*-diagram.png)
