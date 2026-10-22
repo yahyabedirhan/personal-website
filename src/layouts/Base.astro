@@ -1,8 +1,9 @@
 ---
 // Every page's document: the head from src/meta.js, the theme set before first paint, the fonts,
-// the client router that moves between pages without a full load, and the one background canvas.
-// The canvas persists across the router's page changes, so the background keeps running and morphs
-// to the next page's state; bg is that state (0 idle, 1-4 a project, 5 kudos, see data.js).
+// the client router that moves between pages without a full load, and the background element #bg,
+// where src/main.js draws the topographic library's canvas. #bg persists across the router's page
+// changes, so the background keeps running and morphs to the next page's state; bg is that state
+// (0 idle, 1-4 a project, 5 kudos, see bgScenes in data.js).
 import { ClientRouter } from 'astro:transitions';
 import { absolute } from '../meta.js';
 import '../style.css';
@@ -38,7 +39,7 @@ const image = absolute(page.image);
 <ClientRouter fallback="animate" />
 </head>
 <body>
-<canvas id="bg" aria-hidden="true" transition:persist="bg" transition:animate="none"></canvas>
+<div id="bg" aria-hidden="true" transition:persist="bg" transition:animate="none"></div>
 <div id="app" data-bg={bg}><slot /></div>
 <script>
   import '../main.js';

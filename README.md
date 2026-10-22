@@ -15,7 +15,7 @@ It's my personal website. I'm Yahya Bedirhan Pak, a software engineer, and this 
 - [Astro](https://astro.build) with static output: every page is its own HTML file, built from `src/data.js`
 - Astro's client router moves between pages without a full load, so the background keeps running and morphs to the next page
 - Plain JavaScript in the browser, no UI framework
-- One WebGL fragment shader for the topographic background
+- The background is drawn by [topographic](https://github.com/yahyabedirhan/topographic), my WebGL library for topographic terrain, which blends between one scene for each page state
 - Clean URLs: `/`, `/projects/<id>`, `/about` and `/kudos`
 
 ## Layout
@@ -23,10 +23,10 @@ It's my personal website. I'm Yahya Bedirhan Pak, a software engineer, and this 
 ```text
 astro.config.mjs  Astro settings: static output, one HTML file per page, prefetch on hover
 src/pages/        one file per page, and sitemap.xml
-src/layouts/      Base.astro: the head, the theme set before first paint, the router and the background canvas
-src/main.js       the one browser script: background states, theme, opt-out, zoom, analytics
-src/data.js       the site's content, the one source for every page
-src/              background renderer, analytics, error reporting, styles
+src/layouts/      Base.astro: the head, the theme set before first paint, the router and the background element
+src/main.js       the one browser script: the topographic background and its states, theme, opt-out, zoom, analytics
+src/data.js       the site's content and the background's scenes, the one source for every page
+src/              analytics, error reporting, image zoom, styles
 public/           site logo, app icons, images, diagrams, favicon, robots.txt, _redirects
 scripts/          check-build.mjs, which checks each built page holds its content
 assets/           logo and screenshot for this README
@@ -72,7 +72,7 @@ What is collected and how visitors can opt out is described in [PRIVACY.md](PRIV
 
 - The design was inspired by [Emil Kowalski](https://emilkowal.ski), [Mert Duzgun](https://mertbuilds.com) and [Abdullah Enes Gules](https://enesgules.com).
 - The Skills page diagrams are by me, from [yahyabedirhan/skills](https://github.com/yahyabedirhan/skills) at commit `f03c580`.
-- The topographic background now lives on as its own library, topographic: [yahyabedirhan/topographic](https://github.com/yahyabedirhan/topographic).
+- The background is drawn by my library topographic: [yahyabedirhan/topographic](https://github.com/yahyabedirhan/topographic).
 
 ## License
 

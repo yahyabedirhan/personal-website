@@ -3,7 +3,8 @@
 // button, analytics and error reporting. Each page's HTML is built by Astro; this only adds behaviour.
 import './privacy.js';
 import './errors.js';
-import { createBackground } from './bg.js';
+import { createTopography } from 'topographic';
+import { bgScenes } from './data.js';
 import { initZoom } from './zoom.js';
 import { pageview, optOut, optIn } from './analytics.js';
 import { getMode } from './privacy.js';
@@ -11,9 +12,29 @@ import { OPT_STATE, optLabel } from './opt.js';
 
 const root = document.documentElement;
 const isLight = () => root.dataset.theme === 'light';
-// the canvas persists across page changes (transition:persist), so this one renderer serves every page
-const bg = createBackground(document.getElementById('bg'));
-bg.setDark(!isLight(), true);
+// The background: one topographic renderer for the whole site, blending between bgScenes.
+// #bg persists across page changes (transition:persist), so this one renderer and its one WebGL
+// context serve every page. Phones draw at 1x and 30 fps, desktop at up to 1.5x; the line count and
+// the centre fade follow the width. The library pauses in a hidden tab and holds a still frame under
+// reduced motion. The library sends lines.width as 0.5 + 3.5 * width and motion.warp as 1.5 * warp to its
+// shader, so these values give the line width of 1.4 and the warp of 0.7 the background was designed with.
+// The faded centre column is half the page width (576 / 2 + 24 gutter) plus 20px of margin: 332px.
+const coarse = matchMedia('(pointer: coarse)').matches;
+const ratio = () => (innerWidth < 600 || coarse ? 1 : 1.5);
+const sized = () => ({
+  lines: { count: innerWidth < 600 ? 36 : innerWidth < 1024 ? 30 : 24 },
+  layout: { fade: 0.7 * (innerWidth < 720 ? 0.4 : 1) },
+});
+const topography = createTopography(document.getElementById('bg'), {
+  scenes: bgScenes, scene: 0, column: 332, quality: 'full', theme: { mode: isLight() ? 'light' : 'dark' },
+  lines: { width: 0.9 / 3.5 }, motion: { warp: 0.7 / 1.5 }, ...sized(),
+}, { maxPixelRatio: ratio(), maxPixels: Infinity, maxFps: coarse ? 30 : 0 });
+addEventListener('resize', () => { topography.setOptions({ maxPixelRatio: ratio() }); topography.update(sized()); });
+// a new scene fades in; a theme change fades between light and dark, or jumps with instant
+const bg = {
+  setState: i => topography.update({ scene: i }),
+  setDark: (d, instant) => topography.update({ theme: { mode: d ? 'dark' : 'light' } }, { instant }),
+};
 initZoom();
 if ('scrollRestoration' in history) history.scrollRestoration = 'manual';
 
