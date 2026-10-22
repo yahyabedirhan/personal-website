@@ -1,0 +1,7 @@
+# yahyapak.dev: Yahya Bedirhan Pak's personal website
+# Every crawler and AI agent is welcome.
+
+User-agent: *
+Allow: /
+
+Sitemap: https://yahyapak.dev/sitemap.xml

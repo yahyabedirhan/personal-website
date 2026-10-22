@@ -3,7 +3,7 @@ export const me = {
   title: 'Software Engineer',
 };
 
-// state: background slot (1 Havooch orange, 2 Shipyard green, 3 Skills violet, 4 topographic neutral)
+// state: background slot (1 Havooch orange, 2 Shipyard green, 3 Skills violet, 4 topographic neutral; 0 is idle and 5 is Kudos)
 // about: the page description; null shows a placeholder for Yahya to fill
 export const projects = [
   { id: 'shipyard', name: 'shipyard', state: 2, repo: 'https://github.com/yahyabedirhan/shipyard', icon: '/shipyard/shipyard.png', iconFull: true,
@@ -138,9 +138,17 @@ export const projects = [
     } },
 ];
 
-// topo style per background state (0-based style index):
-// idle T1, Havooch T8, Shipyard T4, Skills T5, topographic T6 (neutral), Kudos T12 dunes
-export const styleMap = [0, 7, 3, 4, 5, 11];
+// the background's scenes from the topographic library, one per background state:
+// 0 idle, 1 Havooch, 2 Shipyard, 3 Skills, 4 topographic (neutral), 5 Kudos.
+// A scene without ink uses the theme's own line colour.
+export const bgScenes = [
+  { shape: 'drifting-lobes' },
+  { shape: 'long-ridge', ink: 'rgb(98% 50% 13%)' },
+  { shape: 'five-petals', ink: 'rgb(16% 66% 40%)' },
+  { shape: 'seed-pod', ink: 'rgb(47% 38% 98%)' },
+  { shape: 'gentle-summit' },
+  { shape: 'dunes' },
+];
 
 export const previously = [
   { name: 'Polymet', role: 'Founding Engineer', href: 'https://polymet.ai' },

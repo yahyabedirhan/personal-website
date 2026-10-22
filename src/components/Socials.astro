@@ -1,0 +1,8 @@
+---
+// The links to elsewhere: X, GitHub, LinkedIn and email, from data.js. They open in a new tab.
+import { links } from '../data.js';
+import { icons } from '../icons.js';
+---
+<nav class="socials" aria-label="Elsewhere" data-section="social">{links.map(l => (
+  <a class="glass" data-track={l.id} href={l.href} target="_blank" rel="noopener noreferrer" aria-label={l.label} set:html={icons[l.id]} />
+))}</nav>

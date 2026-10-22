@@ -21,6 +21,10 @@ button{font:inherit;color:inherit;background:none;border:0;cursor:pointer}
 ul{list-style:none}
 :focus-visible{outline:2px solid currentColor;outline-offset:3px;border-radius:4px}
 @media (prefers-reduced-motion:reduce){*{transition-duration:0s!important}}
+/* a page reached through the router fades in; the background behind it keeps running */
+#app.enter{animation:page-in .32s ease-out both}
+@keyframes page-in{from{opacity:0}}
+@media (prefers-reduced-motion:reduce){#app.enter{animation:none}}
 
 /* the one layout wrapper */
 .wrap{max-width:calc(var(--content-max) + 2 * var(--gutter));margin:0 auto;padding:var(--page-top) var(--gutter) var(--page-bottom)}
@@ -89,6 +93,8 @@ section{margin-top:64px}
 .opt-btn{flex:none;font-size:13px;font-weight:500;padding:6px 14px;border-radius:99px;box-shadow:inset 0 0 0 .5px var(--mut);transition:background .2s}
 .opt-btn:hover{background:var(--line)}
 .foot .theme{display:grid;place-items:center;width:36px;height:36px;margin:-10px;color:var(--mut);transition:color .2s}
+/* the theme button holds both icons: a sun to switch to light, a moon to switch back */
+.foot .ti{display:grid}.foot .ti-moon,:root[data-theme=light] .foot .ti-sun{display:none}:root[data-theme=light] .foot .ti-moon{display:grid}
 .foot-link:hover,.foot .theme:hover,.back:hover{color:var(--fg)}
 
 /* kudos */

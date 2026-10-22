@@ -1,0 +1,8 @@
+---
+// The footer of the home and about pages. The theme button holds both icons, and CSS shows the one
+// for the current theme, so the HTML is right before any script runs; src/main.js sets its label.
+import { icons } from '../icons.js';
+---
+<footer class="foot"><a class="foot-link" href="/kudos" data-section="kudos" data-track="kudos">Kudos</a>
+  <a class="foot-link" href="/about" data-section="about" data-track="footer">About</a>
+  <button class="theme" data-section="theme" data-track="theme" aria-label="Switch to light mode"><span class="ti ti-sun" set:html={icons.sun} /><span class="ti ti-moon" set:html={icons.moon} /></button></footer>

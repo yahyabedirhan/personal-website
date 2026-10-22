@@ -1,0 +1,43 @@
+---
+// What the site collects and the opt-out. The HTML shows the default level, full; src/main.js shows
+// this browser's own level (full, pageviews or off) and switches it when the button is pressed.
+import Base from '../layouts/Base.astro';
+import Back from '../components/Back.astro';
+import Socials from '../components/Socials.astro';
+import Footer from '../components/Footer.astro';
+import { about } from '../meta.js';
+import { OPT_STATE, optLabel } from '../opt.js';
+
+const collected = [
+  ['Pages visited', 'the page, where you came from'],
+  ['Clicks', 'which links and projects help'],
+  ['Page speed', 'to keep pages fast'],
+  ['Device and timezone', 'to fit how people browse'],
+  ['Person or AI agent', 'to count agents apart from people'],
+];
+---
+<Base page={about}>
+<main class="wrap about">
+  <Back />
+  <h1 class="title">About</h1>
+  <div class="grp"><p class="about-hi">Hi, I'm Yahya. You can also find me here:</p>
+  <Socials /></div>
+  <section class="analytics">
+    <div class="grp"><h2>Analytics</h2>
+    <p>The site keeps anonymous stats with no cookies. They help me see what people find useful and keep the site fast. Opting out keeps your visits out of these stats.</p></div>
+    <div class="grp"><h3>What is collected</h3>
+    <ul class="rows">{collected.map(([n, r]) => <li><div class="row"><span class="pn">{n}</span><span class="pl">{r}</span></div></li>)}</ul></div>
+    <div class="grp"><h3>What is never collected</h3>
+    <p class="note">The site never sets cookies, never stores IP addresses, and never collects names, emails or screen recordings.</p></div>
+    <div class="grp"><h3>Where it goes</h3>
+    <ul class="rows">
+      <li><div class="row"><span class="pn">PostHog</span><span class="pl">analytics, stored in the EU</span></div></li>
+      <li><div class="row"><span class="pn">Sentry</span><span class="pl">error reports, stored in the EU</span></div></li></ul></div>
+    <div class="grp"><h3>Opt out</h3>
+    <div class="opt"><p class="opt-state">{OPT_STATE.full}</p><button class="opt-btn optout" data-section="about" data-track="optout">{optLabel('full')}</button></div>
+    <p class="note">Your choice is saved in this browser, so each browser and device opts out separately.</p>
+    <p class="fine">Full detail in <a href="https://github.com/yahyabedirhan/personal-website/blob/main/PRIVACY.md" target="_blank" rel="noopener noreferrer" data-section="about" data-track="privacy">PRIVACY.md</a>.</p></div>
+  </section>
+  <Footer />
+</main>
+</Base>

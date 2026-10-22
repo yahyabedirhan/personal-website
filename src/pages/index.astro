@@ -1,0 +1,26 @@
+---
+// The home page: name, links, projects, previous work and press. Hovering or focusing a project row
+// (or, on touch, scrolling it into the middle of the screen) morphs the background; src/main.js does that.
+import Base from '../layouts/Base.astro';
+import Socials from '../components/Socials.astro';
+import Footer from '../components/Footer.astro';
+import { me, projects, previously, press } from '../data.js';
+import { home } from '../meta.js';
+---
+<Base page={home}>
+<main class="wrap">
+  <header class="head"><h1>{me.name}</h1><p>{me.title}</p></header>
+  <Socials />
+  <section><h2>Projects</h2><ul class="rows">{projects.map(p => (
+    <li class="proj" data-state={p.state}>
+      <a class="row glass" href={`/projects/${p.id}`} data-section="project" data-track={p.id}><span class="pn">{p.name}</span><span class="pl">{p.line}</span><span class="pa" aria-hidden="true">→</span></a></li>
+  ))}</ul></section>
+  <section><h2>Previously</h2><ul class="rows">{previously.map(e => (
+    <li><a class="row glass" data-section="previously" data-track={e.name.toLowerCase()} href={e.href} target="_blank" rel="noopener noreferrer"><span class="pn">{e.name}</span><span class="pl">{e.role}</span><span class="pa" aria-hidden="true">↗</span></a></li>
+  ))}</ul></section>
+  <section><h2>Featured in</h2><ul class="rows press">{press.map((p, i) => (
+    <li><a class="row glass" data-section="featured" data-track={`${p.outlet.toLowerCase()}-${i + 1}`} href={p.href} target="_blank" rel="noopener noreferrer" title={p.title} aria-label={`${p.label}, in ${p.outlet}: ${p.title}`}><span class="pn">{p.outlet}</span><span class="pl">{p.label}</span><span class="pa" aria-hidden="true">↗</span></a></li>
+  ))}</ul></section>
+  <Footer />
+</main>
+</Base>
