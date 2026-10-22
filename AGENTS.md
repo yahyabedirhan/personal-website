@@ -7,7 +7,7 @@ yahyapak.dev, a personal website built with Astro as static pages and deployed t
 
 - Keep `src/data.js` as the one source of the projects, links, previous work, press and kudos. The pages read them from there.
 - Run `npm run build` before you commit. It also checks that each page's HTML holds its content.
-- `src/privacy.js`, `src/analytics.js` and `src/errors.js` are copied in `yahyabedirhan/shipyard` and `yahyabedirhan/topographic`. Make a change to them in all three.
+- The privacy, analytics and error modules are copied in two other repositories: README.md > 'Copied modules'.
 
 ## Commit style
 

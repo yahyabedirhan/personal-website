@@ -69,6 +69,13 @@ PostHog runs in cookieless mode and keeps everything in memory: no cookies, no s
 
 Sentry reports errors only: no tracing, no replay, no session tracking.
 
+### Copied modules
+
+`src/privacy.js`, `src/analytics.js` and `src/errors.js` are copied on purpose, not shared as a package.
+`yahyabedirhan/shipyard` keeps an equivalent in `site/src`, and `yahyabedirhan/topographic` in `apps/playground/src`.
+Their consent levels are `all`, `pageviews` and `none`, with `shipyard:` and `topographic:` key prefixes, where this site uses `full`, `pageviews` and `off` with no prefix.
+A change to consent, the visitor id, the agent identity, PostHog or Sentry is made in all three.
+
 What is collected and how visitors can opt out is described in [PRIVACY.md](PRIVACY.md) and summarised on the site at `/about`.
 
 ## Credits
