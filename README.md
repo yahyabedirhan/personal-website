@@ -29,7 +29,8 @@ src/main.js       the one browser script: the topographic background and its sta
 src/data.js       the site's content and the background's scenes, the one source for every page
 src/meta.js       each page's title, description, canonical URL and share image
 src/opt.js, text.js  the opt-out wording and small text helpers
-src/              analytics, error reporting, image zoom, styles
+src/icons.js      the social icons and the HTML escape helper
+src/              the analytics preference (privacy.js), analytics, error reporting, image zoom, styles
 public/           site logo, app icons, images, diagrams, favicon, robots.txt, _redirects
 scripts/          check-build.mjs, which checks each built page holds its content
 assets/           logo and screenshot for this README
@@ -69,14 +70,14 @@ PostHog runs in cookieless mode and keeps everything in memory: no cookies, no s
 
 Sentry reports errors only: no tracing, no replay, no session tracking.
 
+What is collected and how visitors can opt out is described in [PRIVACY.md](PRIVACY.md) and summarised on the site at `/about`.
+
 ### Copied modules
 
 `src/privacy.js`, `src/analytics.js` and `src/errors.js` are copied on purpose, not shared as a package.
 `yahyabedirhan/shipyard` keeps an equivalent in `site/src`, and `yahyabedirhan/topographic` in `apps/playground/src`.
 Their consent levels are `all`, `pageviews` and `none`, with `shipyard:` and `topographic:` key prefixes, where this site uses `full`, `pageviews` and `off` with no prefix.
 A change to consent, the visitor id, the agent identity, PostHog or Sentry is made in all three.
-
-What is collected and how visitors can opt out is described in [PRIVACY.md](PRIVACY.md) and summarised on the site at `/about`.
 
 ## Credits
 
