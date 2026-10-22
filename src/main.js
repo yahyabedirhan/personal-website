@@ -95,6 +95,9 @@ document.addEventListener('astro:before-swap', e => {
   dispose(); dispose = () => {};
   // the new page's HTML says dark; keep the theme this page shows
   e.newDocument.documentElement.dataset.theme = root.dataset.theme;
+  // the swap itself is instant (transition:animate="none" on <html>), so the live background never
+  // freezes under a view-transition snapshot; only the new page's content fades in
+  e.newDocument.getElementById('app')?.classList.add('enter');
 });
 document.addEventListener('astro:after-swap', () => { restoreHome(); showPage(); });
 showPage();

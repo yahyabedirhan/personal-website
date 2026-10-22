@@ -13,7 +13,7 @@ const url = page.path ? absolute(page.path) : null;
 const image = absolute(page.image);
 ---
 <!doctype html>
-<html lang="en" data-theme="dark">
+<html lang="en" data-theme="dark" transition:animate="none">
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
@@ -39,7 +39,7 @@ const image = absolute(page.image);
 <ClientRouter fallback="animate" />
 </head>
 <body>
-<div id="bg" aria-hidden="true" transition:persist="bg" transition:animate="none"></div>
+<div id="bg" aria-hidden="true" transition:persist="bg"></div>
 <div id="app" data-bg={bg}><slot /></div>
 <script>
   import '../main.js';
