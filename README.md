@@ -22,10 +22,13 @@ It's my personal website. I'm Yahya Bedirhan Pak, a software engineer, and this 
 
 ```text
 astro.config.mjs  Astro settings: static output, one HTML file per page, prefetch on hover
-src/pages/        one file per page, and sitemap.xml
+src/pages/        one file per page, projects/[id].astro for every project page, and sitemap.xml
+src/components/   Back, Footer, Img and Socials, shared by the pages
 src/layouts/      Base.astro: the head, the theme set before first paint, the router and the background element
 src/main.js       the one browser script: the topographic background and its states, theme, opt-out, zoom, analytics
 src/data.js       the site's content and the background's scenes, the one source for every page
+src/meta.js       each page's title, description, canonical URL and share image
+src/opt.js, text.js  the opt-out wording and small text helpers
 src/              analytics, error reporting, image zoom, styles
 public/           site logo, app icons, images, diagrams, favicon, robots.txt, _redirects
 scripts/          check-build.mjs, which checks each built page holds its content
@@ -44,7 +47,7 @@ npm run build     # static output in dist/, then checks each page's HTML
 npm run preview   # serve the build
 ```
 
-To open the dev server from another device, pass `--host`; Vite may also need that hostname in `vite.server.allowedHosts` in `astro.config.mjs`.
+To open the dev server from another device, pass `--host`; Astro may also need that hostname in `server.allowedHosts` in `astro.config.mjs`.
 
 ## Deploy
 
