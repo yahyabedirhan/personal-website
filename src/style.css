@@ -22,8 +22,8 @@ ul{list-style:none}
 :focus-visible{outline:2px solid currentColor;outline-offset:3px;border-radius:4px}
 @media (prefers-reduced-motion:reduce){*{transition-duration:0s!important}}
 /* a page reached through the router fades in; the background behind it keeps running */
-#app.enter{animation:page-in .22s cubic-bezier(.32,.72,0,1) both}
-@keyframes page-in{from{opacity:0;transform:translateY(4px)}}
+#app.enter{animation:page-in .32s ease-out both}
+@keyframes page-in{from{opacity:0}}
 @media (prefers-reduced-motion:reduce){#app.enter{animation:none}}
 
 /* the one layout wrapper */
