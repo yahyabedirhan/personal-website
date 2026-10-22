@@ -1,11 +1,14 @@
-// Cloudflare Workers deploy: serve the Vite build as static assets.
-// single-page-application sends unknown paths like /projects/havooch to index.html.
+// Cloudflare Workers deploy: serve the Astro build in ./dist as static assets.
+// about.html is served at /about and projects/<id>.html at /projects/<id> (html_handling).
+// A path with no file gets dist/404.html with status 404 (not_found_handling).
+// public/_redirects, copied into dist, keeps old addresses working.
 {
   "name": "personal-website",
   "compatibility_date": "2026-09-01",
   "assets": {
     "directory": "./dist",
-    "not_found_handling": "single-page-application"
+    "html_handling": "auto-trailing-slash",
+    "not_found_handling": "404-page"
   },
   // turned on in the dashboard; kept here so a deploy doesn't turn it off
   "observability": {

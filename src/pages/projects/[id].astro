@@ -1,0 +1,47 @@
+---
+// One page per project in data.js, at /projects/<id>: logo, links, hero, details, then the diagrams
+// and the screenshots (viewsFirst puts the screenshots first). The background shows the project's state.
+import Base from '../../layouts/Base.astro';
+import Back from '../../components/Back.astro';
+import Img from '../../components/Img.astro';
+import { projects } from '../../data.js';
+import { icons, esc } from '../../icons.js';
+import { project as meta } from '../../meta.js';
+import { code, linked } from '../../text.js';
+
+export function getStaticPaths() {
+  return projects.map((p, i) => ({ params: { id: p.id }, props: { p, next: projects[(i + 1) % projects.length] } }));
+}
+const { p, next } = Astro.props;
+// a project link: with an icon from icons.js, or as text with an arrow; main links show brighter
+const track = l => l.track || l.label.toLowerCase().replace(/[^a-z0-9]+/g, '-');
+const order = p.viewsFirst ? ['views', 'diagrams'] : ['diagrams', 'views'];
+---
+<Base page={meta(p)} bg={p.state}>
+<main class="wrap">
+  <Back />
+  <header class="pj-head">{p.icon && <img class={`pj-icon${p.iconFull ? ' is-full' : ''}`} src={p.icon} srcset={p.icon2x ? `${p.icon} 1x, ${p.icon2x} 2x` : undefined} alt={p.iconAlt || ''} width="128" height="128">}<div class="pj-title"><h1>{p.name}</h1>
+    <a class="pj-repo" data-section="project_link" data-track="repo" href={p.repo} target="_blank" rel="noopener noreferrer"><Fragment set:html={icons.github} /><span>{p.repo.replace('https://', '')}</span></a></div></header>
+  {p.about ? <p class="pj-about" set:html={code(esc(p.about))} /> : <p class="pj-about is-placeholder">Description coming soon. [Yahya to fill]</p>}
+  {p.links && <nav class={`pj-links${p.links.some(l => l.icon) ? ' has-icons' : ''}`} aria-label="Links" data-section="project_link">{p.links.map(l => (
+    <a class={l.main ? 'main' : undefined} data-track={track(l)} href={l.href} target="_blank" rel="noopener noreferrer">{l.icon ? <><Fragment set:html={icons[l.icon]} /><span>{l.label}</span></> : `${l.label} ↗`}</a>
+  ))}</nav>}
+  {p.hero && <figure class="hero"><button class="zoom" data-section="zoom" data-track="hero" type="button" aria-label="Enlarge image"><Img s={p.hero} load="eager" /></button></figure>}
+  {p.details && p.details.split('\n\n').map(d => <p class="pj-about pj-details" set:html={code(linked(d))} />)}
+  {order.map(part => part === 'diagrams'
+    ? (p.diagrams ? p.diagrams.map(d => <>
+        {d.title && <h3 class="diagram-title">{d.title}</h3>}
+        <figure class={`diagram${d.raw ? ' is-raw' : ''}`}><button class="zoom" data-section="zoom" data-track="diagram" type="button" aria-label="Enlarge image"><Img s={d} /></button><figcaption set:html={linked(d.caption)} /></figure>
+      </>) : <figure class="slot" style="aspect-ratio:16/10"><span>Screenshot placeholder</span></figure>)
+    : p.views && <section class="views"><h2>{p.views.title}</h2>{p.views.groups.map(g => <>
+        {g.head && <h3 set:html={linked(g.head)} />}
+        {g.text && <p set:html={linked(g.text)} />}
+        <div class={`shots n${g.shots.length}${g.wide ? ' is-wide' : ''}`}>{g.shots.map(s => (
+          <figure class="shot"><button class="zoom" data-section="zoom" data-track="screenshot" type="button" aria-label="Enlarge image">{s.src
+            ? <Img s={s} />
+            : ['dark', 'light'].map(t => <Img cls={`shot-${t}`} s={{ ...s, src: `/${p.id}/${s.name}-${t}.png` }} />)}</button></figure>
+        ))}</div>
+      </>)}</section>)}
+  <a class="next" href={`/projects/${next.id}`} data-section="nav" data-track="next"><span>Next</span>{next.name} →</a>
+</main>
+</Base>

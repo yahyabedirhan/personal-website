@@ -1,0 +1,17 @@
+---
+// The people whose work inspired the site's design.
+import Base from '../layouts/Base.astro';
+import Back from '../components/Back.astro';
+import { kudos } from '../data.js';
+import { kudosPage } from '../meta.js';
+const host = u => u.replace(/^https?:\/\//, '');
+---
+<Base page={kudosPage} bg={5}>
+<main class="wrap">
+  <Back />
+  <h1 class="title">Kudos</h1><p class="meta">{kudos.intro}</p>
+  <ul class="kudos" data-section="kudos_link">{kudos.people.map(k => (
+    <li><span>{k.name}</span><a href={k.site} target="_blank" rel="noreferrer">{host(k.site)}</a><a href={k.x} target="_blank" rel="noreferrer">@{k.x.split('/').pop()}</a></li>
+  ))}</ul>
+</main>
+</Base>

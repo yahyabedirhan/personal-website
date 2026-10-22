@@ -1,3 +1,5 @@
+// Copied module: yahyabedirhan/shipyard (site/src) and yahyabedirhan/topographic (apps/playground/src) keep the same
+// behaviour in their own files. Make a change in all three; shipyard's site/docs/low-level-design.md > 'Copied modules' lists them.
 // Cookieless PostHog analytics. Without VITE_POSTHOG_KEY at build time this module does nothing
 // and posthog-js is never fetched. With it, posthog-js loads after the first paint, in memory only.
 // The visitor's preference (see privacy.js) decides how much is sent: "off" loads nothing,

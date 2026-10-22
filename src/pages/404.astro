@@ -1,0 +1,9 @@
+---
+// Any path with no page. The Worker serves it with status 404 (wrangler.jsonc).
+import Base from '../layouts/Base.astro';
+import Back from '../components/Back.astro';
+import { notFound } from '../meta.js';
+---
+<Base page={notFound}>
+<main class="wrap"><Back /><h1 class="title">Not found</h1></main>
+</Base>

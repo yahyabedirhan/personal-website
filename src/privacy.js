@@ -1,3 +1,5 @@
+// Copied module: yahyabedirhan/shipyard (site/src) and yahyabedirhan/topographic (apps/playground/src) keep the same
+// behaviour in their own files. Make a change in all three; shipyard's site/docs/low-level-design.md > 'Copied modules' lists them.
 // Analytics preference, kept in localStorage under "analytics" on this device only.
 //   full       (default) pageviews, clicks, web vitals, scroll depth, error reports
 //   pageviews  only $pageview and $pageleave, nothing else; set by ?analytics_optout or the footer button

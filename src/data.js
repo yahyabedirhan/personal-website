@@ -3,7 +3,7 @@ export const me = {
   title: 'Software Engineer',
 };
 
-// state: background slot (1 Havooch orange, 2 Shipyard green, 3 Skills violet, 4 topographic neutral)
+// state: background slot (1 Havooch orange, 2 Shipyard green, 3 Skills violet, 4 topographic neutral; 0 is idle and 5 is Kudos)
 // about: the page description; null shows a placeholder for Yahya to fill
 export const projects = [
   { id: 'shipyard', name: 'shipyard', state: 2, repo: 'https://github.com/yahyabedirhan/shipyard', icon: '/shipyard/shipyard.png', iconFull: true,

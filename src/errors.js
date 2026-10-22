@@ -1,3 +1,5 @@
+// Copied module: yahyabedirhan/shipyard (site/src) and yahyabedirhan/topographic (apps/playground/src) keep the same
+// behaviour in their own files. Make a change in all three; shipyard's site/docs/low-level-design.md > 'Copied modules' lists them.
 // Error reporting with Sentry, errors only. Without VITE_SENTRY_DSN at build time this module does
 // nothing and @sentry/browser is never fetched. With it, the SDK loads after the page is idle;
 // errors thrown before that are buffered and sent once it is ready.
