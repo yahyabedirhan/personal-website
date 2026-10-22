@@ -9,26 +9,36 @@ export const projects = [
   { id: 'shipyard', name: 'shipyard', state: 2, repo: 'https://github.com/yahyabedirhan/shipyard', icon: '/shipyard/shipyard.png', iconFull: true,
     iconAlt: "shipyard's logo: a white sailboat with folded sails on two waves, on a dark graphite tile",
     line: 'Menu bar app for keeping up with your projects',
-    about: 'shipyard is a macOS menu bar app for keeping up with your projects while your agents work. It shows your pull requests, issues, workflow runs, pings from your agents and notes, grouped by project, in one list in the menu bar. It is for people whose coding agents work on their projects, and for maintainers who review what other people open.',
-    details: 'A number in the menu bar counts what needs your attention: items that are new, changed since you last looked, waiting on your review, or failing their checks.\n\nshipyard signs in to GitHub through the GitHub CLI, `gh`, or Sign in with GitHub, and reads your notes from Notion through its CLI, `ntn`. Your agents talk to you through the `shipyard` command. Its settings live in one configuration file, which your agents edit for you with the shipyard skill.',
-    viewsFirst: true, // screenshots, then the diagram
-    // assets from yahyabedirhan/shipyard at 1001f7b: logo and screenshots, which show made-up demo content; architecture.png at 1debb22
+    viewsFirst: true, // screenshots, then the diagrams
+    // assets from yahyabedirhan/shipyard main at 619c8fc: logo and screenshots, which show made-up demo content;
+    // hero.webp composed from the landing's two screenshots; the diagrams exported from the docs site at 2x
+    about: 'A macOS menu bar app for keeping up with your projects while your agents work. Your pull requests, issues, workflow runs, pings from your agents and notes, grouped by project, in one list in the menu bar.',
+    details: 'It notifies you when something happens, and your agents can ping you when they need you. They also edit its settings for you with the shipyard skill. Install it from the [site](https://shipyard.yahyapak.dev).',
+    links: [
+      { label: 'Site', href: 'https://shipyard.yahyapak.dev', icon: 'site', main: true },
+      { label: 'Docs', href: 'https://shipyard.yahyapak.dev/docs', icon: 'docs', main: true },
+      { label: 'GitHub', href: 'https://github.com/yahyabedirhan/shipyard', icon: 'github' },
+      { label: 'Releases', href: 'https://github.com/yahyabedirhan/shipyard/releases', icon: 'download' },
+    ],
+    hero: { src: '/shipyard/hero.webp', width: 2400, height: 1500,
+      alt: 'The shipyard panel twice, side by side: in dark mode in the tabs layout on the shipyard tab, and in the light Paper theme in the list layout, both showing pull requests, pings from agents, issues, runs and notes' },
     diagrams: [
-      { src: '/shipyard/architecture.png', width: 2000, height: 1080, raw: true,
-        alt: "shipyard's architecture: GitHub, agents on the Mac and on servers, and Notion notes feed the shipyard menu bar app, whose refresh turns them into a menu bar panel and notifications.",
-        caption: 'How shipyard works: four sources feed one refresh, which turns into a count in the menu bar and notifications.' },
+      { title: 'How shipyard works', src: '/shipyard/how-it-works.png', width: 1280, height: 896, raw: true,
+        alt: "How shipyard works: GitHub, your agents' pings from this Mac and from other machines, and your Notion notes feed one refresh in the app, which turns them into the menu bar's number, the panel's projects and macOS notifications.",
+        caption: 'Four sources feed one refresh, which turns into one number in the menu bar, your projects in the panel and notifications.' },
+      { title: 'The configuration loop', src: '/shipyard/config-loop.png', width: 1280, height: 600, raw: true,
+        alt: 'The configuration loop: you ask your agent for a change, it edits config.toml with the shipyard skill, the app rereads the file on save and writes its verdict to config-status.json, and the agent reads the verdict and fixes any problem it lists.',
+        caption: 'You ask in your own words, your agent edits the file, and the app tells it whether the change worked.' },
+      { title: 'Pings across machines', src: '/shipyard/pings.png', width: 1280, height: 1064, raw: true,
+        alt: 'Pings across machines: an agent on this Mac sends a ping into the ping store, and an agent on another machine sends one into the herdr-shipyard plugin, which the Mac polls through Herdr every 30 seconds. The app lists each ping, notifies, and runs its action when you click it.',
+        caption: 'Agents on this Mac and on your other machines ping you, and each ping lists in the panel with a notification.' },
     ],
     views: {
       title: 'In the app',
       groups: [
-        { head: 'Tabs layout', text: 'One tab per project, plus an All tab. Each tab groups its items by kind: pull requests, pings, issues, runs and notes.', shots: [
-          { src: '/shipyard/landing-tabs-dark.png', width: 800, height: 1296, alt: "The shipyard panel in dark mode, in the tabs layout on the shipyard tab: pull requests, two pings from agents, issues and notes, with 9 needing attention" },
-          { src: '/shipyard/panel-tabs-dark.png', width: 800, height: 954, alt: "The tabs layout on the havooch tab: one pull request, one issue, a running and a finished workflow run, and one note" }] },
-        { head: 'List layout', text: 'Every project in one list, and each project can be folded. Your notes from Notion sit under the pull requests and issues.', shots: [
-          { src: '/shipyard/landing-list-light.png', width: 800, height: 1276, alt: 'The shipyard panel in the light Paper theme, in the list layout: the shipyard and havooch projects with their pull requests, pings, issues, workflow runs and notes' },
-          { src: '/shipyard/panel-notes-dark.png', width: 800, height: 1268, alt: 'The list layout in dark mode: four projects, each with its pull requests and issues, and numbered notes from Notion with labels such as design and idea' }] },
-        { head: 'Grouped by repository', text: 'A project can also group its items by repository, under a header for each one.', shots: [
-          { src: '/shipyard/panel-list-dark.png', width: 800, height: 1268, alt: 'The list layout grouped by repository: each project shows a repository header, such as yahyabedirhan/shipyard, above its runs, pull requests, pings and notes' }] },
+        { head: 'Layouts', text: 'Every project in one list, or one project at a time in tabs.', shots: [
+          { src: '/shipyard/panel-list-dark.png', width: 800, height: 1268, alt: 'The list layout in dark mode: the shipyard, havooch and topographic projects, each grouped by repository, with their runs, pull requests, pings and notes' },
+          { src: '/shipyard/panel-tabs-dark.png', width: 800, height: 954, alt: 'The tabs layout on the havooch tab: one pull request, one issue, a running and a finished workflow run, and one note' }] },
         { head: 'Review queue', text: 'A ready-made preset that lists only the pull requests waiting on your review, in any repository.', shots: [
           { src: '/shipyard/preset-review-queue-dark.png', width: 800, height: 380, alt: 'The review-queue preset: two pull requests waiting on your review, one in yahyabedirhan/shipyard and one in yahyabedirhan/topographic' }] },
       ],
