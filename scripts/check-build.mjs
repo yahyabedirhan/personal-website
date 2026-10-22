@@ -20,7 +20,7 @@ for (const [page, words] of Object.entries(pages)) {
   if (!existsSync(file)) { problems.push(`dist has no ${page}`); continue; }
   const html = readFileSync(file, 'utf8');
   for (const w of words) if (!html.includes(w)) problems.push(`${page} has no "${w}" in its HTML`);
-  if (!html.includes('data-astro-transition-persist="bg"')) problems.push(`${page} has no persistent background canvas`);
+  if (!html.includes('data-astro-transition-persist="bg"')) problems.push(`${page} has no persistent background element`);
 }
 for (const need of ['robots.txt', 'sitemap.xml', '_redirects', 'favicon.png', 'og-icon.png']) {
   if (!existsSync(new URL(need, dist))) problems.push(`dist has no ${need}`);

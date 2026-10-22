@@ -1,6 +1,6 @@
 // Astro renders every page to its own HTML file at build time, from the content in src/data.js.
 // The client router in src/layouts/Base.astro then moves between pages without a full load,
-// so the background canvas keeps running across page changes.
+// so the background keeps running across page changes.
 import { defineConfig } from 'astro/config';
 import { SITE } from './src/meta.js';
 
