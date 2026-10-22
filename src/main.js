@@ -28,7 +28,7 @@ const sized = () => ({
 const topography = createTopography(document.getElementById('bg'), {
   scenes: bgScenes, scene: 0, column: 332, quality: 'full', theme: { mode: isLight() ? 'light' : 'dark' },
   lines: { width: 0.9 / 3.5 }, motion: { warp: 0.7 / 1.5 }, ...sized(),
-}, { maxPixelRatio: ratio(), maxPixels: Infinity, maxFps: coarse ? 30 : 0 });
+}, { maxPixelRatio: ratio(), maxPixels: Infinity, maxFps: coarse ? 30 : 0, powerPreference: 'low-power' });
 addEventListener('resize', () => { topography.setOptions({ maxPixelRatio: ratio() }); topography.update(sized()); });
 // a new scene fades in; a theme change fades between light and dark, or jumps with instant
 const bg = {
