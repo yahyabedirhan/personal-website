@@ -10,7 +10,7 @@ export const projects = [
     iconAlt: "shipyard's logo: a white sailboat with folded sails on two waves, on a dark graphite tile",
     line: 'Menu bar app for keeping up with your projects',
     viewsFirst: true, // screenshots, then the diagrams
-    // assets from yahyabedirhan/shipyard main at 619c8fc: logo and screenshots, which show made-up demo content;
+    // logo from yahyabedirhan/shipyard main at 619c8fc; screenshots from yahyabedirhan/shipyard 2faa8ac (#357), made-up demo content signed in as @orangecat or @yahyabedirhan;
     // hero.webp composed from the landing's two screenshots; the diagrams exported from the docs site at 2x
     about: 'A macOS menu bar app for keeping up with your projects while your agents work. Your pull requests, issues, workflow runs, pings from your agents and notes, grouped by project, in one list in the menu bar.',
     details: 'It notifies you when something happens, and your agents can ping you when they need you. They also edit its settings for you with the shipyard skill. Install it from the [site](https://shipyard.yahyapak.dev).',
@@ -21,7 +21,7 @@ export const projects = [
       { label: 'Releases', href: 'https://github.com/yahyabedirhan/shipyard/releases', icon: 'download' },
     ],
     hero: { src: '/shipyard/hero.webp', width: 2400, height: 1500,
-      alt: 'The shipyard panel twice, side by side: in dark mode in the tabs layout on the shipyard tab, and in the light Paper theme in the list layout, both showing pull requests, pings from agents, issues, runs and notes' },
+      alt: 'The shipyard panel twice, side by side: signed in as @yahyabedirhan in dark mode in the tabs layout on the shipyard tab, and as @orangecat in the Paper Light theme in the list layout, both showing pull requests, pings from agents, issues, runs and notes' },
     diagrams: [
       { title: 'How shipyard works', src: '/shipyard/how-it-works.png', width: 1280, height: 896, raw: true,
         alt: "How shipyard works: GitHub, your agents' pings from this Mac and from other machines, and your Notion notes feed one refresh in the app, which turns them into the menu bar's number, the panel's projects and macOS notifications.",
@@ -40,7 +40,7 @@ export const projects = [
           { src: '/shipyard/panel-list-dark.png', width: 800, height: 1268, alt: 'The list layout in dark mode: the shipyard, havooch and topographic projects, each grouped by repository, with their runs, pull requests, pings and notes' },
           { src: '/shipyard/panel-tabs-dark.png', width: 800, height: 954, alt: 'The tabs layout on the havooch tab: one pull request, one issue, a running and a finished workflow run, and one note' }] },
         { head: 'Review queue', text: 'A ready-made preset that lists only the pull requests waiting on your review, in any repository.', shots: [
-          { src: '/shipyard/preset-review-queue-dark.png', width: 800, height: 380, alt: 'The review-queue preset: two pull requests waiting on your review, one in yahyabedirhan/shipyard and one in yahyabedirhan/topographic' }] },
+          { src: '/shipyard/preset-review-queue-dark.png', width: 800, height: 384, alt: 'The review-queue preset: two pull requests waiting on your review, one in yahyabedirhan/shipyard and one in yahyabedirhan/topographic' }] },
       ],
     } },
   { id: 'havooch', name: 'havooch', state: 1, repo: 'https://github.com/yahyabedirhan/havooch',
