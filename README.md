@@ -23,7 +23,7 @@ It's my personal website. I'm Yahya Bedirhan Pak, a software engineer, and this 
 ```text
 astro.config.mjs  Astro settings: static output, one HTML file per page, prefetch on hover
 src/pages/        one file per page, projects/[id].astro for every project page, and sitemap.xml
-src/components/   Back, Footer, Img and Socials, shared by the pages
+src/components/   Back, Footer, Img, Socials and Swipe, shared by the pages
 src/layouts/      Base.astro: the head, the theme set before first paint, the router and the background element
 src/main.js       the one browser script: the topographic background and its states, theme, opt-out, zoom, analytics
 src/data.js       the site's content and the background's scenes, the one source for every page

@@ -1,0 +1,20 @@
+---
+// Two images of one place as one before/after picture: the first is drawn left of a divider at --at, which a drag
+// across the picture, or the arrow keys on its hidden range input, move (src/main.js). Each image's tag is its alt
+// text, 'role · model', the model on a smaller line; the first image's caption is the picture's caption.
+import Img from './Img.astro';
+const { shots: [left, right] } = Astro.props;
+const tag = s => s.alt.split(' · ');
+---
+<figure class="swipe">
+  <div class="swipe-stage" style="--at:50%">
+    <Img s={right} cls="is-right" />
+    <Img s={left} cls="is-left" />
+    <span class="swipe-line" aria-hidden="true"><i></i></span>
+    {[left, right].map((s, i) => { const [role, model] = tag(s); return (
+      <span class={`swipe-tag ${i ? 'is-right' : 'is-left'}`} aria-hidden="true">{role}{model && <small>{model}</small>}</span>
+    ); })}
+    <input class="swipe-range" type="range" min="0" max="100" value="50" aria-label={`Swipe between ${left.alt} and ${right.alt}`}>
+  </div>
+  {left.caption && <figcaption>{left.caption}</figcaption>}
+</figure>
