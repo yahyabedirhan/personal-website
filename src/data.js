@@ -27,7 +27,8 @@ export const projects = [
     // the docs' own hero, a view of the drawn map at x=153.76 y=68.32 z=6.13, with the docs' alt text and, as there, no caption
     hero: { src: '/isometric-istanbul/hero.jpg', width: 1200, height: 630,
       alt: 'A part of the drawn map that shows the Bosphorus, one of its bridges and ships on the water.' },
-    // the docs' Method section: its headings, texts, captions (an image's title there) and alt texts, word for word
+    // the docs' Method section: its headings, texts, captions (an image's title there) and alt texts, word for word;
+    // a caption carries no credit, which lives only in the sources table
     views: {
       title: 'Method',
       groups: [
@@ -41,7 +42,7 @@ export const projects = [
           text: 'The drawing style was chosen in two stages, in which the models were compared on the same tiles. The instructions given to the model describe how to draw rather than what to draw.',
           shots: [
             { src: '/isometric-istanbul/render-r0949-c1031.webp', width: 1024, height: 1024, alt: '3B İstanbul image',
-              caption: 'The 3B İstanbul image of a tile in Rumelifeneri, and the drawing that the teacher model, GPT Image 2.5, made of the same tile. Image © İstanbul Büyükşehir Belediyesi.' },
+              caption: 'The 3B İstanbul image of a tile in Rumelifeneri, and the drawing that the teacher model, GPT Image 2.5, made of the same tile.' },
             { src: '/isometric-istanbul/teacher-r0949-c1031.webp', width: 1024, height: 1024, alt: 'Teacher model · GPT Image 2.5' }] },
         { head: 'The teacher model', wide: true,
           text: 'Because GPT Image 2.5 is too slow and too expensive to draw the whole city, it prepares only the example drawings, and it is therefore called the "teacher model". The example set has 1,176 examples of the city, the open sea, marinas and 153 landmarks.',
