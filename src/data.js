@@ -24,7 +24,7 @@ export const projects = [
     about: 'Isometric Istanbul is a free and non-commercial platform developed to promote the cultural and historical heritage of the city. The platform presents Istanbul as an illustrated isometric map.',
     details: 'The project was developed by following the example of [isometric.nyc](https://isometric.nyc), made by Andy Coenen for New York, and [tiny.london](https://tiny.london), made by Boris Starkov for London. It follows the method described in [the tiny.london blog posts](https://tiny.london/how/), in which the city is viewed from one fixed angle, the views are redrawn with AI models, and the drawings are joined into a map that can be zoomed.\n\nThe data source of the map is [3B İstanbul](https://3bistanbul.ibb.gov.tr/), the 3D city model application of the İstanbul Metropolitan Municipality (İBB). Only 2D images are used, and the 3D model itself is never saved. The whole story is in the [docs](https://isometricistanbul.com/en/docs).',
     links: [
-      { label: 'Map', href: 'https://isometricistanbul.com/en', icon: 'site', main: true },
+      { label: 'Map', href: 'https://isometricistanbul.com/', icon: 'site', main: true },
       { label: 'Docs', href: 'https://isometricistanbul.com/en/docs', icon: 'docs', main: true },
       { label: 'Türkçe', href: 'https://isometricistanbul.com/tr/docs', icon: 'docs', track: 'docs-tr' },
     ],
@@ -69,7 +69,7 @@ export const projects = [
           shots: [{ src: '/isometric-istanbul/fig-chessboard.webp', width: 1800, height: 1560,
             alt: 'An isometric drawing of a six by six grid of blocks under rows of rollers, where blocks that do not touch are stamped in the same round' }] },
         { head: 'The whole map', wide: true,
-          text: 'The zone screen follows the state of each block and the time each card needs to draw a block. In the parts that are not drawn yet, the map shows darkened original images, so the progress of the drawing can be followed. See it live on the [map](https://isometricistanbul.com/en).',
+          text: 'The zone screen follows the state of each block and the time each card needs to draw a block. In the parts that are not drawn yet, the map shows darkened original images, so the progress of the drawing can be followed. See it live on the [map](https://isometricistanbul.com/).',
           credit: credit(IBB, GOOGLE, QWEN),
           shots: [
             { src: '/isometric-istanbul/dashboard-zones.webp', width: 2000, height: 1250, alt: 'The zone screen of the control panel: the drawn map of Istanbul in the middle and, beside it, the cards drawing each block with their minutes and cost' },
