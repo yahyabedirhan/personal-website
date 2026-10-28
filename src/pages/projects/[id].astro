@@ -37,7 +37,7 @@ const order = p.viewsFirst ? ['views', 'diagrams'] : ['diagrams', 'views'];
     : p.views && <section class="views"><h2>{p.views.title}</h2>{p.views.groups.map(g => <>
         {g.head && <h3 set:html={linked(g.head)} />}
         {g.text && <p set:html={linked(g.text)} />}
-        {g.swipe ? <Swipe shots={g.shots} /> : <div class={`shots n${g.shots.length}${g.wide ? ' is-wide' : ''}`}>{g.shots.map(s => s.frame
+        {g.swipe ? <Swipe shots={g.shots} /> : g.shots && <div class={`shots n${g.shots.length}${g.wide ? ' is-wide' : ''}`}>{g.shots.map(s => s.frame
           ? <figure class="shot live"><iframe src={s.frame} title={s.title} loading="lazy" style={`--ratio:${s.ratio}`}></iframe>{s.caption && <figcaption>{s.caption}</figcaption>}</figure>
           : <figure class="shot"><button class="zoom" data-section="zoom" data-track="screenshot" type="button" aria-label="Enlarge image">{s.src
             ? <Img s={s} />
@@ -47,7 +47,7 @@ const order = p.viewsFirst ? ['views', 'diagrams'] : ['diagrams', 'views'];
   {p.sources && <section class="sources"><h2 id="sources">Sources and credits</h2>
     {/* on a phone each row stacks: the source and its use on top, the holder and the licence below */}
     <table aria-labelledby="sources" data-section="source">
-      <thead><tr><th scope="col">Source</th><th scope="col">Use</th><th scope="col">Holder</th><th scope="col">Licence</th></tr></thead>
+      <thead><tr><th scope="col">Source</th><th scope="col">Used for</th><th scope="col">Holder</th><th scope="col">Licence</th></tr></thead>
       <tbody>{p.sources.map(s => (
         <tr><th scope="row"><a href={s.href} target="_blank" rel="noopener noreferrer">{s.name}</a></th><td>{s.use}</td><td>{s.holder}</td>
           <td><a href={s.terms} target="_blank" rel="noopener noreferrer">{s.licence}</a></td></tr>
