@@ -73,6 +73,10 @@ section{margin-top:64px}
    --icon-top/--icon-bottom the space between the 40px hit box and its glyphs */
 .about{--name-col:150px;--in:22px;--out:48px;--lead:3px;--row-top:13px;--row-bottom:11px;--icon-top:13px;--icon-bottom:11px}
 .about .title{margin-bottom:42px}
+.about .title:has(+.grp>.avatar){margin-bottom:32px}
+.avatar{display:block;width:180px;height:180px;border-radius:50%;box-shadow:0 0 0 1px var(--line)}
+.about .grp>.avatar+*{margin-top:calc(var(--in) - var(--lead))}
+@media (max-width:520px){.avatar{width:160px;height:160px}}
 .about h2,.about h3{font:500 15px/1.65 Inter,sans-serif;color:var(--fg);letter-spacing:normal;margin:0}
 .about .grp+.grp{margin-top:calc(var(--out) - 2 * var(--lead))}
 .about .grp:has(>.rows:last-child)+.grp{margin-top:calc(var(--out) - var(--lead) - var(--row-bottom))}

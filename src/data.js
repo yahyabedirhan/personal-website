@@ -1,6 +1,7 @@
 export const me = {
   name: 'Yahya Bedirhan Pak',
   title: 'Software Engineer',
+  avatar: { src: '/me/avatar.webp', width: 600, height: 600, alt: 'Yahya Bedirhan Pak, drawn in ASCII characters' },
 };
 
 // state: background slot (1 Havooch orange, 2 Shipyard green, 3 Skills violet, 4 topographic neutral, 6 Isometric Istanbul blue; 0 is idle and 5 is Kudos)
