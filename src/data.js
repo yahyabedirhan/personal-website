@@ -3,7 +3,7 @@ export const me = {
   title: 'Software Engineer',
 };
 
-// Isometric Istanbul's credit lines, word for word from its source registry; every map image carries IBB
+// Isometric Istanbul's credit lines, word for word from its site's credits; every map image carries IBB
 const IBB = '3D city model: 3B İstanbul, © İstanbul Büyükşehir Belediyesi';
 const GOOGLE = 'Imagery © Google';
 const GPT = 'Training drawings by GPT Image 2.5';
@@ -12,7 +12,7 @@ const credit = (...lines) => lines.join(' · ');
 
 // state: background slot (1 Havooch orange, 2 Shipyard green, 3 Skills violet, 4 topographic neutral, 6 Isometric Istanbul blue; 0 is idle and 5 is Kudos)
 // about: the page description; null shows a placeholder for Yahya to fill
-// repo: optional; a private repository is left out, so the page shows no repository link
+// repo: optional; without it the page shows no repository link
 // credit: a line under the hero or under a group of screenshots, for images that need one
 export const projects = [
   { id: 'isometric-istanbul', name: 'Isometric Istanbul', state: 6,
