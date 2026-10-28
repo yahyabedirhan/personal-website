@@ -3,8 +3,7 @@ export const me = {
   title: 'Software Engineer',
 };
 
-// Isometric Istanbul's credit lines, word for word from its source registry
-// (yahyabedirhan/isometric-istanbul packages/sources/sources.js at d602df1b); every map image carries IBB
+// Isometric Istanbul's credit lines, word for word from its source registry; every map image carries IBB
 const IBB = '3D city model: 3B İstanbul, © İstanbul Büyükşehir Belediyesi';
 const GOOGLE = 'Imagery © Google';
 const GPT = 'Training drawings by GPT Image 2.5';
@@ -18,8 +17,7 @@ const credit = (...lines) => lines.join(' · ');
 export const projects = [
   { id: 'isometric-istanbul', name: 'Isometric Istanbul', state: 6,
     icon: '/isometric-istanbul/logo.svg', iconAlt: "Isometric Istanbul's logo: a voxel block of limestone land cut by the blue Bosphorus",
-        // text from yahyabedirhan/isometric-istanbul d602df1b: apps/site/src/content/about.en.md and how.portable.md, the docs text kept for this site;
-    // logo from apps/site/public/favicon.svg; images from apps/site/public/docs, and the three figures captured from its docs/figures/*.en.html at 2x
+        // text and images from the Isometric Istanbul docs; the three figures captured from its docs at 2x
     line: 'An illustrated isometric map of Istanbul',
     about: 'Isometric Istanbul is a free and non-commercial platform developed to promote the cultural and historical heritage of the city. The platform presents Istanbul as an illustrated isometric map.',
     details: 'The project was developed by following the example of [isometric.nyc](https://isometric.nyc), made by Andy Coenen for New York, and [tiny.london](https://tiny.london), made by Boris Starkov for London. It follows the method described in [the tiny.london blog posts](https://tiny.london/how/), in which the city is viewed from one fixed angle, the views are redrawn with AI models, and the drawings are joined into a map that can be zoomed.\n\nThe data source of the map is [3B İstanbul](https://3bistanbul.ibb.gov.tr/), the 3D city model application of the İstanbul Metropolitan Municipality (İBB). Only 2D images are used, and the 3D model itself is never saved. The whole story is in the [docs](https://isometricistanbul.com/en/docs).',
