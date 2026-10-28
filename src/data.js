@@ -72,7 +72,7 @@ export const projects = [
           shots: [{ frame: '/isometric-istanbul/figures/chessboard.en.html', ratio: '600/520', title: 'Chessboard drawing order',
             caption: 'Blocks that do not touch are drawn at the same time. The 1-tile margin of each block meets the margins of its neighbours only at the corners.' }] },
         { head: 'Drawing on GPUs', wide: true,
-          text: 'The city is drawn in blocks on many graphics cards (GPUs) that work at the same time, and each block adds 100 tiles to the map. During the drawing, 16 RTX 5090 cards and 20 RTX 3090 cards were used at the same time.',
+          text: 'The city is drawn in blocks on many GPUs that work at the same time, and each block adds 100 tiles to the map. During the drawing, 16 RTX 5090 cards and 20 RTX 3090 cards were used at the same time.',
           shots: [{ src: '/isometric-istanbul/dashboard-zones.webp', width: 2000, height: 1250, alt: 'The zone screen of the control panel',
             caption: 'The zone screen follows the state of each block and the time each card needs to draw a block.' }] },
         { wide: true,
