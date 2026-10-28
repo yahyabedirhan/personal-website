@@ -5,7 +5,7 @@
   --glass-edge:inset 0 0 0 .5px rgba(255,255,255,.12),inset 0 1px 0 rgba(255,255,255,.08),0 6px 24px -12px rgba(0,0,0,.6);
   /* layout: one content column for every route */
   --content-max:576px;--gutter:24px;--page-top:128px;--page-bottom:120px;
-  --name-col:112px;--row-pad-x:14px;--ease:cubic-bezier(.32,.72,0,1);
+  --name-col:140px;--row-pad-x:14px;--ease:cubic-bezier(.32,.72,0,1);
 }
 :root[data-theme=light]{--fg:#1b1b1a;--mut:#7c7a76;--line:rgba(0,0,0,.08);--paper:#f9f8f6;color-scheme:light;
   --glass-fill:rgba(255,255,255,.22);
@@ -157,6 +157,7 @@ section{margin-top:64px}
 .hero{margin:0 0 40px}
 .hero img{display:block;width:100%;height:auto}
 .hero img,.shots.is-wide img{border-radius:10px}
+.credit{margin:8px 0 0;font-size:12px;line-height:1.45;color:var(--mut)}
 .diagram-title{font-size:15px;font-weight:600;margin:0 0 12px}
 .shots.is-wide{grid-template-columns:100%}
 .zoom-close{position:absolute;top:calc(12px + env(safe-area-inset-top));right:calc(12px + env(safe-area-inset-right));display:grid;place-items:center;width:40px;height:40px;border-radius:99px;
