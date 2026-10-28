@@ -15,9 +15,9 @@ const credit = (...lines) => lines.join(' · ');
 // repo: optional; without it the page shows no repository link
 // credit: a line under the hero or under a group of screenshots, for images that need one
 export const projects = [
-  { id: 'isometric-istanbul', name: 'Isometric Istanbul', state: 6,
-    icon: '/isometric-istanbul/logo.svg', iconAlt: "Isometric Istanbul's logo: a voxel block of limestone land cut by the blue Bosphorus",
-        // text and images from the Isometric Istanbul docs; the three figures captured from its docs at 2x
+  { id: 'isometric-istanbul', name: 'isometric istanbul', state: 6,
+    icon: '/isometric-istanbul/mark.svg', iconFull: true, iconAlt: "isometric istanbul's logo: a voxel block of limestone land cut by the blue Bosphorus",
+        // logo: the v2 limestone mark at full detail, as the page shows it at 128px; text and images from the Isometric Istanbul docs; the three figures captured from its docs at 2x
     line: 'An illustrated isometric map of Istanbul',
     about: 'Isometric Istanbul is a free and non-commercial platform developed to promote the cultural and historical heritage of the city. The platform presents Istanbul as an illustrated isometric map.',
     details: 'The project was developed by following the example of [isometric.nyc](https://isometric.nyc), made by Andy Coenen for New York, and [tiny.london](https://tiny.london), made by Boris Starkov for London. It follows the method described in [the tiny.london blog posts](https://tiny.london/how/), in which the city is viewed from one fixed angle, the views are redrawn with AI models, and the drawings are joined into a map that can be zoomed.\n\nThe data source of the map is [3B İstanbul](https://3bistanbul.ibb.gov.tr/), the 3D city model application of the İstanbul Metropolitan Municipality (İBB). Only 2D images are used, and the 3D model itself is never saved. The whole story is in the [docs](https://isometricistanbul.com/en/docs).',
