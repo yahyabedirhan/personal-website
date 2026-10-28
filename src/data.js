@@ -34,10 +34,8 @@ export const projects = [
       groups: [
         { head: 'Choosing the data source',
           text: 'The data source of the map is [3B İstanbul](https://3bistanbul.ibb.gov.tr/), the 3D city model application of the İstanbul Metropolitan Municipality (İBB). The model was made from aerial photographs with a resolution of 10 cm. Only 2D images are used, and the 3D model itself is never saved.' },
-        { head: 'Capturing the city', wide: true,
-          text: 'The isometric images of the city are captured tile by tile from the 3D city model on the [3B İstanbul](https://3bistanbul.ibb.gov.tr/) website. The city is viewed from one fixed angle, with a heading of 315° and a tilt of approximately 54.7°, which gives a true isometric view. The city consists of 22,042 tiles, and with the 2,559 sea tiles outside the capture area, a total of 24,601 tiles was captured.',
-          shots: [{ frame: '/isometric-istanbul/figures/capture.en.html', ratio: '4/3', title: 'Capturing from one fixed angle',
-            caption: 'The camera keeps a heading of 315° and a tilt of approximately 54.7°, and four tiles are captured from each position.' }] },
+        { head: 'Capturing the city',
+          text: 'The isometric images of the city are captured tile by tile from the 3D city model on the [3B İstanbul](https://3bistanbul.ibb.gov.tr/) website. The city is viewed from one fixed angle, with a heading of 315° and a tilt of approximately 54.7°, which gives a true isometric view. The city consists of 22,042 tiles, and with the 2,559 sea tiles outside the capture area, a total of 24,601 tiles was captured.' },
         { head: 'Choosing the drawing style', swipe: true,
           text: 'The drawing style was chosen in two stages, in which the models were compared on the same tiles. The instructions given to the model describe how to draw rather than what to draw.',
           shots: [
