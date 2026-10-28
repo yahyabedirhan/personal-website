@@ -3,21 +3,18 @@ export const me = {
   title: 'Software Engineer',
 };
 
-// Isometric Istanbul's credit lines, word for word from its site's credits; every map image carries IBB
-const IBB = '3D city model: 3B İstanbul, © İstanbul Büyükşehir Belediyesi';
-const GOOGLE = 'Imagery © Google';
-const GPT = 'Training drawings by GPT Image 2.5';
-const QWEN = 'Built with Qwen';
-const credit = (...lines) => lines.join(' · ');
-
 // state: background slot (1 Havooch orange, 2 Shipyard green, 3 Skills violet, 4 topographic neutral, 6 Isometric Istanbul blue; 0 is idle and 5 is Kudos)
 // about: the page description; null shows a placeholder for Yahya to fill
 // repo: optional; without it the page shows no repository link
-// credit: a line under the hero or under a group of screenshots, for images that need one
+// caption: a line under the hero or under one screenshot, saying what it shows
+// a group's shots: images, or a live figure (frame: a self-contained HTML page, with its ratio, title and caption);
+// sources: the 'Sources and credits' table at the end of the page, one row per source the page shows
+// swipe: two images of the same place as one before/after picture with a divider, each with a tag 'role · model';
+// the first image's caption is the swipe's caption
 export const projects = [
   { id: 'isometric-istanbul', name: 'isometric istanbul', state: 6,
     icon: '/isometric-istanbul/mark.svg', iconFull: true, iconAlt: "isometric istanbul's logo: a voxel block of limestone land cut by the blue Bosphorus",
-        // logo: the v2 limestone mark at full detail, as the page shows it at 128px; text and images from the Isometric Istanbul docs; the three figures captured from its docs at 2x
+    // logo: the v2 limestone mark at full detail, as the page shows it at 128px; text, images and the three live figures from the Isometric Istanbul docs
     line: 'An illustrated isometric map of Istanbul',
     about: 'Isometric Istanbul is a free and non-commercial platform developed to promote the cultural and historical heritage of the city. The platform presents Istanbul as an illustrated isometric map.',
     details: 'The project was developed by following the example of [isometric.nyc](https://isometric.nyc), made by Andy Coenen for New York, and [tiny.london](https://tiny.london), made by Boris Starkov for London. It follows the method described in [the tiny.london blog posts](https://tiny.london/how/), in which the city is viewed from one fixed angle, the views are redrawn with AI models, and the drawings are joined into a map that can be zoomed.\n\nThe data source of the map is [3B İstanbul](https://3bistanbul.ibb.gov.tr/), the 3D city model application of the İstanbul Metropolitan Municipality (İBB). Only 2D images are used, and the 3D model itself is never saved. The whole story is in the [docs](https://isometricistanbul.com/en/docs).',
@@ -26,54 +23,77 @@ export const projects = [
       { label: 'Docs', href: 'https://isometricistanbul.com/en/docs', icon: 'docs', main: true },
       { label: 'Türkçe', href: 'https://isometricistanbul.com/tr/docs', icon: 'docs', track: 'docs-tr' },
     ],
-    hero: { src: '/isometric-istanbul/moda-caddebostan.webp', width: 1568, height: 1008, credit: credit(IBB, GOOGLE, QWEN),
-      alt: 'The drawn map from Moda to Caddebostan: red-roofed streets, the Fenerbahçe stadium and the Kalamış marinas along a blue sea with a few boats' },
+    // the docs' own hero: a view of the drawn map at x=153.76 y=68.32 z=6.13, with the docs' alt text
+    hero: { src: '/isometric-istanbul/hero.jpg', width: 1200, height: 630,
+      caption: 'The drawn map: the Bosphorus, one of its bridges and ships on the water.',
+      alt: 'A part of the drawn map that shows the Bosphorus, one of its bridges and ships on the water.' },
+    // written for a reader who knows nothing of the project: each term (tile, teacher model, student model) is explained
+    // in a section's text before a later heading, tag or caption uses it; captions say what the picture shows in plain words
     views: {
       title: 'How it was made',
       groups: [
-        { head: 'Capturing the city', wide: true,
-          text: 'The isometric images of the city are captured tile by tile from the 3D city model on the [3B İstanbul](https://3bistanbul.ibb.gov.tr/) website. The city is viewed from one fixed angle, with a heading of 315° and a tilt of approximately 54.7°, which gives a true isometric view. The city consists of 22,042 tiles, and with the 2,559 sea tiles outside the capture area, a total of 24,601 tiles was captured.',
-          shots: [{ src: '/isometric-istanbul/fig-capture.webp', width: 2000, height: 1500,
-            alt: 'An isometric drawing of a camera on a gantry over a small model city: the camera keeps a heading of 315° and a tilt of 54.7°, and captures four tiles from each position' }] },
-        { head: 'The teacher model',
-          text: 'GPT Image 2.5 gave the best result in the comparison. Because it is too slow and too expensive to draw the whole city, it prepares only the example drawings, and it is therefore called the "teacher model". The example set has 1,176 examples of the city, the open sea, marinas and 153 landmarks.',
-          credit: credit(IBB, GPT),
+        { head: 'Photographing the city', wide: true,
+          text: 'The map starts from the 3D model of the city on the [3B İstanbul](https://3bistanbul.ibb.gov.tr/) website. The city is cut into small squares, called tiles, and each tile is photographed from the same fixed angle, with a heading of 315° and a tilt of approximately 54.7°, which gives a true isometric view. The city consists of 22,042 tiles, and with the 2,559 sea tiles outside the model, a total of 24,601 tiles was photographed.',
+          shots: [{ frame: '/isometric-istanbul/figures/capture.en.html', ratio: '4/3', title: 'Capturing from one fixed angle',
+            caption: 'A camera moves over a model city and photographs it square by square, always from the same angle.' }] },
+        { head: 'Drawing the first examples', swipe: true,
+          text: 'An AI image model then redraws each photo as an illustration. Several models were compared on the same photos, and GPT Image 2.5 stayed closest to the shapes in the photos. It is too slow and too expensive to draw the whole city, so it draws only a set of examples: 1,176 tiles of the city, the open sea, marinas and 153 landmarks. Another model learns from these examples, so GPT Image 2.5 is called the teacher model.',
           shots: [
-            { src: '/isometric-istanbul/render-r0949-c1031.webp', width: 1024, height: 1024, alt: 'The 3B İstanbul image of a tile in Rumelifeneri: a rocky headland with a fortress and a village above dark water' },
-            { src: '/isometric-istanbul/teacher-r0949-c1031.webp', width: 1024, height: 1024, alt: 'The drawing that the teacher model, GPT Image 2.5, made of the same Rumelifeneri tile' }] },
-        { head: 'Choosing the student model',
-          text: 'The student model is a smaller open-source model that learns from the drawings of the teacher model and draws the whole city at a low cost. Qwen-Image-2.1-Turbo was chosen as the student model because it draws every street and every building true to the source image.',
-          credit: credit(IBB, GPT, QWEN),
+            { src: '/isometric-istanbul/render-r0949-c1031.webp', width: 1024, height: 1024, tag: 'Photo · 3B İstanbul',
+              caption: 'Rumelifeneri, a headland with a fortress: the photo on the left and the drawing made from it on the right. Drag the line to compare them.',
+              alt: 'The 3B İstanbul photo of Rumelifeneri: a rocky headland with a fortress and a village above dark water' },
+            { src: '/isometric-istanbul/teacher-r0949-c1031.webp', width: 1024, height: 1024, tag: 'Teacher model · GPT Image 2.5',
+              alt: 'The drawing of the same place at Rumelifeneri, with brighter water and clearer roofs' }] },
+        { head: 'Teaching a second model', swipe: true,
+          text: 'A smaller open-source model, Qwen-Image-2.1-Turbo, learns from the teacher model’s examples and then draws the whole city at a low cost. It is called the student model. It was chosen because it draws every street and every building true to the photo.',
           shots: [
-            { src: '/isometric-istanbul/teacher-r1006-c1013.webp', width: 1024, height: 1024, alt: 'The drawing that the teacher model, GPT Image 2.5, made of a tile in Kalamış: a marina canal between a park and sports fields' },
-            { src: '/isometric-istanbul/student-r1006-c1013.webp', width: 1024, height: 1024, alt: 'The drawing that the student model, Qwen-Image-2.1-Turbo, made of the same Kalamış tile' }] },
+            { src: '/isometric-istanbul/teacher-r1006-c1013.webp', width: 1024, height: 1024, tag: 'Teacher model · GPT Image 2.5',
+              caption: 'The marina at Kalamış, drawn by both models: the example on the left and the drawing of the model that learned from it on the right.',
+              alt: 'The teacher model’s drawing of Kalamış: a marina canal between a park and sports fields' },
+            { src: '/isometric-istanbul/student-r1006-c1013.webp', width: 1024, height: 1024, tag: 'Student model · Qwen-Image-2.1-Turbo',
+              alt: 'The student model’s drawing of the same place at Kalamış' }] },
         { head: 'From teacher to student', wide: true,
-          text: 'The teacher model prepares the example drawings, and each example is approved by hand. The trained model learns from these examples and then draws the city in large parts and in eight steps.',
-          shots: [{ src: '/isometric-istanbul/fig-teacher.webp', width: 2000, height: 1540,
-            alt: 'An isometric drawing of one long bench: GPT Image 2.5 draws an example on the left, the examples are approved and stacked in the middle, and Qwen-Image-2.1-Turbo draws the city on the right' }] },
-        { head: 'Tuning the student model',
-          text: 'The model draws the city in large parts and in eight steps, so that even cars and boats are visible. The parts overlap, and the areas where they meet are smoothed, so no tile borders are visible on the map.',
-          credit: credit(IBB, QWEN),
+          shots: [{ frame: '/isometric-istanbul/figures/teacher.en.html', ratio: '13/10', title: 'The teacher model and the trained model',
+            caption: 'One model draws the examples, a person approves each one, a second model learns from them and then draws the city.' }] },
+        { head: 'Drawing without seams', swipe: true,
+          text: 'The student model draws the city in large parts and in eight steps, so that even cars and boats are visible. The parts overlap, and the areas where they meet are smoothed, so no borders between tiles are visible on the map.',
           shots: [
-            { src: '/isometric-istanbul/moda-tiles.webp', width: 672, height: 672, alt: 'Moda drawn tile by tile by the student model in the first test, with visible tile borders and islands that do not exist' },
-            { src: '/isometric-istanbul/moda-final.webp', width: 1344, height: 1344, alt: 'Moda drawn as one whole after the final training, with no tile borders' }] },
+            { src: '/isometric-istanbul/moda-tiles.webp', width: 672, height: 672, tag: 'First test',
+              caption: 'Moda in a first test, drawn square by square with visible borders and islands that do not exist, and the same place drawn as one whole at the end.',
+              alt: 'Moda drawn tile by tile in the first test, with visible tile borders and islands that do not exist' },
+            { src: '/isometric-istanbul/moda-final.webp', width: 1344, height: 1344, tag: 'Final drawing',
+              alt: 'Moda drawn as one whole after the final training, with no tile borders' }] },
         { head: 'The control panel', wide: true,
-          text: "The project is managed through a control panel that runs on the developer's local machine. In its review section, each example drawing is shown next to its source image and approved one by one.",
-          credit: credit(IBB, GPT),
+          text: "The project is managed through a control panel that runs on the developer's local machine. The panel shows every tile on the map, the photographing and the training, and the cost of each stage. In its review section, each example drawing is approved by hand.",
           shots: [{ src: '/isometric-istanbul/dashboard-review.webp', width: 2000, height: 1250,
+            caption: 'The review screen: an example drawing next to the photo it was made from, waiting for a yes or a no.',
             alt: 'The review screen of the control panel: an example drawing next to its source image, with approve and reject controls' }] },
-        { head: 'Drawing on GPUs', wide: true,
-          text: 'The city is drawn in blocks on many graphics cards (GPUs) that work at the same time, and each block adds 100 tiles to the map. Blocks that do not touch are drawn at the same time, in a chessboard pattern, so a phase is completed in 2 rounds instead of 4. During the drawing, 16 RTX 5090 cards and 20 RTX 3090 cards were used at the same time.',
-          shots: [{ src: '/isometric-istanbul/fig-chessboard.webp', width: 1800, height: 1560,
-            alt: 'An isometric drawing of a six by six grid of blocks under rows of rollers, where blocks that do not touch are stamped in the same round' }] },
+        { head: 'Drawing on many graphics cards', wide: true,
+          text: 'The city is drawn on many graphics cards (GPUs) that work at the same time. Each card draws a block of 10 by 10 tiles, which adds 100 tiles to the map. Blocks that touch are never drawn at the same time, so the city is drawn in 2 rounds, like the black and the white squares of a chessboard. During the drawing, 16 RTX 5090 cards and 20 RTX 3090 cards were used at the same time.',
+          shots: [{ frame: '/isometric-istanbul/figures/chessboard.en.html', ratio: '600/520', title: 'Chessboard drawing order',
+            caption: 'Blocks that do not touch are drawn together, in two rounds, like the squares of a chessboard.' }] },
         { head: 'The whole map', wide: true,
-          text: 'The zone screen follows the state of each block and the time each card needs to draw a block. In the parts that are not drawn yet, the map shows darkened original images, so the progress of the drawing can be followed. See it live on the [map](https://isometricistanbul.com/).',
-          credit: credit(IBB, GOOGLE, QWEN),
+          text: 'In the parts that are not drawn yet, the map shows darkened photos, so the progress of the drawing can be followed. See it live on the [map](https://isometricistanbul.com/).',
           shots: [
-            { src: '/isometric-istanbul/dashboard-zones.webp', width: 2000, height: 1250, alt: 'The zone screen of the control panel: the drawn map of Istanbul in the middle and, beside it, the cards drawing each block with their minutes and cost' },
-            { src: '/isometric-istanbul/map-progress.webp', width: 2000, height: 1250, alt: 'The whole map: the drawn part of Istanbul in colour along the Bosphorus, and the parts not drawn yet darkened around it' }] },
+            { src: '/isometric-istanbul/dashboard-zones.webp', width: 2000, height: 1250,
+              caption: 'The control panel’s map of the city, with the time each graphics card took to draw its block.',
+              alt: 'The zone screen of the control panel: the drawn map of Istanbul in the middle and, beside it, the cards drawing each block with their minutes and cost' },
+            { src: '/isometric-istanbul/map-progress.webp', width: 2000, height: 1250,
+              caption: 'The whole city: the drawn part in colour, and the parts still waiting to be drawn darkened around it.',
+              alt: 'The whole map: the drawn part of Istanbul in colour along the Bosphorus, and the parts not drawn yet darkened around it' }] },
       ],
-    } },
+    },
+    // the rows of the docs' Sources and credits table (isometricistanbul.com/en/docs) for the sources this page shows
+    sources: [
+      { name: '3B İstanbul', href: 'https://3bistanbul.ibb.gov.tr/', use: '3D city model', holder: '© İstanbul Büyükşehir Belediyesi',
+        licence: 'İBB Open Data Licence', terms: 'https://data.ibb.gov.tr/tr/license' },
+      { name: 'Google satellite imagery', href: 'https://www.google.com/maps', use: 'Sea imagery', holder: '© Google',
+        licence: 'Google Maps Platform terms', terms: 'https://cloud.google.com/maps-platform/terms' },
+      { name: 'GPT Image 2.5 Sunburst', href: 'https://openai.com/', use: 'Teacher model drawings', holder: 'OpenAI',
+        licence: 'OpenAI Terms of Use', terms: 'https://openai.com/policies/' },
+      { name: 'Qwen-Image-2.1-Turbo', href: 'https://huggingface.co/Qwen/Qwen-Image-2.1-Turbo', use: 'Base of the drawing model', holder: 'Alibaba Qwen team',
+        licence: 'Qwen Research License', terms: 'https://huggingface.co/Qwen/Qwen-Image-2.1-Turbo/blob/main/LICENSE' },
+    ] },
   { id: 'shipyard', name: 'shipyard', state: 2, repo: 'https://github.com/yahyabedirhan/shipyard', icon: '/shipyard/shipyard.png', iconFull: true,
     iconAlt: "shipyard's logo: a white sailboat with folded sails on two waves, on a dark graphite tile",
     line: 'Menu bar app for keeping up with your projects',

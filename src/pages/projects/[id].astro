@@ -1,9 +1,10 @@
 ---
 // One page per project in data.js, at /projects/<id>: logo, links, hero, details, then the diagrams
-// and the screenshots (viewsFirst puts the screenshots first), with a credit line where an image needs one. The background shows the project's state.
+// and the screenshots (viewsFirst puts the screenshots first), then the sources table when the project credits sources. The background shows the project's state.
 import Base from '../../layouts/Base.astro';
 import Back from '../../components/Back.astro';
 import Img from '../../components/Img.astro';
+import Swipe from '../../components/Swipe.astro';
 import { projects } from '../../data.js';
 import { icons, esc } from '../../icons.js';
 import { project as meta } from '../../meta.js';
@@ -26,7 +27,7 @@ const order = p.viewsFirst ? ['views', 'diagrams'] : ['diagrams', 'views'];
   {p.links && <nav class={`pj-links${p.links.some(l => l.icon) ? ' has-icons' : ''}`} aria-label="Links" data-section="project_link">{p.links.map(l => (
     <a class={l.main ? 'main' : undefined} data-track={track(l)} href={l.href} target="_blank" rel="noopener noreferrer">{l.icon ? <><Fragment set:html={icons[l.icon]} /><span>{l.label}</span></> : `${l.label} ↗`}</a>
   ))}</nav>}
-  {p.hero && <figure class="hero"><button class="zoom" data-section="zoom" data-track="hero" type="button" aria-label="Enlarge image"><Img s={p.hero} load="eager" /></button>{p.hero.credit && <figcaption class="credit">{p.hero.credit}</figcaption>}</figure>}
+  {p.hero && <figure class="hero"><button class="zoom" data-section="zoom" data-track="hero" type="button" aria-label="Enlarge image"><Img s={p.hero} load="eager" /></button>{p.hero.caption && <figcaption>{p.hero.caption}</figcaption>}</figure>}
   {p.details && p.details.split('\n\n').map(d => <p class="pj-about pj-details" set:html={code(linked(d))} />)}
   {order.map(part => part === 'diagrams'
     ? (p.diagrams ? p.diagrams.map(d => <>
@@ -36,13 +37,22 @@ const order = p.viewsFirst ? ['views', 'diagrams'] : ['diagrams', 'views'];
     : p.views && <section class="views"><h2>{p.views.title}</h2>{p.views.groups.map(g => <>
         {g.head && <h3 set:html={linked(g.head)} />}
         {g.text && <p set:html={linked(g.text)} />}
-        <div class={`shots n${g.shots.length}${g.wide ? ' is-wide' : ''}`}>{g.shots.map(s => (
-          <figure class="shot"><button class="zoom" data-section="zoom" data-track="screenshot" type="button" aria-label="Enlarge image">{s.src
+        {g.swipe ? <Swipe shots={g.shots} /> : <div class={`shots n${g.shots.length}${g.wide ? ' is-wide' : ''}`}>{g.shots.map(s => s.frame
+          ? <figure class="shot live"><iframe src={s.frame} title={s.title} loading="lazy" style={`--ratio:${s.ratio}`}></iframe>{s.caption && <figcaption>{s.caption}</figcaption>}</figure>
+          : <figure class="shot"><button class="zoom" data-section="zoom" data-track="screenshot" type="button" aria-label="Enlarge image">{s.src
             ? <Img s={s} />
-            : ['dark', 'light'].map(t => <Img cls={`shot-${t}`} s={{ ...s, src: `/${p.id}/${s.name}-${t}.png` }} />)}</button></figure>
-        ))}</div>
-        {g.credit && <p class="credit">{g.credit}</p>}
+            : ['dark', 'light'].map(t => <Img cls={`shot-${t}`} s={{ ...s, src: `/${p.id}/${s.name}-${t}.png` }} />)}</button>{s.caption && <figcaption>{s.caption}</figcaption>}</figure>
+        )}</div>}
       </>)}</section>)}
+  {p.sources && <section class="sources"><h2 id="sources">Sources and credits</h2>
+    {/* on a phone each row stacks: the source and its use on top, the holder and the licence below */}
+    <table aria-labelledby="sources" data-section="source">
+      <thead><tr><th scope="col">Source</th><th scope="col">Use</th><th scope="col">Holder</th><th scope="col">Licence</th></tr></thead>
+      <tbody>{p.sources.map(s => (
+        <tr><th scope="row"><a href={s.href} target="_blank" rel="noopener noreferrer">{s.name}</a></th><td>{s.use}</td><td>{s.holder}</td>
+          <td><a href={s.terms} target="_blank" rel="noopener noreferrer">{s.licence}</a></td></tr>
+      ))}</tbody>
+    </table></section>}
   <a class="next" href={`/projects/${next.id}`} data-section="nav" data-track="next"><span>Next</span>{next.name} →</a>
 </main>
 </Base>

@@ -1,5 +1,5 @@
 // The site's one script, from src/layouts/Base.astro. It runs once per full page load and keeps working
-// across the client router's page changes: the background, image zoom, the theme button, the opt-out
+// across the client router's page changes: the background, image zoom, before/after swipes, the theme button, the opt-out
 // button, analytics and error reporting. Each page's HTML is built by Astro; this only adds behaviour.
 import './privacy.js';
 import './errors.js';
@@ -102,6 +102,18 @@ document.addEventListener('astro:before-swap', e => {
 document.addEventListener('astro:after-swap', () => { restoreHome(); showPage(); });
 showPage();
 restoreHome();
+
+// before/after swipes (src/components/Swipe.astro): a drag across the picture, or the arrow keys on its range input,
+// move the divider; a vertical drag still scrolls the page (touch-action: pan-y)
+const swipeTo = (stage, at) => { stage.style.setProperty('--at', `${at}%`); stage.querySelector('.swipe-range').value = String(Math.round(at)); };
+const follow = (stage, e) => { const box = stage.getBoundingClientRect(); swipeTo(stage, Math.min(100, Math.max(0, (e.clientX - box.left) / box.width * 100))); };
+document.addEventListener('input', e => { if (e.target.matches?.('.swipe-range')) swipeTo(e.target.parentElement, +e.target.value); });
+document.addEventListener('pointerdown', e => {
+  const stage = e.target.closest?.('.swipe-stage');
+  if (!stage || e.button !== 0) return;
+  follow(stage, e); stage.setPointerCapture(e.pointerId);
+});
+document.addEventListener('pointermove', e => { const stage = e.target.closest?.('.swipe-stage'); if (stage?.hasPointerCapture(e.pointerId)) follow(stage, e); });
 
 document.addEventListener('click', e => {
   const theme = e.target.closest?.('.theme');
