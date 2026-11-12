@@ -19,7 +19,8 @@ if (DSN) {
       // the defaults minus BrowserSession (session tracking); tracing and replay are never added
       integrations: Sentry.getDefaultIntegrations({}).filter(i => i.name !== 'BrowserSession'),
       tracesSampleRate: 0,
-      sendDefaultPii: false,
+      // no user data: Sentry does not infer the visitor's IP address (and so no location) from the request
+      dataCollection: { userInfo: false },
     });
     removeEventListener('error', onError);
     removeEventListener('unhandledrejection', onRejection);
