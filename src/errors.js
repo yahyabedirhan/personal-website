@@ -6,15 +6,23 @@ import { getMode } from './privacy.js';
 // only for visitors who have not opted out (analytics preference "full")
 const DSN = getMode() === 'full' ? import.meta.env.VITE_SENTRY_DSN : undefined;
 
+// A view transition the browser skips or aborts, because the tab was hidden or the viewport changed
+// during a page change, rejects its promises with InvalidStateError (AbortError in some browsers).
+// The page change still completes, so these are not reported.
+const TRANSITION_ABORTED = /(InvalidStateError|AbortError).*transition/i;
+const isTransitionAborted = err => TRANSITION_ABORTED.test(err && typeof err === 'object' ? `${err.name}: ${err.message}` : String(err));
+
 if (DSN) {
   const early = [];
-  const onError = e => early.push(e.error || e.message);
-  const onRejection = e => early.push(e.reason);
+  const keep = err => { if (!isTransitionAborted(err)) early.push(err); };
+  const onError = e => keep(e.error || e.message);
+  const onRejection = e => keep(e.reason);
   addEventListener('error', onError);
   addEventListener('unhandledrejection', onRejection);
 
   const load = () => import('@sentry/browser').then(Sentry => {
     Sentry.init({
+      ignoreErrors: [TRANSITION_ABORTED],
       dsn: DSN,
       // the defaults minus BrowserSession (session tracking); tracing and replay are never added
       integrations: Sentry.getDefaultIntegrations({}).filter(i => i.name !== 'BrowserSession'),
