@@ -23,6 +23,9 @@ if (DSN) {
   const load = () => import('@sentry/browser').then(Sentry => {
     Sentry.init({
       ignoreErrors: [TRANSITION_ABORTED],
+      // only errors thrown in the site's own bundled scripts; scripts a browser, an in-app browser, a
+      // translation tool or an extension injects into the page run from other URLs and are not reported
+      allowUrls: [`${location.origin}/_astro/`],
       dsn: DSN,
       // the defaults minus BrowserSession (session tracking); tracing and replay are never added
       integrations: Sentry.getDefaultIntegrations({}).filter(i => i.name !== 'BrowserSession'),
